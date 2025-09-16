@@ -1,0 +1,2122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dineug/erd-editor/main/json-schema/schema.json",
+  "version": "3.0.0",
+  "settings": {
+    "width": 3000,
+    "height": 3000,
+    "scrollTop": -836.177,
+    "scrollLeft": -759.6666,
+    "zoomLevel": 0.46,
+    "show": 423,
+    "database": 16,
+    "databaseName": "",
+    "canvasType": "ERD",
+    "language": 1,
+    "tableNameCase": 4,
+    "columnNameCase": 2,
+    "bracketType": 1,
+    "relationshipDataTypeSync": true,
+    "relationshipOptimization": false,
+    "columnOrder": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "maxWidthComment": -1,
+    "ignoreSaveSettings": 0
+  },
+  "doc": {
+    "tableIds": [
+      "MGdw1hX1czJpj5bTbVe-S",
+      "6HDgEhZIxvgZYgH2aP6Sh",
+      "Z5Q56z1NNWtfpnLCjVZ3t",
+      "OCTwYCKqAOID5ze3u-c_l",
+      "l-bgAw75JQ9pAeVzhfCLe",
+      "kL7OKSjwrKDhA8laW7BZ1",
+      "M9g9qEYoFnZ4VXtGoj6Q9",
+      "PMWjiMw7UZSOeoqPClQQR",
+      "IxvIcrcIYNTeMqMVWK6Ru",
+      "dNCOjBFppV5Fw6xkWcFWa",
+      "abdwwiVo0_bWhLe2-r7-v"
+    ],
+    "relationshipIds": [
+      "2Pibyynt2200jmw4P460Q",
+      "Suj3vAHeG12F5wbom2S5D",
+      "AiPHH-bbqnN6oPkpyy84X",
+      "vfoDEaDD9g-5Cmk2m--l4",
+      "apoezQYKQW1Scs67QE1y-",
+      "LW6SBGg1itHSP-mWBkJHn",
+      "NThpHtDYt3H4N-3Zike1R",
+      "SxUoI4MaLzjDa7ir-xXpE",
+      "ewzPXFq_7COHItIp0GjFG",
+      "7v_gQ0fw1aYYIhEn0gWxA",
+      "rlov7KJl_szXnhyMjU-Y6",
+      "knWhI8vmAQDc6pfqSHDtF",
+      "NRNBbQI3PXpylm17CrwK0"
+    ],
+    "indexIds": [],
+    "memoIds": []
+  },
+  "collections": {
+    "tableEntities": {
+      "MGdw1hX1czJpj5bTbVe-S": {
+        "id": "MGdw1hX1czJpj5bTbVe-S",
+        "name": "employees",
+        "comment": "Таблица работников",
+        "columnIds": [
+          "3JqiZr5Huj3udvylLB941",
+          "Gxl1DUgNfXoUXEIVlkMbi",
+          "yyNrccM3BQgGgn5xHh-np",
+          "mh2DMGdTkJmfkKEXBTnuN",
+          "c80NUw-J_SCM1Dlpx0Pee"
+        ],
+        "seqColumnIds": [
+          "3JqiZr5Huj3udvylLB941",
+          "Gxl1DUgNfXoUXEIVlkMbi",
+          "yyNrccM3BQgGgn5xHh-np",
+          "mh2DMGdTkJmfkKEXBTnuN",
+          "c80NUw-J_SCM1Dlpx0Pee"
+        ],
+        "ui": {
+          "x": 2416.8235,
+          "y": 1384.7647,
+          "zIndex": 2,
+          "widthName": 60,
+          "widthComment": 117,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1758053189889,
+          "createAt": 1758047225868
+        }
+      },
+      "6HDgEhZIxvgZYgH2aP6Sh": {
+        "id": "6HDgEhZIxvgZYgH2aP6Sh",
+        "name": "clients",
+        "comment": "Таблица клиентов",
+        "columnIds": [
+          "em62nw1DsbYfkUmmH4nW5",
+          "-zTrjRQ0mr11AYaUo_Cmp",
+          "tU1kkQa-0TspA9khcbrQq",
+          "enpq5GVF5_L3bO4Xv_tx8",
+          "AFkvvs3O2YM6rwGpNoayw"
+        ],
+        "seqColumnIds": [
+          "em62nw1DsbYfkUmmH4nW5",
+          "-zTrjRQ0mr11AYaUo_Cmp",
+          "tU1kkQa-0TspA9khcbrQq",
+          "enpq5GVF5_L3bO4Xv_tx8",
+          "AFkvvs3O2YM6rwGpNoayw",
+          "aleZl2jWKZ2Y2C7ZmZhq9"
+        ],
+        "ui": {
+          "x": 1157.5116,
+          "y": 39.038,
+          "zIndex": 2,
+          "widthName": 60,
+          "widthComment": 102,
+          "color": "#FF0800"
+        },
+        "meta": {
+          "updateAt": 1758053749907,
+          "createAt": 1758047225868
+        }
+      },
+      "Z5Q56z1NNWtfpnLCjVZ3t": {
+        "id": "Z5Q56z1NNWtfpnLCjVZ3t",
+        "name": "loan_products",
+        "comment": "Кредитные продукты",
+        "columnIds": [
+          "TwaXptzatn1pEEqdN-EdE",
+          "-PZlmf2TKTAD-5_fFsjK_",
+          "fKla1q7dumxsL6bzSNoQP",
+          "ZGzKDqutiYsOFMslvTH2x",
+          "YF-QGPqIVLxj_MaoAuEEq",
+          "WfwOLDtuMPa75fJ9x1ZjE",
+          "dOf7_HDhl55DPiMo7n4rp"
+        ],
+        "seqColumnIds": [
+          "TwaXptzatn1pEEqdN-EdE",
+          "-PZlmf2TKTAD-5_fFsjK_",
+          "fKla1q7dumxsL6bzSNoQP",
+          "ZGzKDqutiYsOFMslvTH2x",
+          "YF-QGPqIVLxj_MaoAuEEq",
+          "WfwOLDtuMPa75fJ9x1ZjE",
+          "dOf7_HDhl55DPiMo7n4rp"
+        ],
+        "ui": {
+          "x": 506.0757,
+          "y": 1277.1765,
+          "zIndex": 2,
+          "widthName": 77,
+          "widthComment": 119,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1758053456331,
+          "createAt": 1758047225868
+        }
+      },
+      "OCTwYCKqAOID5ze3u-c_l": {
+        "id": "OCTwYCKqAOID5ze3u-c_l",
+        "name": "documents",
+        "comment": "Документы, удостоверяющие личность",
+        "columnIds": [
+          "K8TSfCsg6fqJRIoAZHndX",
+          "QcbXHwk_TK2NsVlXUHdb2",
+          "8QDtNe1WiUEzq1gy6xyMw",
+          "a_gFzk7y7i3e8aha0sGVo",
+          "aZsim9Naf5yH-S62swWe3",
+          "WbGCBLiI9U98RYBpjAEcc",
+          "s3Rkuo-tUDWOhhFZeHZCw"
+        ],
+        "seqColumnIds": [
+          "PTVPIF7Xt_kBMeCa395FL",
+          "K8TSfCsg6fqJRIoAZHndX",
+          "QcbXHwk_TK2NsVlXUHdb2",
+          "8QDtNe1WiUEzq1gy6xyMw",
+          "a_gFzk7y7i3e8aha0sGVo",
+          "aZsim9Naf5yH-S62swWe3",
+          "WbGCBLiI9U98RYBpjAEcc",
+          "s3Rkuo-tUDWOhhFZeHZCw"
+        ],
+        "ui": {
+          "x": 892.2353,
+          "y": 396.1764,
+          "zIndex": 2,
+          "widthName": 61,
+          "widthComment": 219,
+          "color": "#000AFF"
+        },
+        "meta": {
+          "updateAt": 1758053671901,
+          "createAt": 1758047225868
+        }
+      },
+      "l-bgAw75JQ9pAeVzhfCLe": {
+        "id": "l-bgAw75JQ9pAeVzhfCLe",
+        "name": "credit_history",
+        "comment": "Кредитные истории",
+        "columnIds": [
+          "dv46L72rNYK7l7Mt58xlf",
+          "oyN584sxN9BsraQSCnEZB",
+          "mkPUtvg9D91SIxnb011uB",
+          "968G1kgYkyKqk1FMTfC5w",
+          "Seo4vwx7sIafqojo-sqmN",
+          "Q2PviJyuPjY9HRhC36OtG"
+        ],
+        "seqColumnIds": [
+          "dv46L72rNYK7l7Mt58xlf",
+          "oyN584sxN9BsraQSCnEZB",
+          "mkPUtvg9D91SIxnb011uB",
+          "968G1kgYkyKqk1FMTfC5w",
+          "Seo4vwx7sIafqojo-sqmN",
+          "Q2PviJyuPjY9HRhC36OtG"
+        ],
+        "ui": {
+          "x": 1973.3662,
+          "y": 853.7969,
+          "zIndex": 2,
+          "widthName": 73,
+          "widthComment": 111,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1758053213028,
+          "createAt": 1758047225869
+        }
+      },
+      "kL7OKSjwrKDhA8laW7BZ1": {
+        "id": "kL7OKSjwrKDhA8laW7BZ1",
+        "name": "credit_applications",
+        "comment": "Кредитные соглашения",
+        "columnIds": [
+          "bi2My40p4SCI8TK4dSDK0",
+          "AHxiONHb9SvUCIRo8hWLl",
+          "zR4S6o4nNCiusc85aMk4O",
+          "s1MAIaidtinJJDpOxT5Bm",
+          "VIxeClw57nsBcQKfEhibn",
+          "bKZGwmbp_S27IyqQN8S2H",
+          "gHTtX2W_KEkeXI_oP1LQ_"
+        ],
+        "seqColumnIds": [
+          "bi2My40p4SCI8TK4dSDK0",
+          "AHxiONHb9SvUCIRo8hWLl",
+          "zR4S6o4nNCiusc85aMk4O",
+          "s1MAIaidtinJJDpOxT5Bm",
+          "VIxeClw57nsBcQKfEhibn",
+          "bKZGwmbp_S27IyqQN8S2H",
+          "gHTtX2W_KEkeXI_oP1LQ_"
+        ],
+        "ui": {
+          "x": 1529.2894,
+          "y": 1168.3143,
+          "zIndex": 2,
+          "widthName": 101,
+          "widthComment": 131,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1758053202557,
+          "createAt": 1758047225869
+        }
+      },
+      "M9g9qEYoFnZ4VXtGoj6Q9": {
+        "id": "M9g9qEYoFnZ4VXtGoj6Q9",
+        "name": "application_documents",
+        "comment": "Кредитные документы",
+        "columnIds": [
+          "2wO-5QjkUECQjLLWZXChY",
+          "7YXLuIDHkJ7i_KsuOMIAb"
+        ],
+        "seqColumnIds": [
+          "2wO-5QjkUECQjLLWZXChY",
+          "7YXLuIDHkJ7i_KsuOMIAb"
+        ],
+        "ui": {
+          "x": 11.1681,
+          "y": 175.9993,
+          "zIndex": 2,
+          "widthName": 124,
+          "widthComment": 126,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1758052574847,
+          "createAt": 1758047225869
+        }
+      },
+      "PMWjiMw7UZSOeoqPClQQR": {
+        "id": "PMWjiMw7UZSOeoqPClQQR",
+        "name": "accounts",
+        "comment": "Счета",
+        "columnIds": [
+          "3BbE6lPjvSogpq1lSJWTF",
+          "euTTluDoCiQiKbulfd5ND",
+          "O06TCcy4mJe_YqYHgdLrS",
+          "wbm2vupasWGPwKKrx22jI",
+          "iCr2wKkgmHoexblORQ0dz"
+        ],
+        "seqColumnIds": [
+          "3BbE6lPjvSogpq1lSJWTF",
+          "euTTluDoCiQiKbulfd5ND",
+          "O06TCcy4mJe_YqYHgdLrS",
+          "wbm2vupasWGPwKKrx22jI",
+          "iCr2wKkgmHoexblORQ0dz"
+        ],
+        "ui": {
+          "x": 2092.5062,
+          "y": 440.5179,
+          "zIndex": 2,
+          "widthName": 60,
+          "widthComment": 60,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1758053219519,
+          "createAt": 1758047225869
+        }
+      },
+      "IxvIcrcIYNTeMqMVWK6Ru": {
+        "id": "IxvIcrcIYNTeMqMVWK6Ru",
+        "name": "credit_contracts",
+        "comment": "Кредитные контракты",
+        "columnIds": [
+          "Sj3MmGx8SUo5voVkmk6LS",
+          "ClonaO5w_j3IWsqhugANp",
+          "6pxnVj1THUhNyhk3l6dSm",
+          "SnGiIIClytXvRujvJVTAl",
+          "nFixK6wQsDzaZDsZa9pGy",
+          "EoOZR70fZdab694j3-Y9A",
+          "rikKATvunnI4EbOutt93F",
+          "WwivPddJyYHnUhtSothgi",
+          "4OGNJ89xii8B-r9y5553Y"
+        ],
+        "seqColumnIds": [
+          "Sj3MmGx8SUo5voVkmk6LS",
+          "ClonaO5w_j3IWsqhugANp",
+          "6pxnVj1THUhNyhk3l6dSm",
+          "SnGiIIClytXvRujvJVTAl",
+          "nFixK6wQsDzaZDsZa9pGy",
+          "EoOZR70fZdab694j3-Y9A",
+          "rikKATvunnI4EbOutt93F",
+          "WwivPddJyYHnUhtSothgi",
+          "4OGNJ89xii8B-r9y5553Y"
+        ],
+        "ui": {
+          "x": 50,
+          "y": 890,
+          "zIndex": 2,
+          "widthName": 85,
+          "widthComment": 123,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1758053424089,
+          "createAt": 1758047225869
+        }
+      },
+      "dNCOjBFppV5Fw6xkWcFWa": {
+        "id": "dNCOjBFppV5Fw6xkWcFWa",
+        "name": "payment_schedule",
+        "comment": "Расписание платежей",
+        "columnIds": [
+          "IWdfbG3sXLGMFb2laZv9r",
+          "SVAbYVOJqzBOSgfmIQdiq",
+          "jypAm8zTEQL1xlcyZ1h-5",
+          "HDKM0mDwqZk6uQ1b6aD8Z",
+          "xuAZl2Bq2qjPURBQuE3vP"
+        ],
+        "seqColumnIds": [
+          "IWdfbG3sXLGMFb2laZv9r",
+          "SVAbYVOJqzBOSgfmIQdiq",
+          "jypAm8zTEQL1xlcyZ1h-5",
+          "HDKM0mDwqZk6uQ1b6aD8Z",
+          "xuAZl2Bq2qjPURBQuE3vP"
+        ],
+        "ui": {
+          "x": 11.3483,
+          "y": 347.5954,
+          "zIndex": 2,
+          "widthName": 100,
+          "widthComment": 122,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1758053721963,
+          "createAt": 1758047225869
+        }
+      },
+      "abdwwiVo0_bWhLe2-r7-v": {
+        "id": "abdwwiVo0_bWhLe2-r7-v",
+        "name": "payments",
+        "comment": "Таблица платежей",
+        "columnIds": [
+          "Sr5azwGm34bAo6gzTxE9C",
+          "QBKlZYJHr-7Syv6sGRp1B",
+          "i3ohzls5_U1WZmEioP6VB",
+          "xHTI59ofOnI2WQMQSxCs3",
+          "TPwFfJNFJvxl7B_oTZkJO",
+          "4PhcjW6WCib2LI2caylBE"
+        ],
+        "seqColumnIds": [
+          "Sr5azwGm34bAo6gzTxE9C",
+          "QBKlZYJHr-7Syv6sGRp1B",
+          "i3ohzls5_U1WZmEioP6VB",
+          "xHTI59ofOnI2WQMQSxCs3",
+          "TPwFfJNFJvxl7B_oTZkJO",
+          "4PhcjW6WCib2LI2caylBE"
+        ],
+        "ui": {
+          "x": 324.7438,
+          "y": 641.8248,
+          "zIndex": 2,
+          "widthName": 60,
+          "widthComment": 104,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1758053411443,
+          "createAt": 1758047225870
+        }
+      }
+    },
+    "tableColumnEntities": {
+      "3JqiZr5Huj3udvylLB941": {
+        "id": "3JqiZr5Huj3udvylLB941",
+        "tableId": "MGdw1hX1czJpj5bTbVe-S",
+        "name": "employee_id",
+        "comment": "id работника",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 2,
+        "ui": {
+          "keys": 1,
+          "widthName": 69,
+          "widthComment": 73,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053073307,
+          "createAt": 1758047225868
+        }
+      },
+      "Gxl1DUgNfXoUXEIVlkMbi": {
+        "id": "Gxl1DUgNfXoUXEIVlkMbi",
+        "tableId": "MGdw1hX1czJpj5bTbVe-S",
+        "name": "full_name",
+        "comment": "полное имя",
+        "dataType": "VARCHAR(255)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 67,
+          "widthDataType": 81,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053078914,
+          "createAt": 1758047225868
+        }
+      },
+      "yyNrccM3BQgGgn5xHh-np": {
+        "id": "yyNrccM3BQgGgn5xHh-np",
+        "tableId": "MGdw1hX1czJpj5bTbVe-S",
+        "name": "position",
+        "comment": "должность",
+        "dataType": "VARCHAR(100)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 61,
+          "widthDataType": 81,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053084443,
+          "createAt": 1758047225868
+        }
+      },
+      "mh2DMGdTkJmfkKEXBTnuN": {
+        "id": "mh2DMGdTkJmfkKEXBTnuN",
+        "tableId": "MGdw1hX1czJpj5bTbVe-S",
+        "name": "login",
+        "comment": "логин",
+        "dataType": "VARCHAR(50)",
+        "default": "",
+        "options": 4,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 75,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053087369,
+          "createAt": 1758047225868
+        }
+      },
+      "c80NUw-J_SCM1Dlpx0Pee": {
+        "id": "c80NUw-J_SCM1Dlpx0Pee",
+        "tableId": "MGdw1hX1czJpj5bTbVe-S",
+        "name": "status",
+        "comment": "статус",
+        "dataType": "VARCHAR(20)",
+        "default": "Активен",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 75,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053089788,
+          "createAt": 1758047225868
+        }
+      },
+      "em62nw1DsbYfkUmmH4nW5": {
+        "id": "em62nw1DsbYfkUmmH4nW5",
+        "tableId": "6HDgEhZIxvgZYgH2aP6Sh",
+        "name": "client_id",
+        "comment": "id клиента",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 2,
+        "ui": {
+          "keys": 1,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053272078,
+          "createAt": 1758047225868
+        }
+      },
+      "-zTrjRQ0mr11AYaUo_Cmp": {
+        "id": "-zTrjRQ0mr11AYaUo_Cmp",
+        "tableId": "6HDgEhZIxvgZYgH2aP6Sh",
+        "name": "full_name",
+        "comment": "Полное имя",
+        "dataType": "VARCHAR(255)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 69,
+          "widthDataType": 81,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053276559,
+          "createAt": 1758047225868
+        }
+      },
+      "tU1kkQa-0TspA9khcbrQq": {
+        "id": "tU1kkQa-0TspA9khcbrQq",
+        "tableId": "6HDgEhZIxvgZYgH2aP6Sh",
+        "name": "passport_number",
+        "comment": "Номер паспорта",
+        "dataType": "VARCHAR(50)",
+        "default": "",
+        "options": 12,
+        "ui": {
+          "keys": 0,
+          "widthName": 94,
+          "widthComment": 93,
+          "widthDataType": 75,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053280656,
+          "createAt": 1758047225868
+        }
+      },
+      "enpq5GVF5_L3bO4Xv_tx8": {
+        "id": "enpq5GVF5_L3bO4Xv_tx8",
+        "tableId": "6HDgEhZIxvgZYgH2aP6Sh",
+        "name": "phone_number",
+        "comment": "Номер телефона",
+        "dataType": "VARCHAR(20)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 82,
+          "widthComment": 95,
+          "widthDataType": 75,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053284460,
+          "createAt": 1758047225868
+        }
+      },
+      "AFkvvs3O2YM6rwGpNoayw": {
+        "id": "AFkvvs3O2YM6rwGpNoayw",
+        "tableId": "6HDgEhZIxvgZYgH2aP6Sh",
+        "name": "address",
+        "comment": "Адрес регистрации",
+        "dataType": "TEXT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 108,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053289430,
+          "createAt": 1758047225868
+        }
+      },
+      "TwaXptzatn1pEEqdN-EdE": {
+        "id": "TwaXptzatn1pEEqdN-EdE",
+        "tableId": "Z5Q56z1NNWtfpnLCjVZ3t",
+        "name": "product_id",
+        "comment": "id кредитного типа",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 2,
+        "ui": {
+          "keys": 1,
+          "widthName": 60,
+          "widthComment": 107,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052947798,
+          "createAt": 1758047225868
+        }
+      },
+      "-PZlmf2TKTAD-5_fFsjK_": {
+        "id": "-PZlmf2TKTAD-5_fFsjK_",
+        "tableId": "Z5Q56z1NNWtfpnLCjVZ3t",
+        "name": "product_name",
+        "comment": "название",
+        "dataType": "VARCHAR(255)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 78,
+          "widthComment": 60,
+          "widthDataType": 81,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052952244,
+          "createAt": 1758047225868
+        }
+      },
+      "fKla1q7dumxsL6bzSNoQP": {
+        "id": "fKla1q7dumxsL6bzSNoQP",
+        "tableId": "Z5Q56z1NNWtfpnLCjVZ3t",
+        "name": "min_amount",
+        "comment": "минимальная сумма",
+        "dataType": "NUMERIC(15,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 68,
+          "widthComment": 115,
+          "widthDataType": 83,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052956795,
+          "createAt": 1758047225868
+        }
+      },
+      "ZGzKDqutiYsOFMslvTH2x": {
+        "id": "ZGzKDqutiYsOFMslvTH2x",
+        "tableId": "Z5Q56z1NNWtfpnLCjVZ3t",
+        "name": "max_amount",
+        "comment": "максимальная сумма",
+        "dataType": "NUMERIC(15,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 70,
+          "widthComment": 119,
+          "widthDataType": 83,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052962316,
+          "createAt": 1758047225868
+        }
+      },
+      "YF-QGPqIVLxj_MaoAuEEq": {
+        "id": "YF-QGPqIVLxj_MaoAuEEq",
+        "tableId": "Z5Q56z1NNWtfpnLCjVZ3t",
+        "name": "min_term",
+        "comment": "минимальный период",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 125,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052967843,
+          "createAt": 1758047225868
+        }
+      },
+      "WfwOLDtuMPa75fJ9x1ZjE": {
+        "id": "WfwOLDtuMPa75fJ9x1ZjE",
+        "tableId": "Z5Q56z1NNWtfpnLCjVZ3t",
+        "name": "max_term",
+        "comment": "максимальный период",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 128,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052972174,
+          "createAt": 1758047225868
+        }
+      },
+      "dOf7_HDhl55DPiMo7n4rp": {
+        "id": "dOf7_HDhl55DPiMo7n4rp",
+        "tableId": "Z5Q56z1NNWtfpnLCjVZ3t",
+        "name": "base_interest_rate",
+        "comment": "базовая процентная ставка",
+        "dataType": "NUMERIC(5,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 97,
+          "widthComment": 153,
+          "widthDataType": 77,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052980195,
+          "createAt": 1758047225868
+        }
+      },
+      "PTVPIF7Xt_kBMeCa395FL": {
+        "id": "PTVPIF7Xt_kBMeCa395FL",
+        "tableId": "OCTwYCKqAOID5ze3u-c_l",
+        "name": "document_id",
+        "comment": "id документа",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 2,
+        "ui": {
+          "keys": 1,
+          "widthName": 71,
+          "widthComment": 73,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053328352,
+          "createAt": 1758047225868
+        }
+      },
+      "K8TSfCsg6fqJRIoAZHndX": {
+        "id": "K8TSfCsg6fqJRIoAZHndX",
+        "tableId": "OCTwYCKqAOID5ze3u-c_l",
+        "name": "client_id",
+        "comment": "id клиента",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053333575,
+          "createAt": 1758047225868
+        }
+      },
+      "QcbXHwk_TK2NsVlXUHdb2": {
+        "id": "QcbXHwk_TK2NsVlXUHdb2",
+        "tableId": "OCTwYCKqAOID5ze3u-c_l",
+        "name": "document_type",
+        "comment": "тип документа",
+        "dataType": "VARCHAR(100)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 84,
+          "widthComment": 82,
+          "widthDataType": 81,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053346431,
+          "createAt": 1758047225869
+        }
+      },
+      "8QDtNe1WiUEzq1gy6xyMw": {
+        "id": "8QDtNe1WiUEzq1gy6xyMw",
+        "tableId": "OCTwYCKqAOID5ze3u-c_l",
+        "name": "series_number",
+        "comment": "серия и номер",
+        "dataType": "VARCHAR(100)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 78,
+          "widthComment": 83,
+          "widthDataType": 81,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053351914,
+          "createAt": 1758047225869
+        }
+      },
+      "a_gFzk7y7i3e8aha0sGVo": {
+        "id": "a_gFzk7y7i3e8aha0sGVo",
+        "tableId": "OCTwYCKqAOID5ze3u-c_l",
+        "name": "issued_by",
+        "comment": "кем выдан",
+        "dataType": "VARCHAR(255)",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 81,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053355080,
+          "createAt": 1758047225869
+        }
+      },
+      "aZsim9Naf5yH-S62swWe3": {
+        "id": "aZsim9Naf5yH-S62swWe3",
+        "tableId": "OCTwYCKqAOID5ze3u-c_l",
+        "name": "issue_date",
+        "comment": "когда выдан",
+        "dataType": "DATE",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 70,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053359170,
+          "createAt": 1758047225869
+        }
+      },
+      "dv46L72rNYK7l7Mt58xlf": {
+        "id": "dv46L72rNYK7l7Mt58xlf",
+        "tableId": "l-bgAw75JQ9pAeVzhfCLe",
+        "name": "history_id",
+        "comment": "id истории",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 2,
+        "ui": {
+          "keys": 1,
+          "widthName": 60,
+          "widthComment": 61,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053111398,
+          "createAt": 1758047225869
+        }
+      },
+      "oyN584sxN9BsraQSCnEZB": {
+        "id": "oyN584sxN9BsraQSCnEZB",
+        "tableId": "l-bgAw75JQ9pAeVzhfCLe",
+        "name": "client_id",
+        "comment": "id клиента",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053119836,
+          "createAt": 1758047225869
+        }
+      },
+      "mkPUtvg9D91SIxnb011uB": {
+        "id": "mkPUtvg9D91SIxnb011uB",
+        "tableId": "l-bgAw75JQ9pAeVzhfCLe",
+        "name": "event_date",
+        "comment": "дата события",
+        "dataType": "TIMESTAMP",
+        "default": "CURRENT_TIMESTAMP",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 75,
+          "widthDataType": 65,
+          "widthDefault": 122
+        },
+        "meta": {
+          "updateAt": 1758053131832,
+          "createAt": 1758047225869
+        }
+      },
+      "968G1kgYkyKqk1FMTfC5w": {
+        "id": "968G1kgYkyKqk1FMTfC5w",
+        "tableId": "l-bgAw75JQ9pAeVzhfCLe",
+        "name": "event_type",
+        "comment": "тип события",
+        "dataType": "VARCHAR(50)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 70,
+          "widthDataType": 75,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053135350,
+          "createAt": 1758047225869
+        }
+      },
+      "Seo4vwx7sIafqojo-sqmN": {
+        "id": "Seo4vwx7sIafqojo-sqmN",
+        "tableId": "l-bgAw75JQ9pAeVzhfCLe",
+        "name": "description",
+        "comment": "описание",
+        "dataType": "TEXT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 61,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053138082,
+          "createAt": 1758047225869
+        }
+      },
+      "Q2PviJyuPjY9HRhC36OtG": {
+        "id": "Q2PviJyuPjY9HRhC36OtG",
+        "tableId": "l-bgAw75JQ9pAeVzhfCLe",
+        "name": "source",
+        "comment": "источник",
+        "dataType": "VARCHAR(100)",
+        "default": "Внутренняя",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 81,
+          "widthDefault": 66
+        },
+        "meta": {
+          "updateAt": 1758053168365,
+          "createAt": 1758047225869
+        }
+      },
+      "bi2My40p4SCI8TK4dSDK0": {
+        "id": "bi2My40p4SCI8TK4dSDK0",
+        "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+        "name": "application_id",
+        "comment": "id соглашения",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 2,
+        "ui": {
+          "keys": 1,
+          "widthName": 75,
+          "widthComment": 81,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053012277,
+          "createAt": 1758047225869
+        }
+      },
+      "AHxiONHb9SvUCIRo8hWLl": {
+        "id": "AHxiONHb9SvUCIRo8hWLl",
+        "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+        "name": "client_id",
+        "comment": "id клиента",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053016404,
+          "createAt": 1758047225869
+        }
+      },
+      "zR4S6o4nNCiusc85aMk4O": {
+        "id": "zR4S6o4nNCiusc85aMk4O",
+        "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+        "name": "employee_id",
+        "comment": "id сотрудника",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 69,
+          "widthComment": 78,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053023661,
+          "createAt": 1758047225869
+        }
+      },
+      "s1MAIaidtinJJDpOxT5Bm": {
+        "id": "s1MAIaidtinJJDpOxT5Bm",
+        "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+        "name": "product_id",
+        "comment": "id типа кредита",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 60,
+          "widthComment": 87,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053036966,
+          "createAt": 1758047225869
+        }
+      },
+      "VIxeClw57nsBcQKfEhibn": {
+        "id": "VIxeClw57nsBcQKfEhibn",
+        "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+        "name": "application_date",
+        "comment": "дата соглашения",
+        "dataType": "TIMESTAMP",
+        "default": "CURRENT_TIMESTAMP",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 89,
+          "widthComment": 94,
+          "widthDataType": 65,
+          "widthDefault": 122
+        },
+        "meta": {
+          "updateAt": 1758053045416,
+          "createAt": 1758047225869
+        }
+      },
+      "bKZGwmbp_S27IyqQN8S2H": {
+        "id": "bKZGwmbp_S27IyqQN8S2H",
+        "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+        "name": "requested_amount",
+        "comment": "требуемая сумма",
+        "dataType": "NUMERIC(15,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 101,
+          "widthComment": 97,
+          "widthDataType": 83,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053059910,
+          "createAt": 1758047225869
+        }
+      },
+      "gHTtX2W_KEkeXI_oP1LQ_": {
+        "id": "gHTtX2W_KEkeXI_oP1LQ_",
+        "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+        "name": "status",
+        "comment": "статус",
+        "dataType": "VARCHAR(20)",
+        "default": "На рассмотрении",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 75,
+          "widthDefault": 99
+        },
+        "meta": {
+          "updateAt": 1758053062874,
+          "createAt": 1758047225869
+        }
+      },
+      "2wO-5QjkUECQjLLWZXChY": {
+        "id": "2wO-5QjkUECQjLLWZXChY",
+        "tableId": "M9g9qEYoFnZ4VXtGoj6Q9",
+        "name": "application_id",
+        "comment": "id договора",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 3,
+          "widthName": 75,
+          "widthComment": 67,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052612653,
+          "createAt": 1758047225869
+        }
+      },
+      "7YXLuIDHkJ7i_KsuOMIAb": {
+        "id": "7YXLuIDHkJ7i_KsuOMIAb",
+        "tableId": "M9g9qEYoFnZ4VXtGoj6Q9",
+        "name": "document_id",
+        "comment": "id документа",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 1,
+          "widthName": 71,
+          "widthComment": 73,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052630509,
+          "createAt": 1758047225869
+        }
+      },
+      "3BbE6lPjvSogpq1lSJWTF": {
+        "id": "3BbE6lPjvSogpq1lSJWTF",
+        "tableId": "PMWjiMw7UZSOeoqPClQQR",
+        "name": "account_id",
+        "comment": "id счета",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 2,
+        "ui": {
+          "keys": 1,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053229277,
+          "createAt": 1758047225869
+        }
+      },
+      "euTTluDoCiQiKbulfd5ND": {
+        "id": "euTTluDoCiQiKbulfd5ND",
+        "tableId": "PMWjiMw7UZSOeoqPClQQR",
+        "name": "client_id",
+        "comment": "id клиента",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053235727,
+          "createAt": 1758047225869
+        }
+      },
+      "O06TCcy4mJe_YqYHgdLrS": {
+        "id": "O06TCcy4mJe_YqYHgdLrS",
+        "tableId": "PMWjiMw7UZSOeoqPClQQR",
+        "name": "account_number",
+        "comment": "номер счета",
+        "dataType": "VARCHAR(34)",
+        "default": "",
+        "options": 12,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 71,
+          "widthDataType": 75,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053241257,
+          "createAt": 1758047225869
+        }
+      },
+      "wbm2vupasWGPwKKrx22jI": {
+        "id": "wbm2vupasWGPwKKrx22jI",
+        "tableId": "PMWjiMw7UZSOeoqPClQQR",
+        "name": "account_type",
+        "comment": "тип счета",
+        "dataType": "VARCHAR(50)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 72,
+          "widthComment": 60,
+          "widthDataType": 75,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053246035,
+          "createAt": 1758047225869
+        }
+      },
+      "iCr2wKkgmHoexblORQ0dz": {
+        "id": "iCr2wKkgmHoexblORQ0dz",
+        "tableId": "PMWjiMw7UZSOeoqPClQQR",
+        "name": "current_balance",
+        "comment": "текущий баланс",
+        "dataType": "NUMERIC(15,2)",
+        "default": "0",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 86,
+          "widthComment": 90,
+          "widthDataType": 83,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053251452,
+          "createAt": 1758047225869
+        }
+      },
+      "Sj3MmGx8SUo5voVkmk6LS": {
+        "id": "Sj3MmGx8SUo5voVkmk6LS",
+        "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+        "name": "contract_id",
+        "comment": "id кредитного контракта",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 2,
+        "ui": {
+          "keys": 1,
+          "widthName": 60,
+          "widthComment": 137,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052845209,
+          "createAt": 1758047225869
+        }
+      },
+      "ClonaO5w_j3IWsqhugANp": {
+        "id": "ClonaO5w_j3IWsqhugANp",
+        "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+        "name": "application_id",
+        "comment": "id счета",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 12,
+        "ui": {
+          "keys": 2,
+          "widthName": 75,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052855935,
+          "createAt": 1758047225869
+        }
+      },
+      "6pxnVj1THUhNyhk3l6dSm": {
+        "id": "6pxnVj1THUhNyhk3l6dSm",
+        "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+        "name": "product_id",
+        "comment": "id типа кредита",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 60,
+          "widthComment": 87,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052868251,
+          "createAt": 1758047225869
+        }
+      },
+      "SnGiIIClytXvRujvJVTAl": {
+        "id": "SnGiIIClytXvRujvJVTAl",
+        "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+        "name": "account_id",
+        "comment": "id счета",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 12,
+        "ui": {
+          "keys": 2,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052878434,
+          "createAt": 1758047225869
+        }
+      },
+      "nFixK6wQsDzaZDsZa9pGy": {
+        "id": "nFixK6wQsDzaZDsZa9pGy",
+        "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+        "name": "contract_number",
+        "comment": "номер контракта",
+        "dataType": "VARCHAR(100)",
+        "default": "",
+        "options": 12,
+        "ui": {
+          "keys": 0,
+          "widthName": 92,
+          "widthComment": 96,
+          "widthDataType": 81,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052885247,
+          "createAt": 1758047225869
+        }
+      },
+      "EoOZR70fZdab694j3-Y9A": {
+        "id": "EoOZR70fZdab694j3-Y9A",
+        "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+        "name": "signing_date",
+        "comment": "дата подписания",
+        "dataType": "DATE",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 69,
+          "widthComment": 95,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052895168,
+          "createAt": 1758047225869
+        }
+      },
+      "rikKATvunnI4EbOutt93F": {
+        "id": "rikKATvunnI4EbOutt93F",
+        "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+        "name": "loan_amount",
+        "comment": "сумма кредита",
+        "dataType": "NUMERIC(15,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 71,
+          "widthComment": 83,
+          "widthDataType": 83,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052900700,
+          "createAt": 1758047225869
+        }
+      },
+      "WwivPddJyYHnUhtSothgi": {
+        "id": "WwivPddJyYHnUhtSothgi",
+        "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+        "name": "interest_rate",
+        "comment": "процентная ставка",
+        "dataType": "NUMERIC(5,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 67,
+          "widthComment": 106,
+          "widthDataType": 77,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052927735,
+          "createAt": 1758047225869
+        }
+      },
+      "4OGNJ89xii8B-r9y5553Y": {
+        "id": "4OGNJ89xii8B-r9y5553Y",
+        "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+        "name": "loan_term",
+        "comment": "длительность кредита",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 123,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052937337,
+          "createAt": 1758047225869
+        }
+      },
+      "IWdfbG3sXLGMFb2laZv9r": {
+        "id": "IWdfbG3sXLGMFb2laZv9r",
+        "tableId": "dNCOjBFppV5Fw6xkWcFWa",
+        "name": "schedule_id",
+        "comment": "id расписания",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 2,
+        "ui": {
+          "keys": 1,
+          "widthName": 64,
+          "widthComment": 79,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052647051,
+          "createAt": 1758047225869
+        }
+      },
+      "SVAbYVOJqzBOSgfmIQdiq": {
+        "id": "SVAbYVOJqzBOSgfmIQdiq",
+        "tableId": "dNCOjBFppV5Fw6xkWcFWa",
+        "name": "contract_id",
+        "comment": "id контракта",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 60,
+          "widthComment": 70,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052673603,
+          "createAt": 1758047225869
+        }
+      },
+      "jypAm8zTEQL1xlcyZ1h-5": {
+        "id": "jypAm8zTEQL1xlcyZ1h-5",
+        "tableId": "dNCOjBFppV5Fw6xkWcFWa",
+        "name": "payment_date",
+        "comment": "дата платежа",
+        "dataType": "DATE",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 77,
+          "widthComment": 75,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052682514,
+          "createAt": 1758047225869
+        }
+      },
+      "HDKM0mDwqZk6uQ1b6aD8Z": {
+        "id": "HDKM0mDwqZk6uQ1b6aD8Z",
+        "tableId": "dNCOjBFppV5Fw6xkWcFWa",
+        "name": "payment_amount",
+        "comment": "сумма платежа",
+        "dataType": "NUMERIC(15,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 95,
+          "widthComment": 85,
+          "widthDataType": 83,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052687381,
+          "createAt": 1758047225870
+        }
+      },
+      "xuAZl2Bq2qjPURBQuE3vP": {
+        "id": "xuAZl2Bq2qjPURBQuE3vP",
+        "tableId": "dNCOjBFppV5Fw6xkWcFWa",
+        "name": "status",
+        "comment": "статус платежа",
+        "dataType": "VARCHAR(20)",
+        "default": "Ожидает оплаты",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 84,
+          "widthDataType": 75,
+          "widthDefault": 94
+        },
+        "meta": {
+          "updateAt": 1758052703292,
+          "createAt": 1758047225870
+        }
+      },
+      "Sr5azwGm34bAo6gzTxE9C": {
+        "id": "Sr5azwGm34bAo6gzTxE9C",
+        "tableId": "abdwwiVo0_bWhLe2-r7-v",
+        "name": "payment_id",
+        "comment": "id платежа",
+        "dataType": "SERIAL",
+        "default": "",
+        "options": 2,
+        "ui": {
+          "keys": 1,
+          "widthName": 63,
+          "widthComment": 61,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052731039,
+          "createAt": 1758047225870
+        }
+      },
+      "QBKlZYJHr-7Syv6sGRp1B": {
+        "id": "QBKlZYJHr-7Syv6sGRp1B",
+        "tableId": "abdwwiVo0_bWhLe2-r7-v",
+        "name": "schedule_id",
+        "comment": "id расписания",
+        "dataType": "SET",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 2,
+          "widthName": 64,
+          "widthComment": 79,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052736138,
+          "createAt": 1758047225870
+        }
+      },
+      "i3ohzls5_U1WZmEioP6VB": {
+        "id": "i3ohzls5_U1WZmEioP6VB",
+        "tableId": "abdwwiVo0_bWhLe2-r7-v",
+        "name": "account_id",
+        "comment": "id счета",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052746193,
+          "createAt": 1758047225870
+        }
+      },
+      "xHTI59ofOnI2WQMQSxCs3": {
+        "id": "xHTI59ofOnI2WQMQSxCs3",
+        "tableId": "abdwwiVo0_bWhLe2-r7-v",
+        "name": "operation_date",
+        "comment": "время операции",
+        "dataType": "TIMESTAMP",
+        "default": "CURRENT_TIMESTAMP",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 82,
+          "widthComment": 94,
+          "widthDataType": 65,
+          "widthDefault": 122
+        },
+        "meta": {
+          "updateAt": 1758052811109,
+          "createAt": 1758047225870
+        }
+      },
+      "TPwFfJNFJvxl7B_oTZkJO": {
+        "id": "TPwFfJNFJvxl7B_oTZkJO",
+        "tableId": "abdwwiVo0_bWhLe2-r7-v",
+        "name": "paid_amount",
+        "comment": "сумма оплаты",
+        "dataType": "NUMERIC(15,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 71,
+          "widthComment": 79,
+          "widthDataType": 83,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052820700,
+          "createAt": 1758047225870
+        }
+      },
+      "4PhcjW6WCib2LI2caylBE": {
+        "id": "4PhcjW6WCib2LI2caylBE",
+        "tableId": "abdwwiVo0_bWhLe2-r7-v",
+        "name": "operation_type",
+        "comment": "тип операции",
+        "dataType": "VARCHAR(50)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 82,
+          "widthComment": 79,
+          "widthDataType": 75,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758052827022,
+          "createAt": 1758047225870
+        }
+      },
+      "WbGCBLiI9U98RYBpjAEcc": {
+        "id": "WbGCBLiI9U98RYBpjAEcc",
+        "tableId": "OCTwYCKqAOID5ze3u-c_l",
+        "name": "application_id",
+        "comment": "id счета",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 75,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053363892,
+          "createAt": 1758049263615
+        }
+      },
+      "s3Rkuo-tUDWOhhFZeHZCw": {
+        "id": "s3Rkuo-tUDWOhhFZeHZCw",
+        "tableId": "OCTwYCKqAOID5ze3u-c_l",
+        "name": "document_id",
+        "comment": "id документа",
+        "dataType": "INTEGER",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 2,
+          "widthName": 71,
+          "widthComment": 73,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053376376,
+          "createAt": 1758049263617
+        }
+      },
+      "aleZl2jWKZ2Y2C7ZmZhq9": {
+        "id": "aleZl2jWKZ2Y2C7ZmZhq9",
+        "tableId": "6HDgEhZIxvgZYgH2aP6Sh",
+        "name": "",
+        "comment": "",
+        "dataType": "",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1758053746365,
+          "createAt": 1758053746365
+        }
+      }
+    },
+    "relationshipEntities": {
+      "2Pibyynt2200jmw4P460Q": {
+        "id": "2Pibyynt2200jmw4P460Q",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "6HDgEhZIxvgZYgH2aP6Sh",
+          "columnIds": [
+            "em62nw1DsbYfkUmmH4nW5"
+          ],
+          "x": 1157.5116,
+          "y": 127.038,
+          "direction": 1
+        },
+        "end": {
+          "tableId": "OCTwYCKqAOID5ze3u-c_l",
+          "columnIds": [
+            "K8TSfCsg6fqJRIoAZHndX"
+          ],
+          "x": 1074.7353,
+          "y": 396.1764,
+          "direction": 4
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "Suj3vAHeG12F5wbom2S5D": {
+        "id": "Suj3vAHeG12F5wbom2S5D",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "6HDgEhZIxvgZYgH2aP6Sh",
+          "columnIds": [
+            "em62nw1DsbYfkUmmH4nW5"
+          ],
+          "x": 1557.5116,
+          "y": 171.038,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "l-bgAw75JQ9pAeVzhfCLe",
+          "columnIds": [
+            "oyN584sxN9BsraQSCnEZB"
+          ],
+          "x": 1973.3662,
+          "y": 953.7969,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "AiPHH-bbqnN6oPkpyy84X": {
+        "id": "AiPHH-bbqnN6oPkpyy84X",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "6HDgEhZIxvgZYgH2aP6Sh",
+          "columnIds": [
+            "em62nw1DsbYfkUmmH4nW5"
+          ],
+          "x": 1357.5116,
+          "y": 215.038,
+          "direction": 8
+        },
+        "end": {
+          "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+          "columnIds": [
+            "AHxiONHb9SvUCIRo8hWLl"
+          ],
+          "x": 1728.2894,
+          "y": 1168.3143,
+          "direction": 4
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "vfoDEaDD9g-5Cmk2m--l4": {
+        "id": "vfoDEaDD9g-5Cmk2m--l4",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "MGdw1hX1czJpj5bTbVe-S",
+          "columnIds": [
+            "3JqiZr5Huj3udvylLB941"
+          ],
+          "x": 2416.8235,
+          "y": 1472.7647,
+          "direction": 1
+        },
+        "end": {
+          "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+          "columnIds": [
+            "zR4S6o4nNCiusc85aMk4O"
+          ],
+          "x": 1927.2894,
+          "y": 1280.3143,
+          "direction": 2
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "apoezQYKQW1Scs67QE1y-": {
+        "id": "apoezQYKQW1Scs67QE1y-",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "Z5Q56z1NNWtfpnLCjVZ3t",
+          "columnIds": [
+            "TwaXptzatn1pEEqdN-EdE"
+          ],
+          "x": 956.0757,
+          "y": 1389.1765,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+          "columnIds": [
+            "s1MAIaidtinJJDpOxT5Bm"
+          ],
+          "x": 1529.2894,
+          "y": 1354.980966666667,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "LW6SBGg1itHSP-mWBkJHn": {
+        "id": "LW6SBGg1itHSP-mWBkJHn",
+        "identification": true,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+          "columnIds": [
+            "bi2My40p4SCI8TK4dSDK0"
+          ],
+          "x": 1529.2894,
+          "y": 1205.6476333333335,
+          "direction": 1
+        },
+        "end": {
+          "tableId": "M9g9qEYoFnZ4VXtGoj6Q9",
+          "columnIds": [
+            "2wO-5QjkUECQjLLWZXChY"
+          ],
+          "x": 336.1681,
+          "y": 253.9993,
+          "direction": 2
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "NThpHtDYt3H4N-3Zike1R": {
+        "id": "NThpHtDYt3H4N-3Zike1R",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "6HDgEhZIxvgZYgH2aP6Sh",
+          "columnIds": [
+            "em62nw1DsbYfkUmmH4nW5"
+          ],
+          "x": 1557.5116,
+          "y": 83.038,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "PMWjiMw7UZSOeoqPClQQR",
+          "columnIds": [
+            "euTTluDoCiQiKbulfd5ND"
+          ],
+          "x": 2092.5062,
+          "y": 484.5179,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "SxUoI4MaLzjDa7ir-xXpE": {
+        "id": "SxUoI4MaLzjDa7ir-xXpE",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "kL7OKSjwrKDhA8laW7BZ1",
+          "columnIds": [
+            "bi2My40p4SCI8TK4dSDK0"
+          ],
+          "x": 1529.2894,
+          "y": 1280.3143000000002,
+          "direction": 1
+        },
+        "end": {
+          "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+          "columnIds": [
+            "ClonaO5w_j3IWsqhugANp"
+          ],
+          "x": 479,
+          "y": 1094,
+          "direction": 2
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "ewzPXFq_7COHItIp0GjFG": {
+        "id": "ewzPXFq_7COHItIp0GjFG",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "Z5Q56z1NNWtfpnLCjVZ3t",
+          "columnIds": [
+            "TwaXptzatn1pEEqdN-EdE"
+          ],
+          "x": 506.0757,
+          "y": 1389.1765,
+          "direction": 1
+        },
+        "end": {
+          "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+          "columnIds": [
+            "6pxnVj1THUhNyhk3l6dSm"
+          ],
+          "x": 264.5,
+          "y": 1162,
+          "direction": 8
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "7v_gQ0fw1aYYIhEn0gWxA": {
+        "id": "7v_gQ0fw1aYYIhEn0gWxA",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "PMWjiMw7UZSOeoqPClQQR",
+          "columnIds": [
+            "3BbE6lPjvSogpq1lSJWTF"
+          ],
+          "x": 2092.5062,
+          "y": 572.5179,
+          "direction": 1
+        },
+        "end": {
+          "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+          "columnIds": [
+            "SnGiIIClytXvRujvJVTAl"
+          ],
+          "x": 479,
+          "y": 958,
+          "direction": 2
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "rlov7KJl_szXnhyMjU-Y6": {
+        "id": "rlov7KJl_szXnhyMjU-Y6",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "IxvIcrcIYNTeMqMVWK6Ru",
+          "columnIds": [
+            "Sj3MmGx8SUo5voVkmk6LS"
+          ],
+          "x": 264.5,
+          "y": 890,
+          "direction": 4
+        },
+        "end": {
+          "tableId": "dNCOjBFppV5Fw6xkWcFWa",
+          "columnIds": [
+            "SVAbYVOJqzBOSgfmIQdiq"
+          ],
+          "x": 201.3483,
+          "y": 523.5953999999999,
+          "direction": 8
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "knWhI8vmAQDc6pfqSHDtF": {
+        "id": "knWhI8vmAQDc6pfqSHDtF",
+        "identification": false,
+        "relationshipType": 4,
+        "startRelationshipType": 1,
+        "start": {
+          "tableId": "dNCOjBFppV5Fw6xkWcFWa",
+          "columnIds": [
+            "IWdfbG3sXLGMFb2laZv9r"
+          ],
+          "x": 391.3483,
+          "y": 435.5954,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "abdwwiVo0_bWhLe2-r7-v",
+          "columnIds": [
+            "QBKlZYJHr-7Syv6sGRp1B"
+          ],
+          "x": 512.7438,
+          "y": 641.8248,
+          "direction": 4
+        },
+        "meta": {
+          "updateAt": 1758047225870,
+          "createAt": 1758047225870
+        }
+      },
+      "NRNBbQI3PXpylm17CrwK0": {
+        "id": "NRNBbQI3PXpylm17CrwK0",
+        "identification": false,
+        "relationshipType": 16,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "M9g9qEYoFnZ4VXtGoj6Q9",
+          "columnIds": [
+            "2wO-5QjkUECQjLLWZXChY",
+            "7YXLuIDHkJ7i_KsuOMIAb"
+          ],
+          "x": 336.1681,
+          "y": 201.9993,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "OCTwYCKqAOID5ze3u-c_l",
+          "columnIds": [
+            "WbGCBLiI9U98RYBpjAEcc",
+            "s3Rkuo-tUDWOhhFZeHZCw"
+          ],
+          "x": 892.2353,
+          "y": 508.1764,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1758049263618,
+          "createAt": 1758049263618
+        }
+      }
+    },
+    "indexEntities": {},
+    "indexColumnEntities": {},
+    "memoEntities": {}
+  }
+}
