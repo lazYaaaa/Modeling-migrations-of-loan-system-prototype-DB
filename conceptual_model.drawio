@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="0" name="Page-1">
-        <mxGraphModel dx="1666" dy="1534" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1870" dy="1399" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -88,12 +88,6 @@
                 <mxCell id="entity_documents" value="documents" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="800" y="50" width="120" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="attr_documents_client_id" value="client_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="760" y="-40" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="conn_attr_documents_client_id" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_documents_client_id" target="entity_documents" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="attr_documents_document_type" value="document_type" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
                     <mxGeometry x="790" y="-80" width="100" height="30" as="geometry"/>
                 </mxCell>
@@ -120,12 +114,6 @@
                 </mxCell>
                 <mxCell id="entity_credit_history" value="credit_history" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="50" y="350" width="120" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="attr_credit_history_client_id" value="client_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="-25" y="280" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="conn_attr_credit_history_client_id" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_credit_history_client_id" target="entity_credit_history" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="attr_credit_history_event_date" value="event_date" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
                     <mxGeometry x="-90" y="340" width="100" height="30" as="geometry"/>
@@ -154,32 +142,14 @@
                 <mxCell id="entity_credit_applications" value="credit_applications" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="320" y="430" width="120" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="attr_credit_applications_client_id" value="client_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="550" y="500" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="conn_attr_credit_applications_client_id" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_credit_applications_client_id" target="entity_credit_applications" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="attr_credit_applications_employee_id" value="employee_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="505" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="conn_attr_credit_applications_employee_id" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_credit_applications_employee_id" target="entity_credit_applications" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="attr_credit_applications_product_id" value="product_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="460" y="470" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="conn_attr_credit_applications_product_id" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_credit_applications_product_id" target="entity_credit_applications" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="attr_credit_applications_application_date" value="application_date" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="540" width="100" height="30" as="geometry"/>
+                    <mxGeometry x="500" y="480" width="100" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="conn_attr_credit_applications_application_date" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_credit_applications_application_date" target="entity_credit_applications" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="attr_credit_applications_requested_amount" value="requested_amount" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="410" y="540" width="100" height="30" as="geometry"/>
+                    <mxGeometry x="425" y="535" width="100" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="conn_attr_credit_applications_requested_amount" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_credit_applications_requested_amount" target="entity_credit_applications" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry"/>
@@ -208,12 +178,6 @@
                 <mxCell id="entity_accounts" value="accounts" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="800" y="350" width="120" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="attr_accounts_client_id" value="client_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="850" y="270" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="conn_attr_accounts_client_id" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_accounts_client_id" target="entity_accounts" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="attr_accounts_account_type" value="account_type" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
                     <mxGeometry x="950" y="330" width="100" height="30" as="geometry"/>
                 </mxCell>
@@ -228,12 +192,6 @@
                 </mxCell>
                 <mxCell id="entity_credit_contracts" value="credit_contracts" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="50" y="650" width="120" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="attr_credit_contracts_product_id" value="product_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="-50" y="710" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="conn_attr_credit_contracts_product_id" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_credit_contracts_product_id" target="entity_credit_contracts" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="attr_credit_contracts_signing_date" value="signing_date" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
                     <mxGeometry x="-110" y="665" width="100" height="30" as="geometry"/>
@@ -262,12 +220,6 @@
                 <mxCell id="entity_payment_schedule" value="payment_schedule" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="290" y="660" width="120" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="attr_payment_schedule_contract_id" value="contract_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="370" y="730" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="conn_attr_payment_schedule_contract_id" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_payment_schedule_contract_id" target="entity_payment_schedule" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="attr_payment_schedule_payment_date" value="payment_date" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
                     <mxGeometry x="270" y="720" width="100" height="30" as="geometry"/>
                 </mxCell>
@@ -288,18 +240,6 @@
                 </mxCell>
                 <mxCell id="entity_payments" value="payments" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="550" y="650" width="120" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="attr_payments_schedule_id" value="schedule_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="710" y="710" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="conn_attr_payments_schedule_id" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_payments_schedule_id" target="entity_payments" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="attr_payments_account_id" value="account_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="620" y="730" width="100" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="conn_attr_payments_account_id" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#666666;dashed=1;" parent="1" source="attr_payments_account_id" target="entity_payments" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="attr_payments_operation_date" value="operation_date" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
                     <mxGeometry x="770" y="790" width="100" height="30" as="geometry"/>
