@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 5</title>
+    <style>
+        .loan-forms {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: beige;
+            border: solid #8a2be2;
+            width: 50%;
+            height: 100vh;
+            text-align: center;
+            justify-self: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="loan-forms">
+  <div style="margin: 20px;"> 
+    <h3>Координаты первой точки</h3>
+        <label for="x1">X</label><br>
+        <input type="number" id="x1" name="x1">
+        <br>
+        <label for="y1">Y</label><br>
+        <input type="number" id="y1" name="y1">
+  </div>
+  <div style="margin: 20px;"> 
+    <h3>Координаты второй точки</h3>
+        <label for="x2">X</label><br>
+        <input type="number" id="x2" name="x2">
+        <br>
+        <label for="y2">Y</label><br>
+        <input type="number" id="y2" name="y2">
+  </div>
+  <button id = "CalculateButton">Вычислить длину</button>
+</div>
+<script src = "script.js"></script>
+</body>
+</html>

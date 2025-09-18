@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 4</title>
+    <style>
+        .loan-forms {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: beige;
+            border: solid #8a2be2;
+            width: 50%;
+            height: 100vh;
+            align-content: center;
+            text-align: center;
+            justify-self: center;
+        }
+    </style>
+</head>
+<body>
+    <div class = "loan-forms">
+        <h1>Форма приёма заказов</h1>
+        <h3> Имя </h3>
+        <input type = "text" value = "Иван"> 
+        <h3> Фамилия </h3>
+        <input type = "text" value = "Иванов"> 
+        <h3> Вариант оплаты </h3>
+        <label>
+            <input type = "checkbox" value = "true">
+            Наличный
+        </label>
+        <label>
+            <input type = "checkbox" value = "true">
+            Безналичный
+        </label>
+        <h3>Адрес</h3>
+        <input type = "text">
+        <h3>Код кредитной карточки</h3>
+        <input type = "password">
+        <h3>Опции доставки</h3>
+        <input type = "checkbox" id  = "1">
+        <label for="1">Курьером</label>
+        <input type = "checkbox" id = 2>
+        <label for="2"> Самовывоз </label>
+        <h3> Дополнительные сведения </h3>
+        <textarea name = "extras" placeholder="Введите текст"> </textarea>
+        <h3>Название товара</h3>
+        <input type = "text">
+    </div>
+</body>
+</html>
