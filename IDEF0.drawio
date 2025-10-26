@@ -1,0 +1,274 @@
+<mxfile host="65bd71144e">
+    <diagram id="0" name="Page-1">
+        <mxGraphModel dx="816" dy="310" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="A1" value="Регистрация клиента" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="A2" value="Обработка заявки" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="A3" value="Анализ рисков" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="A4" value="Формирование договора" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="600" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="A5" value="Управление платежами" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="600" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="A6" value="Мониторинг и отчетность" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="600" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="input_A1" value="Заявка и документы клиента" style="shape=parallelogram;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="320" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="control_A1" value="Регламенты работы с ПД" style="shape=rectangle;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="210" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="resources_A1" value="Веб-ресурс" style="shape=rectangle;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="390" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="output_A1" value="Верифицированные данные" style="shape=parallelogram;html=1;fillColor=#e6f3ff;strokeColor=#4d88ff;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="370" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="input_A2" value="Параметры кредита" style="shape=parallelogram;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="250" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="control_A2" value="&amp;nbsp;Форма заявки" style="shape=rectangle;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="190" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="resources_A2" value="Кредитный специалист" style="shape=rectangle;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="400" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="output_A2" value="Подготовленная заявка" style="shape=parallelogram;html=1;fillColor=#e6f3ff;strokeColor=#4d88ff;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="360" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="input_A3" value="Данные кредитной истории" style="shape=parallelogram;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="250" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="control_A3" value="Методики оценки рисков" style="shape=rectangle;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="190" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="resources_A3" value="Скоринговая система" style="shape=rectangle;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="420" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="output_A3" value="Оценка риска и решение" style="shape=parallelogram;html=1;fillColor=#e6f3ff;strokeColor=#4d88ff;" parent="1" vertex="1">
+                    <mxGeometry x="980" y="310" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="input_A4" value="Условия кредитования" style="shape=parallelogram;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="610" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="control_A4" value="Юридические требования" style="shape=rectangle;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="500" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="resources_A4" value="Шаблоны договоров" style="shape=rectangle;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="710" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="output_A4" value="Кредитный договор" style="shape=parallelogram;html=1;fillColor=#e6f3ff;strokeColor=#4d88ff;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="680" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="input_A5" value="Данные договора" style="shape=parallelogram;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="570" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="control_A5" value="Правила бухучета" style="shape=rectangle;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="520" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="resources_A5" value="Платежная система" style="shape=rectangle;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="700" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="output_A5" value="График платежей" style="shape=parallelogram;html=1;fillColor=#e6f3ff;strokeColor=#4d88ff;" parent="1" vertex="1">
+                    <mxGeometry x="630" y="680" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="input_A6" value="Данные о платежах" style="shape=parallelogram;html=1;fillColor=#f5f5f5;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="670" y="530" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="control_A6" value="Отчетные формы" style="shape=rectangle;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="850" y="520" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="resources_A6" value="Аналитическая система" style="shape=rectangle;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="700" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="output_A6" value="Финансовые отчеты" style="shape=parallelogram;html=1;fillColor=#e6f3ff;strokeColor=#4d88ff;" parent="1" vertex="1">
+                    <mxGeometry x="990" y="610" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="conn_A1_A2" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#000000;" parent="1" source="A1" target="A2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="320" y="330" as="sourcePoint"/>
+                        <mxPoint x="500" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_A2_A3" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#000000;" parent="1" source="A2" target="A3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="620" y="330" as="sourcePoint"/>
+                        <mxPoint x="800" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_A3_A4" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#000000;" parent="1" source="A3" target="A4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="800" y="360" as="sourcePoint"/>
+                        <mxPoint x="260" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_A4_A5" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#000000;" parent="1" source="A4" target="A5" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="320" y="630" as="sourcePoint"/>
+                        <mxPoint x="500" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_A5_A6" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#000000;" parent="1" source="A5" target="A6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="620" y="630" as="sourcePoint"/>
+                        <mxPoint x="800" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_input_A1" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" parent="1" source="input_A1" target="A1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="170" y="330" as="sourcePoint"/>
+                        <mxPoint x="200" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_control_A1" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#d6b656;dashed=1;" parent="1" source="control_A1" target="A1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="110" y="270" as="sourcePoint"/>
+                        <mxPoint x="200" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_resources_A1" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#82b366;dashed=1;" parent="1" source="resources_A1" target="A1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="110" y="390" as="sourcePoint"/>
+                        <mxPoint x="200" y="360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_A1_output" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#4d88ff;" parent="1" source="A1" target="output_A1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="320" y="330" as="sourcePoint"/>
+                        <mxPoint x="340" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_input_A2" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" parent="1" source="input_A2" target="A2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="410" y="270" as="sourcePoint"/>
+                        <mxPoint x="500" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_control_A2" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#d6b656;dashed=1;" parent="1" source="control_A2" target="A2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="410" y="210" as="sourcePoint"/>
+                        <mxPoint x="500" y="270" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_resources_A2" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#82b366;dashed=1;" parent="1" source="resources_A2" target="A2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="410" y="330" as="sourcePoint"/>
+                        <mxPoint x="500" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_A2_output" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#4d88ff;" parent="1" source="A2" target="output_A2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="620" y="330" as="sourcePoint"/>
+                        <mxPoint x="640" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_input_A3" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" parent="1" source="input_A3" target="A3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="710" y="270" as="sourcePoint"/>
+                        <mxPoint x="800" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_control_A3" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#d6b656;dashed=1;" parent="1" source="control_A3" target="A3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="710" y="210" as="sourcePoint"/>
+                        <mxPoint x="800" y="270" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_resources_A3" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#82b366;dashed=1;" parent="1" source="resources_A3" target="A3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="710" y="330" as="sourcePoint"/>
+                        <mxPoint x="800" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_A3_output" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#4d88ff;" parent="1" source="A3" target="output_A3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="920" y="330" as="sourcePoint"/>
+                        <mxPoint x="940" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_input_A4" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" parent="1" source="input_A4" target="A4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="170" y="630" as="sourcePoint"/>
+                        <mxPoint x="200" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_control_A4" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#d6b656;dashed=1;" parent="1" source="control_A4" target="A4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="110" y="570" as="sourcePoint"/>
+                        <mxPoint x="200" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_resources_A4" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#82b366;dashed=1;" parent="1" source="resources_A4" target="A4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="110" y="690" as="sourcePoint"/>
+                        <mxPoint x="200" y="660" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_A4_output" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#4d88ff;" parent="1" source="A4" target="output_A4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="320" y="630" as="sourcePoint"/>
+                        <mxPoint x="340" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_input_A5" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" parent="1" source="input_A5" target="A5" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="410" y="570" as="sourcePoint"/>
+                        <mxPoint x="500" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_control_A5" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#d6b656;dashed=1;" parent="1" source="control_A5" target="A5" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="410" y="510" as="sourcePoint"/>
+                        <mxPoint x="500" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_resources_A5" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#82b366;dashed=1;" parent="1" source="resources_A5" target="A5" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="410" y="630" as="sourcePoint"/>
+                        <mxPoint x="500" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_A5_output" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#4d88ff;" parent="1" source="A5" target="output_A5" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="620" y="630" as="sourcePoint"/>
+                        <mxPoint x="640" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_input_A6" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" parent="1" source="input_A6" target="A6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="710" y="570" as="sourcePoint"/>
+                        <mxPoint x="800" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_control_A6" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#d6b656;dashed=1;" parent="1" source="control_A6" target="A6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="710" y="510" as="sourcePoint"/>
+                        <mxPoint x="800" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_resources_A6" style="endArrow=classic;html=1;rounded=0;strokeWidth=1;strokeColor=#82b366;dashed=1;" parent="1" source="resources_A6" target="A6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="710" y="630" as="sourcePoint"/>
+                        <mxPoint x="800" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="conn_A6_output" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#4d88ff;" parent="1" source="A6" target="output_A6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="920" y="630" as="sourcePoint"/>
+                        <mxPoint x="940" y="630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
