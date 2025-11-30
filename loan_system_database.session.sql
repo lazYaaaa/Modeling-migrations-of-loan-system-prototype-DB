@@ -6,8 +6,6 @@ WHERE status = 'active';
 
 -- Запрос 2: Найти все одобренные кредитные заявки за последний месяц
 -- Цель: Получить информацию об одобренных заявках за последние 30 дней с данными клиентов
--- Запрос 2: Найти все одобренные кредитные заявки за последний месяц
--- Цель: Получить информацию об одобренных заявках за последние 30 дней с данными клиентов
 SELECT ca.application_id, c.full_name, ca.requested_amount, ca.application_date
 FROM credit_applications ca
 JOIN clients c ON ca.client_id = c.client_id

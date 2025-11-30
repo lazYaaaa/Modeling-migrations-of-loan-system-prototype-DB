@@ -1,0 +1,13 @@
+<!-- Configuration for Graph -->
+<config>
+    <width>400</width>
+    <height>300</height>
+    <graph_type>pie</graph_type>
+    <background_color>#FFFFFF</background_color>
+    <title>Финансы по отделам</title>
+    
+    <!-- Segment Data -->
+    <!-- segmentN series color|legend label| -->
+    segment1:|Dept 22
+segment2:|Dept Цнит
+</config>
