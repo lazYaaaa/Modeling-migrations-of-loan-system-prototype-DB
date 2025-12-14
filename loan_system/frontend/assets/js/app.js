@@ -4,6 +4,8 @@ const API_URL = '/api';
 // Global state
 let currentUser = null;
 let lockTimers = {};
+let locksDisabled = false;
+let statusFilter = 'all';
 
 // Initialize app
 document.addEventListener('DOMContentLoaded', function() {
@@ -65,11 +67,9 @@ function login() {
 
 // Logout function
 function logout() {
-    if (confirm('Вы уверены что хотите выйти?')) {
-        localStorage.removeItem('user');
-        currentUser = null;
-        location.reload();
-    }
+    localStorage.removeItem('user');
+    currentUser = null;
+    location.reload();
 }
 
 // Initialize main app
@@ -133,12 +133,51 @@ function loadApplications() {
         .catch(err => console.error('Load applications error:', err));
 }
 
+// Toggle locks globally
+function toggleLocksGlobally() {
+    locksDisabled = !locksDisabled;
+    const btn = document.getElementById('toggle-locks-btn');
+    if (locksDisabled) {
+        btn.classList.add('disabled');
+        btn.textContent = '🔒 Блокировки отключены';
+        showAlert('Блокировки отключены для всего приложения', 'warning');
+    } else {
+        btn.classList.remove('disabled');
+        btn.textContent = '🔓 Блокировки включены';
+        showAlert('Блокировки включены', 'success');
+    }
+}
+
+// Filter applications by status
+function filterApplicationsByStatus(status) {
+    statusFilter = status;
+    // Update active filter button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.status === status) {
+            btn.classList.add('active');
+        }
+    });
+    loadApplications();
+}
+
 // Render applications table
 function renderApplicationsTable(applications) {
+    // Filter by status if selected
+    let filtered = applications;
+    if (statusFilter !== 'all') {
+        filtered = applications.filter(app => {
+            if (statusFilter === 'open') return ['Новая', 'В работе'].includes(app.status);
+            if (statusFilter === 'closed') return ['Одобрена', 'Отклонена'].includes(app.status);
+            if (statusFilter === 'archived') return app.status === 'Архив';
+            return true;
+        });
+    }
+    
     const tbody = document.getElementById('applications-tbody');
     tbody.innerHTML = '';
     
-    applications.forEach(app => {
+    filtered.forEach(app => {
         const row = document.createElement('tr');
         
         let lockBadge = '';
@@ -188,83 +227,85 @@ function showApplicationModal(app) {
     
     // Fill in the modal content
     const content = `
-        <div class="modal-header">
-            <h2>Заявка #${app.application_id}</h2>
-            <button class="close-btn" onclick="closeModal('app-modal')">&times;</button>
-        </div>
-        
-        <div class="card">
-            <h3>Информация о клиенте</h3>
-            <div class="card-row">
-                <div>
-                    <strong>ФИО:</strong> ${app.client_name}<br>
-                    <strong>Паспорт:</strong> ${app.passport_number}<br>
-                    <strong>Телефон:</strong> ${app.phone_number || '-'}<br>
-                </div>
-                <div>
-                    <strong>Адрес:</strong> ${app.address || '-'}<br>
-                    <strong>Дата подачи:</strong> ${new Date(app.application_date).toLocaleDateString('ru-RU')}<br>
-                </div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Заявка #${app.application_id}</h2>
+                <button class="close-btn" onclick="closeModal('app-modal')">&times;</button>
             </div>
-        </div>
-        
-        <div class="card">
-            <h3>Информация о кредите</h3>
-            <div class="card-row">
-                <div>
-                    <strong>Продукт:</strong> ${app.product_name}<br>
-                    <strong>Запрашиваемая сумма:</strong> ${formatNumber(app.requested_amount)} ₽<br>
-                </div>
-                <div>
-                    <strong>Диапазон сумм:</strong> ${formatNumber(app.min_amount)} - ${formatNumber(app.max_amount)} ₽<br>
-                    <strong>Срок кредита:</strong> ${app.min_term} - ${app.max_term} месяцев<br>
-                    <strong>Базовая ставка:</strong> ${app.base_interest_rate}%<br>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h3>Статус заявки</h3>
-            <span class="badge badge-${app.status.toLowerCase().replace(' ', '-')}">${app.status}</span>
-            <br><br>
-            <strong>Ответственный сотрудник:</strong> ${app.employee_name}
-        </div>
-        
-        <div id="app-edit-controls" style="display: none;">
+            
             <div class="card">
-                <h3>Редактирование</h3>
-                <div class="form-group">
-                    <label for="app-amount">Сумма кредита:</label>
-                    <input type="number" id="app-amount" value="${app.requested_amount}" step="100">
+                <h3>Информация о клиенте</h3>
+                <div class="card-row">
+                    <div style="color: #333;">
+                        <strong>ФИО:</strong> <span style="color: #222; font-weight: 500;">${app.client_name}</span><br>
+                        <strong>Паспорт:</strong> <span style="color: #222;">${app.passport_number}</span><br>
+                        <strong>Телефон:</strong> <span style="color: #222;">${app.phone_number || '-'}</span><br>
+                    </div>
+                    <div style="color: #333;">
+                        <strong>Адрес:</strong> <span style="color: #222;">${app.address || '-'}</span><br>
+                        <strong>Дата подачи:</strong> <span style="color: #222;">${new Date(app.application_date).toLocaleDateString('ru-RU')}</span><br>
+                    </div>
                 </div>
             </div>
             
             <div class="card">
-                <h3>Принятие решения</h3>
-                <div class="lock-controls">
-                    <div class="lock-status">
-                        Статус блокировки: <span id="lock-status-text">Проверка...</span>
+                <h3>Информация о кредите</h3>
+                <div class="card-row">
+                    <div style="color: #333;">
+                        <strong>Продукт:</strong> <span style="color: #222;">${app.product_name}</span><br>
+                        <strong>Запрашиваемая сумма:</strong> <span style="color: #222;">${formatNumber(app.requested_amount)} ₽</span><br>
                     </div>
-                    <div class="lock-buttons">
-                        <button class="btn btn-success" id="approve-btn" onclick="approveApplication(${app.application_id})">
-                            ✓ Одобрить заявку
-                        </button>
-                        <button class="btn btn-danger" id="reject-btn" onclick="rejectApplication(${app.application_id})">
-                            ✗ Отклонить заявку
-                        </button>
-                        <button class="btn btn-secondary" id="unlock-btn" onclick="releaseLock(${app.application_id})" style="display: none;">
-                            🔓 Отпустить заявку
-                        </button>
+                    <div style="color: #333;">
+                        <strong>Диапазон сумм:</strong> <span style="color: #222;">${formatNumber(app.min_amount)} - ${formatNumber(app.max_amount)} ₽</span><br>
+                        <strong>Срок кредита:</strong> <span style="color: #222;">${app.min_term} - ${app.max_term} месяцев</span><br>
+                        <strong>Базовая ставка:</strong> <span style="color: #222;">${app.base_interest_rate}%</span><br>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="modal-footer">
-            <button class="btn btn-secondary" onclick="closeModal('app-modal')">Закрыть</button>
-            <button class="btn btn-primary" id="edit-btn" onclick="enableApplicationEdit(${app.application_id}, '${app.status}')">
-                Обработать заявку
-            </button>
+            
+            <div class="card">
+                <h3>Статус заявки</h3>
+                <span class="badge badge-${app.status.toLowerCase().replace(' ', '-')}">${app.status}</span>
+                <br><br>
+                <strong>Ответственный сотрудник:</strong> <span style="color: #222;">${app.employee_name}</span>
+            </div>
+            
+            <div id="app-edit-controls" style="display: none;">
+                <div class="card">
+                    <h3>Редактирование</h3>
+                    <div class="form-group">
+                        <label for="app-amount">Сумма кредита:</label>
+                        <input type="number" id="app-amount" value="${app.requested_amount}" step="100">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Принятие решения</h3>
+                    <div class="lock-controls">
+                        <div class="lock-status">
+                            Статус блокировки: <span id="lock-status-text">Проверка...</span>
+                        </div>
+                        <div class="lock-buttons">
+                            <button class="btn btn-success" id="approve-btn" onclick="approveApplication(${app.application_id})">
+                                ✓ Одобрить заявку
+                            </button>
+                            <button class="btn btn-danger" id="reject-btn" onclick="rejectApplication(${app.application_id})">
+                                ✗ Отклонить заявку
+                            </button>
+                            <button class="btn btn-secondary" id="unlock-btn" onclick="releaseLock(${app.application_id})" style="display: none;">
+                                🔓 Отпустить заявку
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('app-modal')">Закрыть</button>
+                <button class="btn btn-primary" id="edit-btn" onclick="enableApplicationEdit(${app.application_id}, '${app.status}')">
+                    Обработать заявку
+                </button>
+            </div>
         </div>
     `;
     
@@ -286,6 +327,16 @@ function enableApplicationEdit(appId, status) {
         return;
     }
     
+    // If locks are disabled, allow direct edit
+    if (locksDisabled) {
+        document.getElementById('app-edit-controls').style.display = 'block';
+        document.getElementById('edit-btn').style.display = 'none';
+        document.getElementById('lock-status-text').textContent = '⚠️ Блокировки отключены';
+        document.getElementById('lock-status-text').style.color = '#ff922b';
+        showAlert('Блокировки отключены, вы можете редактировать', 'warning');
+        return;
+    }
+    
     // Try to acquire lock
     fetch(`${API_URL}/applications/${appId}/lock`, {
         method: 'POST'
@@ -298,7 +349,7 @@ function enableApplicationEdit(appId, status) {
             document.getElementById('lock-status-text').textContent = '✓ Вы получили эксклюзивный доступ';
             document.getElementById('lock-status-text').style.color = '#2b8a3e';
             startLockTimer(appId);
-            showAlert('Заявка заблокирована для вас на 30 минут', 'success');
+            showAlert('Заявка заблокирована для вас на 3 минуты', 'success');
         } else {
             showAlert(`Заявка уже обрабатывается сотрудником: ${data.locked_by}`, 'error');
         }
@@ -375,10 +426,6 @@ function calculateTimeRemaining(timeoutAt) {
 function approveApplication(appId) {
     const amount = document.getElementById('app-amount')?.value;
     
-    if (!confirm('Вы уверены что хотите одобрить эту заявку?')) {
-        return;
-    }
-    
     // First update amount if changed
     if (amount) {
         fetch(`${API_URL}/applications/${appId}`, {
@@ -415,10 +462,6 @@ function approveApplication(appId) {
 
 // Reject application
 function rejectApplication(appId) {
-    if (!confirm('Вы уверены что хотите отклонить эту заявку?')) {
-        return;
-    }
-    
     fetch(`${API_URL}/applications/${appId}/reject`, {
         method: 'POST'
     })
@@ -491,27 +534,29 @@ function showClientModal(client) {
     const modal = document.getElementById('client-modal');
     
     const content = `
-        <div class="modal-header">
-            <h2>${client.full_name}</h2>
-            <button class="close-btn" onclick="closeModal('client-modal')">&times;</button>
-        </div>
-        
-        <div class="card">
-            <h3>Персональные данные</h3>
-            <div class="card-row">
-                <div>
-                    <strong>ФИО:</strong> ${client.full_name}<br>
-                    <strong>Паспорт:</strong> ${client.passport_number}<br>
-                </div>
-                <div>
-                    <strong>Телефон:</strong> ${client.phone_number || '-'}<br>
-                    <strong>Адрес:</strong> ${client.address || '-'}<br>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>${client.full_name}</h2>
+                <button class="close-btn" onclick="closeModal('client-modal')">&times;</button>
+            </div>
+            
+            <div class="card">
+                <h3>Персональные данные</h3>
+                <div class="card-row">
+                    <div style="color: #333;">
+                        <strong>ФИО:</strong> <span style="color: #222; font-weight: 500;">${client.full_name}</span><br>
+                        <strong>Паспорт:</strong> <span style="color: #222;">${client.passport_number}</span><br>
+                    </div>
+                    <div style="color: #333;">
+                        <strong>Телефон:</strong> <span style="color: #222;">${client.phone_number || '-'}</span><br>
+                        <strong>Адрес:</strong> <span style="color: #222;">${client.address || '-'}</span><br>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="modal-footer">
-            <button class="btn btn-secondary" onclick="closeModal('client-modal')">Закрыть</button>
+            
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('client-modal')">Закрыть</button>
+            </div>
         </div>
     `;
     

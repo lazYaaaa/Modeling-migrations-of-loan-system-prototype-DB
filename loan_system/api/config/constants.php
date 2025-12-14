@@ -4,7 +4,7 @@ define('APP_NAME', 'Система управления кредитование
 define('APP_VERSION', '1.0.0');
 
 // Lock timeout in minutes
-define('LOCK_TIMEOUT', 30);
+define('LOCK_TIMEOUT', 3);
 
 // Application statuses
 define('STATUS_NEW', 'Новая');
