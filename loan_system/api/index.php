@@ -36,6 +36,67 @@ try {
         if ($method === 'GET') {
             $response['data'] = $application->getAllApplications();
             $response['success'] = true;
+        } elseif ($method === 'POST') {
+            // Create new application
+            try {
+                $input = file_get_contents('php://input');
+                $data = json_decode($input, true);
+                
+                if (!$data) {
+                    throw new Exception('Invalid JSON in request body');
+                }
+                
+                $required = ['client_id', 'product_id', 'requested_amount'];
+                $missing = array_diff($required, array_keys($data ?? []));
+                
+                if ($missing) {
+                    http_response_code(400);
+                    $response['error'] = 'Missing fields: ' . implode(', ', $missing);
+                } else if (!isset($_SESSION['employee_id'])) {
+                    http_response_code(401);
+                    $response['error'] = 'Not authenticated. Employee ID not set in session.';
+                } else {
+                    // Validate that client and product exist
+                    $client_check = $pdo->prepare("SELECT client_id FROM clients WHERE client_id = ?");
+                    $client_check->execute([$data['client_id']]);
+                    if (!$client_check->fetch()) {
+                        throw new Exception("Client with ID {$data['client_id']} not found");
+                    }
+                    
+                    $product_check = $pdo->prepare("SELECT product_id FROM loan_products WHERE product_id = ?");
+                    $product_check->execute([$data['product_id']]);
+                    if (!$product_check->fetch()) {
+                        throw new Exception("Product with ID {$data['product_id']} not found");
+                    }
+                    
+                    $sql = "INSERT INTO credit_applications 
+                           (client_id, employee_id, product_id, requested_amount, status)
+                           VALUES (?, ?, ?, ?, 'Новая')
+                           RETURNING application_id";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([
+                        (int)$data['client_id'],
+                        (int)$_SESSION['employee_id'],
+                        (int)$data['product_id'],
+                        (float)$data['requested_amount']
+                    ]);
+                    $result = $stmt->fetch();
+                    
+                    if ($result) {
+                        $response['success'] = true;
+                        $response['data'] = [
+                            'application_id' => $result['application_id'],
+                            'message' => 'Application created successfully'
+                        ];
+                    } else {
+                        http_response_code(500);
+                        $response['error'] = 'Failed to create application (no result returned)';
+                    }
+                }
+            } catch (Exception $e) {
+                http_response_code(400);
+                $response['error'] = $e->getMessage();
+            }
         }
     }
     
@@ -215,57 +276,49 @@ try {
     }
     
     elseif ($path === 'state/locks-enabled') {
-        // Get/Set global locks enabled state (stored in session)
+        // Get/Set global locks enabled state (stored in database, not session)
         if ($method === 'GET') {
-            $response['success'] = true;
-            $response['data'] = [
-                'enabled' => $_SESSION['locks_enabled'] ?? true
-            ];
-        } elseif ($method === 'POST') {
-            $data = json_decode(file_get_contents('php://input'), true);
-            $_SESSION['locks_enabled'] = $data['enabled'] ?? true;
-            $response['success'] = true;
-            $response['data'] = ['enabled' => $_SESSION['locks_enabled']];
-        }
-    }
-    
-    elseif ($path === 'applications' && $method === 'POST') {
-        // Create new application
-        $data = json_decode(file_get_contents('php://input'), true);
-        
-        $required = ['client_id', 'product_id', 'requested_amount'];
-        $missing = array_diff($required, array_keys($data));
-        
-        if ($missing) {
-            http_response_code(400);
-            $response['error'] = 'Missing fields: ' . implode(', ', $missing);
-        } else {
             try {
-                $sql = "INSERT INTO credit_applications 
-                       (client_id, employee_id, product_id, requested_amount, status)
-                       VALUES (?, ?, ?, ?, 'Новая')
-                       RETURNING application_id";
+                $sql = "SELECT value FROM app_settings WHERE key = 'locks_enabled' LIMIT 1";
                 $stmt = $pdo->prepare($sql);
-                $stmt->execute([
-                    $data['client_id'],
-                    $_SESSION['employee_id'],
-                    $data['product_id'],
-                    $data['requested_amount']
-                ]);
+                $stmt->execute();
                 $result = $stmt->fetch();
                 
+                $enabled = true; // Default to true
                 if ($result) {
-                    $response['success'] = true;
-                    $response['data'] = [
-                        'application_id' => $result['application_id'],
-                        'message' => 'Application created successfully'
-                    ];
-                } else {
-                    http_response_code(500);
-                    $response['error'] = 'Failed to create application';
+                    $enabled = $result['value'] === 'true' || $result['value'] === '1';
                 }
+                
+                $response['success'] = true;
+                $response['data'] = ['enabled' => $enabled];
             } catch (Exception $e) {
-                http_response_code(400);
+                // Table might not exist yet, return default
+                $response['success'] = true;
+                $response['data'] = ['enabled' => true];
+            }
+        } elseif ($method === 'POST') {
+            try {
+                $data = json_decode(file_get_contents('php://input'), true);
+                $enabled = $data['enabled'] ? 'true' : 'false';
+                
+                // Create settings table if it doesn't exist
+                $sql = "CREATE TABLE IF NOT EXISTS app_settings (
+                    key VARCHAR(100) PRIMARY KEY,
+                    value TEXT,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )";
+                $pdo->exec($sql);
+                
+                // Upsert the setting
+                $sql = "INSERT INTO app_settings (key, value, updated_at) 
+                       VALUES ('locks_enabled', ?, CURRENT_TIMESTAMP)
+                       ON CONFLICT (key) DO UPDATE SET value = ?, updated_at = CURRENT_TIMESTAMP";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([$enabled, $enabled]);
+                
+                $response['success'] = true;
+                $response['data'] = ['enabled' => $data['enabled']];
+            } catch (Exception $e) {
                 $response['error'] = $e->getMessage();
             }
         }

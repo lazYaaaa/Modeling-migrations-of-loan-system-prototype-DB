@@ -906,6 +906,7 @@ function submitCreateApplication() {
             closeModal('app-modal');
             loadApplications();
         } else {
+            console.error('API Error:', data);
             showAlert(data.error || 'Ошибка при создании заявки', 'error');
         }
     })
