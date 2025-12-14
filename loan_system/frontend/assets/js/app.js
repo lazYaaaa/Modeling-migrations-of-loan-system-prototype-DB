@@ -167,7 +167,7 @@ function renderApplicationsTable(applications) {
     let filtered = applications;
     if (statusFilter !== 'all') {
         filtered = applications.filter(app => {
-            if (statusFilter === 'open') return ['Новая', 'В работе'].includes(app.status);
+            if (statusFilter === 'open') return ['Новая', 'В работе', 'На рассмотрении'].includes(app.status);
             if (statusFilter === 'closed') return ['Одобрена', 'Отклонена'].includes(app.status);
             if (statusFilter === 'archived') return app.status === 'Архив';
             return true;
@@ -198,7 +198,7 @@ function renderApplicationsTable(applications) {
             <td>${lockBadge}</td>
             <td>${app.locked_by_name || '-'}</td>
             <td>${app.employee_name}</td>
-            <td>
+            <td style="min-width: 100px;">
                 <button class="btn btn-primary btn-small" onclick="openApplicationDetail(${app.application_id})">
                     Открыть
                 </button>
@@ -283,7 +283,8 @@ function showApplicationModal(app) {
                     <h3>Принятие решения</h3>
                     <div class="lock-controls">
                         <div class="lock-status">
-                            Статус блокировки: <span id="lock-status-text">Проверка...</span>
+                            <strong>Блокировка:</strong> 10 минут<br>
+                            Статус: <span id="lock-status-text">Проверка...</span>
                         </div>
                         <div class="lock-buttons">
                             <button class="btn btn-success" id="approve-btn" onclick="approveApplication(${app.application_id})">
@@ -349,7 +350,7 @@ function enableApplicationEdit(appId, status) {
             document.getElementById('lock-status-text').textContent = '✓ Вы получили эксклюзивный доступ';
             document.getElementById('lock-status-text').style.color = '#2b8a3e';
             startLockTimer(appId);
-            showAlert('Заявка заблокирована для вас на 3 минуты', 'success');
+            showAlert('Заявка заблокирована для вас на 10 минут', 'success');
         } else {
             showAlert(`Заявка уже обрабатывается сотрудником: ${data.locked_by}`, 'error');
         }
