@@ -1,10 +1,93 @@
 // API Base URL - expects server root to be project root so API is available at /api
 const API_URL = '/api';
 
+// ============= Global State Manager =============
+class StateManager {
+    constructor() {
+        this.locksEnabled = true;
+        this.applicationLocks = {}; // { appId: { timeout_at, locked_by } }
+        this.lockUpdateTimer = null;
+        this.init();
+    }
+    
+    async init() {
+        // Load locks enabled state from server
+        try {
+            const res = await fetch(`${API_URL}/state/locks-enabled`);
+            const data = await res.json();
+            if (data.success) {
+                this.locksEnabled = data.data.enabled;
+            }
+        } catch (e) {
+            console.log('StateManager init: using default locks enabled = true');
+        }
+        
+        // Start global timer to refresh lock statuses
+        this.startLockStatusTimer();
+    }
+    
+    startLockStatusTimer() {
+        // Update lock display every 10 seconds
+        this.lockUpdateTimer = setInterval(() => {
+            this.updateLockDisplay();
+        }, 10000);
+    }
+    
+    updateLockDisplay() {
+        // Update all lock indicators in the table
+        document.querySelectorAll('[data-app-lock-timer]').forEach(el => {
+            const appId = el.dataset.appLockTimer;
+            const remaining = this.getTimeRemaining(appId);
+            if (remaining > 0) {
+                // Show remaining minutes
+                el.textContent = `⏱️ ${remaining}м`;
+                el.style.color = remaining <= 2 ? '#fff' : '#fff';
+                el.style.background = remaining <= 2 ? '#c92a2a' : '#ff6b6b';
+            } else {
+                el.textContent = '🔓 Свободна';
+                el.style.color = '#2b8a3e';
+                el.style.background = '#d3f9d8';
+            }
+        });
+    }
+    
+    setLocksEnabled(enabled) {
+        this.locksEnabled = enabled;
+        // Persist to server
+        fetch(`${API_URL}/state/locks-enabled`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ enabled })
+        }).catch(e => console.error('Failed to persist locks state:', e));
+    }
+    
+    setApplicationLock(appId, timeout_at, locked_by) {
+        this.applicationLocks[appId] = { timeout_at, locked_by };
+    }
+    
+    clearApplicationLock(appId) {
+        delete this.applicationLocks[appId];
+    }
+    
+    getApplicationLock(appId) {
+        return this.applicationLocks[appId];
+    }
+    
+    getTimeRemaining(appId) {
+        const lock = this.applicationLocks[appId];
+        if (!lock) return 0;
+        const now = new Date().getTime();
+        const timeout = new Date(lock.timeout_at).getTime();
+        const remaining = Math.floor((timeout - now) / 60000);
+        return remaining > 0 ? remaining : 0;
+    }
+}
+
+const stateManager = new StateManager();
+
 // Global state
 let currentUser = null;
 let lockTimers = {};
-let locksDisabled = false;
 let statusFilter = 'all';
 
 // Initialize app
@@ -72,12 +155,34 @@ function logout() {
     location.reload();
 }
 
-// Initialize main app
+// Initialize app
 function initializeApp() {
-    document.getElementById('login-page').style.display = 'none';
-    document.getElementById('app-container').style.display = 'flex';
-    updateUserInfo();
-    loadApplications();
+    // Wait for StateManager to initialize
+    const checkStateManager = setInterval(() => {
+        if (stateManager && stateManager.locksEnabled !== undefined) {
+            clearInterval(checkStateManager);
+            
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('app-container').style.display = 'flex';
+            updateUserInfo();
+            
+            // Update UI to reflect current lock state (wait for it to be loaded)
+            setTimeout(() => {
+                const btn = document.getElementById('toggle-locks-btn');
+                if (btn) {
+                    if (!stateManager.locksEnabled) {
+                        btn.classList.add('disabled');
+                        btn.textContent = '🔒 Блокировки отключены';
+                    } else {
+                        btn.classList.remove('disabled');
+                        btn.textContent = '🔓 Блокировки включены';
+                    }
+                }
+            }, 100)
+            
+            loadApplications();
+        }
+    }, 50);
 }
 
 function showLoginPage() {
@@ -135,9 +240,9 @@ function loadApplications() {
 
 // Toggle locks globally
 function toggleLocksGlobally() {
-    locksDisabled = !locksDisabled;
+    stateManager.setLocksEnabled(!stateManager.locksEnabled);
     const btn = document.getElementById('toggle-locks-btn');
-    if (locksDisabled) {
+    if (!stateManager.locksEnabled) {
         btn.classList.add('disabled');
         btn.textContent = '🔒 Блокировки отключены';
         showAlert('Блокировки отключены для всего приложения', 'warning');
@@ -181,12 +286,19 @@ function renderApplicationsTable(applications) {
         const row = document.createElement('tr');
         
         let lockBadge = '';
-        let statusColor = getStatusColor(app.status);
+        let timerText = '';
         
         if (app.lock_id) {
-            lockBadge = `<span class="lock-indicator locked">🔒 Заблокирована</span>`;
+            const remaining = stateManager.getTimeRemaining(app.application_id);
+            if (remaining > 0) {
+                timerText = `⏱️ ${remaining}м`;
+                lockBadge = `<span class="lock-indicator locked" data-app-lock-timer="${app.application_id}" style="cursor: pointer; color: #fff; background: #ff6b6b;" title="Обновляется каждые 10 секунд">${timerText}</span>`;
+            } else {
+                timerText = '🔓 Свободна';
+                lockBadge = `<span class="lock-indicator unlocked" data-app-lock-timer="${app.application_id}">${timerText}</span>`;
+            }
         } else {
-            lockBadge = `<span class="lock-indicator unlocked">🔓 Свободна</span>`;
+            lockBadge = `<span class="lock-indicator unlocked" data-app-lock-timer="${app.application_id}">🔓 Свободна</span>`;
         }
         
         row.innerHTML = `
@@ -283,7 +395,7 @@ function showApplicationModal(app) {
                     <h3>Принятие решения</h3>
                     <div class="lock-controls">
                         <div class="lock-status">
-                            <strong>Блокировка:</strong> 10 минут<br>
+                            <strong>Блокировка:</strong> 10 минут до ${new Date(app.timeout_at || new Date().getTime() + 10*60*1000).toLocaleTimeString('ru-RU')}<br>
                             Статус: <span id="lock-status-text">Проверка...</span>
                         </div>
                         <div class="lock-buttons">
@@ -303,7 +415,7 @@ function showApplicationModal(app) {
             
             <div class="modal-footer">
                 <button class="btn btn-secondary" onclick="closeModal('app-modal')">Закрыть</button>
-                <button class="btn btn-primary" id="edit-btn" onclick="enableApplicationEdit(${app.application_id}, '${app.status}')">
+                    <button class="btn btn-primary" id="edit-btn" onclick="enableApplicationEdit(${app.application_id}, '${app.status}', ${app.locked_by || 'null'})">
                     Обработать заявку
                 </button>
             </div>
@@ -321,15 +433,25 @@ function showApplicationModal(app) {
 }
 
 // Enable application edit and acquire lock
-function enableApplicationEdit(appId, status) {
+function enableApplicationEdit(appId, status, lockedById) {
     // Check if already processed
     if (status !== 'Новая' && status !== 'На рассмотрении') {
         showAlert('Эта заявка уже обработана', 'warning');
         return;
     }
     
+    // Check if user is trying to lock own application
+    if (lockedById && parseInt(lockedById) === currentUser.id) {
+        showAlert('Эту заявку уже обрабатываете вы. Нажмите кнопку редактирования', 'warning');
+        document.getElementById('app-edit-controls').style.display = 'block';
+        document.getElementById('edit-btn').style.display = 'none';
+        document.getElementById('lock-status-text').textContent = '✓ Вы получили эксклюзивный доступ';
+        document.getElementById('lock-status-text').style.color = '#2b8a3e';
+        return;
+    }
+    
     // If locks are disabled, allow direct edit
-    if (locksDisabled) {
+    if (!stateManager.locksEnabled) {
         document.getElementById('app-edit-controls').style.display = 'block';
         document.getElementById('edit-btn').style.display = 'none';
         document.getElementById('lock-status-text').textContent = '⚠️ Блокировки отключены';
@@ -345,6 +467,7 @@ function enableApplicationEdit(appId, status) {
     .then(res => res.json())
     .then(data => {
         if (data.success) {
+            stateManager.setApplicationLock(appId, data.data.timeout_at, currentUser.id);
             document.getElementById('app-edit-controls').style.display = 'block';
             document.getElementById('edit-btn').style.display = 'none';
             document.getElementById('lock-status-text').textContent = '✓ Вы получили эксклюзивный доступ';
@@ -352,7 +475,7 @@ function enableApplicationEdit(appId, status) {
             startLockTimer(appId);
             showAlert('Заявка заблокирована для вас на 10 минут', 'success');
         } else {
-            showAlert(`Заявка уже обрабатывается сотрудником: ${data.locked_by}`, 'error');
+            showAlert(`Заявка уже обрабатывается: ${data.locked_by}`, 'error');
         }
     })
     .catch(err => {
@@ -450,6 +573,7 @@ function approveApplication(appId) {
             showAlert(`Заявка одобрена! Контракт: ${data.data.contract_number}`, 'success');
             closeModal('app-modal');
             clearLockTimer(appId);
+            stateManager.clearApplicationLock(appId);
             loadApplications();
         } else {
             showAlert(data.error || 'Ошибка при одобрении заявки', 'error');
@@ -469,9 +593,10 @@ function rejectApplication(appId) {
     .then(res => res.json())
     .then(data => {
         if (data.success) {
-            showAlert('Заявка отклонена', 'success');
+            showAlert('Заявка отклонена и перемещена в архив', 'success');
             closeModal('app-modal');
             clearLockTimer(appId);
+            stateManager.clearApplicationLock(appId);
             loadApplications();
         } else {
             showAlert(data.error || 'Ошибка при отклонении заявки', 'error');
@@ -635,4 +760,142 @@ function getStatusColor(status) {
         case 'Архив': return 'rejected';
         default: return 'secondary';
     }
+}
+// Create application modal
+function showCreateApplicationModal() {
+    const modal = document.getElementById('app-modal');
+    
+    // First load clients and products
+    Promise.all([
+        fetch(`${API_URL}/clients`).then(r => r.json()),
+        fetch(`${API_URL}/products`).then(r => r.json())
+    ])
+    .then(([clientsData, productsData]) => {
+        if (!clientsData.success || !productsData.success) {
+            showAlert('Ошибка загрузки данных', 'error');
+            return;
+        }
+        
+        // Store products globally for later form submission
+        availableProducts = productsData.data || [];
+        
+        const clientsHtml = clientsData.data.map(c => 
+            `<option value="${c.client_id}">${c.full_name}</option>`
+        ).join('');
+        
+        const productsHtml = productsData.data.map(p => 
+            `<option value="${p.product_id}">${p.product_name}</option>`
+        ).join('');
+        
+        const content = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Создать новую заявку</h2>
+                    <button class="close-btn" onclick="closeModal('app-modal')">&times;</button>
+                </div>
+                
+                <div class="card">
+                    <h3>Данные заявки</h3>
+                    <div class="form-group">
+                        <label for="create-client">Клиент:</label>
+                        <select id="create-client" required>
+                            <option value="">Выберите клиента</option>
+                            ${clientsHtml}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="create-product">Кредитный продукт:</label>
+                        <select id="create-product" required onchange="updateProductInfo()">
+                            <option value="">Выберите продукт</option>
+                            ${productsHtml}
+                        </select>
+                    </div>
+                    
+                    <div id="product-info" style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 15px; display: none;">
+                        <strong>Диапазон сумм:</strong> <span id="product-range">-</span><br>
+                        <strong>Срок кредита:</strong> <span id="product-term">-</span><br>
+                        <strong>Ставка:</strong> <span id="product-rate">-</span>%
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="create-amount">Сумма кредита (₽):</label>
+                        <input type="number" id="create-amount" step="100" min="1" required placeholder="Введите сумму">
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="closeModal('app-modal')">Отмена</button>
+                    <button class="btn btn-success" id="submit-create-btn" onclick="submitCreateApplication()">
+                        ✓ Создать заявку
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        modal.innerHTML = content;
+        modal.classList.add('active');
+    })
+    .catch(err => {
+        console.error('Error loading data:', err);
+        showAlert('Ошибка загрузки данных', 'error');
+    });
+}
+
+function updateProductInfo() {
+    // This will be called with products data available in scope
+    // For now, we'll implement a simpler version
+}
+
+// Store products globally for form submission
+let availableProducts = [];
+
+function submitCreateApplication() {
+    const clientId = document.getElementById('create-client').value;
+    const productId = parseInt(document.getElementById('create-product').value);
+    const amount = document.getElementById('create-amount').value;
+    
+    // Validate
+    if (!clientId || !productId || !amount) {
+        showAlert('Заполните все поля', 'error');
+        return;
+    }
+    
+    const product = availableProducts.find(p => parseInt(p.product_id) === productId);
+    if (!product) {
+        console.error('Available products:', availableProducts);
+        console.error('Looking for productId:', productId);
+        showAlert('Продукт не найден', 'error');
+        return;
+    }
+    
+    if (amount < product.min_amount || amount > product.max_amount) {
+        showAlert(`Сумма должна быть между ${formatNumber(product.min_amount)} и ${formatNumber(product.max_amount)} ₽`, 'error');
+        return;
+    }
+    
+    // Submit
+    fetch(`${API_URL}/applications`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            client_id: parseInt(clientId),
+            product_id: parseInt(productId),
+            requested_amount: parseFloat(amount)
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            showAlert(`Заявка #${data.data.application_id} создана успешно`, 'success');
+            closeModal('app-modal');
+            loadApplications();
+        } else {
+            showAlert(data.error || 'Ошибка при создании заявки', 'error');
+        }
+    })
+    .catch(err => {
+        console.error('Create error:', err);
+        showAlert('Ошибка при создании заявки', 'error');
+    });
 }

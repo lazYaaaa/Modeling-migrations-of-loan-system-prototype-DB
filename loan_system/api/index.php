@@ -70,8 +70,13 @@ try {
         if ($method === 'POST') {
             $result = $lock->acquireLock($app_id, $employee_id, LOCK_TIMEOUT);
             if ($result['success']) {
+                // Fetch the actual lock data to get timeout_at
+                $lockData = $lock->isLocked($app_id);
                 $response['success'] = true;
-                $response['data'] = ['locked' => true];
+                $response['data'] = [
+                    'locked' => true,
+                    'timeout_at' => $lockData['timeout_at']
+                ];
             } else {
                 $response['error'] = 'Заявка уже обрабатывается другим сотрудником';
                 $response['locked_by'] = $result['locked_by'];
@@ -205,6 +210,63 @@ try {
                     http_response_code(401);
                     $response['error'] = 'Invalid credentials';
                 }
+            }
+        }
+    }
+    
+    elseif ($path === 'state/locks-enabled') {
+        // Get/Set global locks enabled state (stored in session)
+        if ($method === 'GET') {
+            $response['success'] = true;
+            $response['data'] = [
+                'enabled' => $_SESSION['locks_enabled'] ?? true
+            ];
+        } elseif ($method === 'POST') {
+            $data = json_decode(file_get_contents('php://input'), true);
+            $_SESSION['locks_enabled'] = $data['enabled'] ?? true;
+            $response['success'] = true;
+            $response['data'] = ['enabled' => $_SESSION['locks_enabled']];
+        }
+    }
+    
+    elseif ($path === 'applications' && $method === 'POST') {
+        // Create new application
+        $data = json_decode(file_get_contents('php://input'), true);
+        
+        $required = ['client_id', 'product_id', 'requested_amount'];
+        $missing = array_diff($required, array_keys($data));
+        
+        if ($missing) {
+            http_response_code(400);
+            $response['error'] = 'Missing fields: ' . implode(', ', $missing);
+        } else {
+            try {
+                $sql = "INSERT INTO credit_applications 
+                       (client_id, employee_id, product_id, requested_amount, status)
+                       VALUES (?, ?, ?, ?, 'Новая')
+                       RETURNING application_id";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([
+                    $data['client_id'],
+                    $_SESSION['employee_id'],
+                    $data['product_id'],
+                    $data['requested_amount']
+                ]);
+                $result = $stmt->fetch();
+                
+                if ($result) {
+                    $response['success'] = true;
+                    $response['data'] = [
+                        'application_id' => $result['application_id'],
+                        'message' => 'Application created successfully'
+                    ];
+                } else {
+                    http_response_code(500);
+                    $response['error'] = 'Failed to create application';
+                }
+            } catch (Exception $e) {
+                http_response_code(400);
+                $response['error'] = $e->getMessage();
             }
         }
     }
