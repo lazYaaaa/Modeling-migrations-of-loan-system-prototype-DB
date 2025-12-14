@@ -1,0 +1,2000 @@
+[
+  {
+    "source_table": "employees",
+    "id": "1",
+    "name": "Варвара Валентиновна Соколова",
+    "details": "Менеджер по кредитованию",
+    "additional_info": "Активен",
+    "unique_identifier": "user_1",
+    "sort_order": 1
+  },
+  {
+    "source_table": "employees",
+    "id": "10",
+    "name": "Мартын Антонович Большаков",
+    "details": "Руководитель по кредитованию",
+    "additional_info": "Активен",
+    "unique_identifier": "user_10",
+    "sort_order": 1
+  },
+  {
+    "source_table": "employees",
+    "id": "2",
+    "name": "Логинов Никита Теймуразович",
+    "details": "Менеджер по кредитованию",
+    "additional_info": "Активен",
+    "unique_identifier": "user_2",
+    "sort_order": 1
+  },
+  {
+    "source_table": "employees",
+    "id": "3",
+    "name": "Зуев Станимир Демидович",
+    "details": "Специалист по кредитованию",
+    "additional_info": "Активен",
+    "unique_identifier": "user_3",
+    "sort_order": 1
+  },
+  {
+    "source_table": "employees",
+    "id": "4",
+    "name": "Таисия Аскольдовна Киселева",
+    "details": "Специалист по кредитованию",
+    "additional_info": "Активен",
+    "unique_identifier": "user_4",
+    "sort_order": 1
+  },
+  {
+    "source_table": "employees",
+    "id": "5",
+    "name": "Панфил Гаврилович Гордеев",
+    "details": "Менеджер по кредитованию",
+    "additional_info": "Активен",
+    "unique_identifier": "user_5",
+    "sort_order": 1
+  },
+  {
+    "source_table": "employees",
+    "id": "6",
+    "name": "Дорофеева Полина Валериевна",
+    "details": "Руководитель по кредитованию",
+    "additional_info": "Активен",
+    "unique_identifier": "user_6",
+    "sort_order": 1
+  },
+  {
+    "source_table": "employees",
+    "id": "7",
+    "name": "Федосий Гордеевич Голубев",
+    "details": "Специалист по кредитованию",
+    "additional_info": "Активен",
+    "unique_identifier": "user_7",
+    "sort_order": 1
+  },
+  {
+    "source_table": "employees",
+    "id": "8",
+    "name": "Кузьмин Гордей Чеславович",
+    "details": "Специалист по кредитованию",
+    "additional_info": "Активен",
+    "unique_identifier": "user_8",
+    "sort_order": 1
+  },
+  {
+    "source_table": "employees",
+    "id": "9",
+    "name": "Денисов Кир Бенедиктович",
+    "details": "Аналитик по кредитованию",
+    "additional_info": "Активен",
+    "unique_identifier": "user_9",
+    "sort_order": 1
+  },
+  {
+    "source_table": "clients",
+    "id": "1",
+    "name": "Сорокина Анна Владимировна",
+    "details": "Паспорт: 8694 973235",
+    "additional_info": "Тел: +79391008512",
+    "unique_identifier": "8694 973235",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "10",
+    "name": "Маргарита Оскаровна Комиссарова",
+    "details": "Паспорт: 3491 702905",
+    "additional_info": "Тел: +79040624434",
+    "unique_identifier": "3491 702905",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "11",
+    "name": "Шарова Агафья Романовна",
+    "details": "Паспорт: 5369 875167",
+    "additional_info": "Тел: +79747957155",
+    "unique_identifier": "5369 875167",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "12",
+    "name": "Александров Нифонт Ааронович",
+    "details": "Паспорт: 2734 256549",
+    "additional_info": "Тел: +79244823093",
+    "unique_identifier": "2734 256549",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "13",
+    "name": "Фокина Агафья Евгеньевна",
+    "details": "Паспорт: 1174 895452",
+    "additional_info": "Тел: +79224736745",
+    "unique_identifier": "1174 895452",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "14",
+    "name": "Максим Филиппович Юдин",
+    "details": "Паспорт: 1965 512281",
+    "additional_info": "Тел: +79412008661",
+    "unique_identifier": "1965 512281",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "15",
+    "name": "Данилова Галина Архиповна",
+    "details": "Паспорт: 7206 330909",
+    "additional_info": "Тел: +79814515763",
+    "unique_identifier": "7206 330909",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "16",
+    "name": "Громов Валентин Юлианович",
+    "details": "Паспорт: 7532 310713",
+    "additional_info": "Тел: +79485693028",
+    "unique_identifier": "7532 310713",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "17",
+    "name": "Лукия Руслановна Рогова",
+    "details": "Паспорт: 3930 422473",
+    "additional_info": "Тел: +79401886629",
+    "unique_identifier": "3930 422473",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "18",
+    "name": "Субботин Лазарь Ильясович",
+    "details": "Паспорт: 1719 521120",
+    "additional_info": "Тел: +79118278429",
+    "unique_identifier": "1719 521120",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "19",
+    "name": "Евпраксия Никифоровна Назарова",
+    "details": "Паспорт: 9818 591017",
+    "additional_info": "Тел: +79352277241",
+    "unique_identifier": "9818 591017",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "2",
+    "name": "Семен Архипович Устинов",
+    "details": "Паспорт: 4851 865728",
+    "additional_info": "Тел: +79986680022",
+    "unique_identifier": "4851 865728",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "20",
+    "name": "Зуева Фаина Аскольдовна",
+    "details": "Паспорт: 8967 409226",
+    "additional_info": "Тел: +79007485460",
+    "unique_identifier": "8967 409226",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "21",
+    "name": "Татьяна Кузьминична Филатова",
+    "details": "Паспорт: 2909 982538",
+    "additional_info": "Тел: +79144406157",
+    "unique_identifier": "2909 982538",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "22",
+    "name": "Лидия Эльдаровна Пахомова",
+    "details": "Паспорт: 5348 471827",
+    "additional_info": "Тел: +79684073865",
+    "unique_identifier": "5348 471827",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "23",
+    "name": "Анна Макаровна Никитина",
+    "details": "Паспорт: 1489 795897",
+    "additional_info": "Тел: +79968704822",
+    "unique_identifier": "1489 795897",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "24",
+    "name": "Макар Эдуардович Денисов",
+    "details": "Паспорт: 1146 634385",
+    "additional_info": "Тел: +79281693828",
+    "unique_identifier": "1146 634385",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "25",
+    "name": "Мартьян Марсович Ситников",
+    "details": "Паспорт: 7358 923768",
+    "additional_info": "Тел: +79321994946",
+    "unique_identifier": "7358 923768",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "26",
+    "name": "Гремислав Васильевич Дорофеев",
+    "details": "Паспорт: 6000 204433",
+    "additional_info": "Тел: +79354058223",
+    "unique_identifier": "6000 204433",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "27",
+    "name": "Анна Максимовна Суханова",
+    "details": "Паспорт: 8347 861585",
+    "additional_info": "Тел: +79971276243",
+    "unique_identifier": "8347 861585",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "28",
+    "name": "Сафонов Святослав Зиновьевич",
+    "details": "Паспорт: 7409 207465",
+    "additional_info": "Тел: +79485541068",
+    "unique_identifier": "7409 207465",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "29",
+    "name": "Петров Якуб Бориславович",
+    "details": "Паспорт: 8866 118364",
+    "additional_info": "Тел: +79301355643",
+    "unique_identifier": "8866 118364",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "3",
+    "name": "Боян Анатольевич Ермаков",
+    "details": "Паспорт: 3099 396452",
+    "additional_info": "Тел: +79436935755",
+    "unique_identifier": "3099 396452",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "30",
+    "name": "Романова Любовь Вениаминовна",
+    "details": "Паспорт: 7483 591239",
+    "additional_info": "Тел: +79197228045",
+    "unique_identifier": "7483 591239",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "4",
+    "name": "Елена Федоровна Евсеева",
+    "details": "Паспорт: 5066 752344",
+    "additional_info": "Тел: +79076046590",
+    "unique_identifier": "5066 752344",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "5",
+    "name": "Красильников Вениамин Борисович",
+    "details": "Паспорт: 7138 742887",
+    "additional_info": "Тел: +79179442177",
+    "unique_identifier": "7138 742887",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "6",
+    "name": "Шашкова Эмилия Болеславовна",
+    "details": "Паспорт: 8493 259915",
+    "additional_info": "Тел: +79204953112",
+    "unique_identifier": "8493 259915",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "7",
+    "name": "Ангелина Тимофеевна Фомичева",
+    "details": "Паспорт: 7234 275110",
+    "additional_info": "Тел: +79257525568",
+    "unique_identifier": "7234 275110",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "8",
+    "name": "Доронин Мечислав Гертрудович",
+    "details": "Паспорт: 2541 403441",
+    "additional_info": "Тел: +79101434097",
+    "unique_identifier": "2541 403441",
+    "sort_order": 2
+  },
+  {
+    "source_table": "clients",
+    "id": "9",
+    "name": "Филипп Александрович Сорокин",
+    "details": "Паспорт: 8579 346812",
+    "additional_info": "Тел: +79125429886",
+    "unique_identifier": "8579 346812",
+    "sort_order": 2
+  },
+  {
+    "source_table": "loan_products",
+    "id": "1",
+    "name": "Потребительский кредит",
+    "details": "Сумма: 10000.00-500000.00",
+    "additional_info": "Срок: 3-60 мес.",
+    "unique_identifier": "15.50%",
+    "sort_order": 3
+  },
+  {
+    "source_table": "loan_products",
+    "id": "2",
+    "name": "Ипотечный кредит",
+    "details": "Сумма: 100000.00-5000000.00",
+    "additional_info": "Срок: 12-360 мес.",
+    "unique_identifier": "8.50%",
+    "sort_order": 3
+  },
+  {
+    "source_table": "loan_products",
+    "id": "3",
+    "name": "Автокредит",
+    "details": "Сумма: 50000.00-3000000.00",
+    "additional_info": "Срок: 6-84 мес.",
+    "unique_identifier": "11.00%",
+    "sort_order": 3
+  },
+  {
+    "source_table": "loan_products",
+    "id": "4",
+    "name": "Кредит на образование",
+    "details": "Сумма: 5000.00-500000.00",
+    "additional_info": "Срок: 1-120 мес.",
+    "unique_identifier": "7.50%",
+    "sort_order": 3
+  },
+  {
+    "source_table": "loan_products",
+    "id": "5",
+    "name": "Экспресс-кредит",
+    "details": "Сумма: 1000.00-100000.00",
+    "additional_info": "Срок: 1-24 мес.",
+    "unique_identifier": "25.00%",
+    "sort_order": 3
+  },
+  {
+    "source_table": "documents",
+    "id": "1",
+    "name": "Паспорт",
+    "details": "8157 264312",
+    "additional_info": "МВД России",
+    "unique_identifier": "2022-05-11",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "10",
+    "name": "Паспорт",
+    "details": "7747 552194",
+    "additional_info": "МВД России",
+    "unique_identifier": "2019-11-20",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "11",
+    "name": "Паспорт",
+    "details": "4720 811080",
+    "additional_info": "МВД России",
+    "unique_identifier": "2025-04-13",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "12",
+    "name": "Паспорт",
+    "details": "4042 723018",
+    "additional_info": "МВД России",
+    "unique_identifier": "2020-12-30",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "13",
+    "name": "Паспорт",
+    "details": "5905 433291",
+    "additional_info": "МВД России",
+    "unique_identifier": "2025-05-26",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "14",
+    "name": "Паспорт",
+    "details": "6365 254261",
+    "additional_info": "МВД России",
+    "unique_identifier": "2022-06-16",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "15",
+    "name": "Паспорт",
+    "details": "4661 551907",
+    "additional_info": "МВД России",
+    "unique_identifier": "2022-01-15",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "16",
+    "name": "Паспорт",
+    "details": "8989 478679",
+    "additional_info": "МВД России",
+    "unique_identifier": "2022-04-17",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "17",
+    "name": "Паспорт",
+    "details": "1167 804048",
+    "additional_info": "МВД России",
+    "unique_identifier": "2024-03-23",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "18",
+    "name": "Паспорт",
+    "details": "4138 231227",
+    "additional_info": "МВД России",
+    "unique_identifier": "2017-08-27",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "19",
+    "name": "Паспорт",
+    "details": "3615 964340",
+    "additional_info": "МВД России",
+    "unique_identifier": "2021-03-30",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "2",
+    "name": "Паспорт",
+    "details": "8993 946998",
+    "additional_info": "МВД России",
+    "unique_identifier": "2018-03-08",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "20",
+    "name": "Паспорт",
+    "details": "4962 971722",
+    "additional_info": "МВД России",
+    "unique_identifier": "2020-12-09",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "21",
+    "name": "Паспорт",
+    "details": "1820 157929",
+    "additional_info": "МВД России",
+    "unique_identifier": "2017-02-05",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "22",
+    "name": "Паспорт",
+    "details": "5378 511778",
+    "additional_info": "МВД России",
+    "unique_identifier": "2022-07-27",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "23",
+    "name": "Паспорт",
+    "details": "7282 841244",
+    "additional_info": "МВД России",
+    "unique_identifier": "2023-07-06",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "24",
+    "name": "Паспорт",
+    "details": "7971 718738",
+    "additional_info": "МВД России",
+    "unique_identifier": "2019-07-20",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "25",
+    "name": "Паспорт",
+    "details": "2594 189898",
+    "additional_info": "МВД России",
+    "unique_identifier": "2022-09-25",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "26",
+    "name": "Паспорт",
+    "details": "7538 146735",
+    "additional_info": "МВД России",
+    "unique_identifier": "2025-07-27",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "27",
+    "name": "Паспорт",
+    "details": "4792 149513",
+    "additional_info": "МВД России",
+    "unique_identifier": "2016-08-19",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "28",
+    "name": "Паспорт",
+    "details": "5993 126190",
+    "additional_info": "МВД России",
+    "unique_identifier": "2022-04-17",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "29",
+    "name": "Паспорт",
+    "details": "4954 141388",
+    "additional_info": "МВД России",
+    "unique_identifier": "2020-03-20",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "3",
+    "name": "Паспорт",
+    "details": "2897 211526",
+    "additional_info": "МВД России",
+    "unique_identifier": "2018-11-29",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "30",
+    "name": "Паспорт",
+    "details": "3858 555062",
+    "additional_info": "МВД России",
+    "unique_identifier": "2017-07-07",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "4",
+    "name": "Паспорт",
+    "details": "5200 630217",
+    "additional_info": "МВД России",
+    "unique_identifier": "2020-04-25",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "5",
+    "name": "Паспорт",
+    "details": "8743 921133",
+    "additional_info": "МВД России",
+    "unique_identifier": "2025-01-20",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "6",
+    "name": "Паспорт",
+    "details": "7141 247100",
+    "additional_info": "МВД России",
+    "unique_identifier": "2022-11-28",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "7",
+    "name": "Паспорт",
+    "details": "9973 442252",
+    "additional_info": "МВД России",
+    "unique_identifier": "2022-03-14",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "8",
+    "name": "Паспорт",
+    "details": "5061 897045",
+    "additional_info": "МВД России",
+    "unique_identifier": "2018-12-23",
+    "sort_order": 4
+  },
+  {
+    "source_table": "documents",
+    "id": "9",
+    "name": "Паспорт",
+    "details": "1175 265715",
+    "additional_info": "МВД России",
+    "unique_identifier": "2022-03-27",
+    "sort_order": 4
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "1",
+    "name": "Заявка #1",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 258800.00",
+    "unique_identifier": "2025-09-16 02:35:53",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "10",
+    "name": "Заявка #10",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 22146.00",
+    "unique_identifier": "2025-09-24 11:15:21",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "11",
+    "name": "Заявка #11",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 282408.00",
+    "unique_identifier": "2025-07-13 19:08:10",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "12",
+    "name": "Заявка #12",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 180515.00",
+    "unique_identifier": "2025-09-28 23:42:33",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "13",
+    "name": "Заявка #13",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 261122.00",
+    "unique_identifier": "2025-07-30 04:47:50",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "14",
+    "name": "Заявка #14",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 247450.00",
+    "unique_identifier": "2025-06-28 11:28:08",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "15",
+    "name": "Заявка #15",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 94378.00",
+    "unique_identifier": "2025-08-14 02:52:37",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "16",
+    "name": "Заявка #16",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 47603.00",
+    "unique_identifier": "2025-09-27 03:19:48",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "17",
+    "name": "Заявка #17",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 177395.00",
+    "unique_identifier": "2025-08-16 20:13:48",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "18",
+    "name": "Заявка #18",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 137514.00",
+    "unique_identifier": "2025-08-23 23:15:15",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "19",
+    "name": "Заявка #19",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 249147.00",
+    "unique_identifier": "2025-10-14 23:15:53",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "2",
+    "name": "Заявка #2",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 118513.00",
+    "unique_identifier": "2025-09-27 04:18:19",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "20",
+    "name": "Заявка #20",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 243298.00",
+    "unique_identifier": "2025-08-30 07:58:19",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "21",
+    "name": "Заявка #21",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 128689.00",
+    "unique_identifier": "2025-09-07 16:45:44",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "22",
+    "name": "Заявка #22",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 250809.00",
+    "unique_identifier": "2025-11-19 04:11:42",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "23",
+    "name": "Заявка #23",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 206643.00",
+    "unique_identifier": "2025-09-30 10:54:19",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "24",
+    "name": "Заявка #24",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 81614.00",
+    "unique_identifier": "2025-09-09 05:23:25",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "25",
+    "name": "Заявка #25",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 285457.00",
+    "unique_identifier": "2025-08-03 19:25:41",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "26",
+    "name": "Заявка #26",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 69087.00",
+    "unique_identifier": "2025-06-07 09:38:57",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "27",
+    "name": "Заявка #27",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 212680.00",
+    "unique_identifier": "2025-10-22 07:01:47",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "28",
+    "name": "Заявка #28",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 33271.00",
+    "unique_identifier": "2025-09-28 08:52:26",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "29",
+    "name": "Заявка #29",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 207503.00",
+    "unique_identifier": "2025-10-24 10:52:53",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "3",
+    "name": "Заявка #3",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 111917.00",
+    "unique_identifier": "2025-05-31 00:29:29",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "30",
+    "name": "Заявка #30",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 149020.00",
+    "unique_identifier": "2025-09-02 08:18:54",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "31",
+    "name": "Заявка #31",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 91429.00",
+    "unique_identifier": "2025-08-16 11:29:09",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "32",
+    "name": "Заявка #32",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 216034.00",
+    "unique_identifier": "2025-09-21 21:12:39",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "33",
+    "name": "Заявка #33",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 255887.00",
+    "unique_identifier": "2025-07-10 01:43:06",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "34",
+    "name": "Заявка #34",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 266451.00",
+    "unique_identifier": "2025-09-22 05:21:00",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "35",
+    "name": "Заявка #35",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 163051.00",
+    "unique_identifier": "2025-10-15 07:26:50",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "36",
+    "name": "Заявка #36",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 54791.00",
+    "unique_identifier": "2025-11-08 07:40:40",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "37",
+    "name": "Заявка #37",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 145779.00",
+    "unique_identifier": "2025-08-30 08:56:39",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "38",
+    "name": "Заявка #38",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 12179.00",
+    "unique_identifier": "2025-10-12 10:01:02",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "39",
+    "name": "Заявка #39",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 172257.00",
+    "unique_identifier": "2025-07-19 02:43:42",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "4",
+    "name": "Заявка #4",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 209489.00",
+    "unique_identifier": "2025-09-17 09:45:17",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "40",
+    "name": "Заявка #40",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 83195.00",
+    "unique_identifier": "2025-09-11 01:57:01",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "5",
+    "name": "Заявка #5",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 44050.00",
+    "unique_identifier": "2025-08-29 03:53:06",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "6",
+    "name": "Заявка #6",
+    "details": "Статус: Отклонена",
+    "additional_info": "Сумма: 218827.00",
+    "unique_identifier": "2025-07-09 03:52:37",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "7",
+    "name": "Заявка #7",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 57865.00",
+    "unique_identifier": "2025-10-16 11:31:59",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "8",
+    "name": "Заявка #8",
+    "details": "Статус: Одобрена",
+    "additional_info": "Сумма: 107698.00",
+    "unique_identifier": "2025-07-13 22:05:52",
+    "sort_order": 6
+  },
+  {
+    "source_table": "credit_applications",
+    "id": "9",
+    "name": "Заявка #9",
+    "details": "Статус: На рассмотрении",
+    "additional_info": "Сумма: 120093.00",
+    "unique_identifier": "2025-08-17 15:22:36",
+    "sort_order": 6
+  },
+  {
+    "source_table": "accounts",
+    "id": "1",
+    "name": "Счет 407028103427772719",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 172896.00",
+    "unique_identifier": "1",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "10",
+    "name": "Счет 407028103378316197",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 225912.00",
+    "unique_identifier": "10",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "11",
+    "name": "Счет 407028104192083264",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 3236.00",
+    "unique_identifier": "11",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "12",
+    "name": "Счет 407028101983028565",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 180740.00",
+    "unique_identifier": "12",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "13",
+    "name": "Счет 407028103665309329",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 174688.00",
+    "unique_identifier": "13",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "14",
+    "name": "Счет 407028105514034481",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 59800.00",
+    "unique_identifier": "14",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "15",
+    "name": "Счет 407028108998514282",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 261787.00",
+    "unique_identifier": "15",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "16",
+    "name": "Счет 407028107058583162",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 167003.00",
+    "unique_identifier": "16",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "17",
+    "name": "Счет 407028105962036004",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 380618.00",
+    "unique_identifier": "17",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "18",
+    "name": "Счет 407028109957214147",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 470037.00",
+    "unique_identifier": "18",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "19",
+    "name": "Счет 407028109925731152",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 473778.00",
+    "unique_identifier": "19",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "2",
+    "name": "Счет 407028109756491899",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 119988.00",
+    "unique_identifier": "2",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "20",
+    "name": "Счет 407028101393995157",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 415453.00",
+    "unique_identifier": "20",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "21",
+    "name": "Счет 407028104073366774",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 346362.00",
+    "unique_identifier": "21",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "22",
+    "name": "Счет 407028101211431196",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 21941.00",
+    "unique_identifier": "22",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "23",
+    "name": "Счет 407028104533081771",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 279010.00",
+    "unique_identifier": "23",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "24",
+    "name": "Счет 407028101476307483",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 2939.00",
+    "unique_identifier": "24",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "25",
+    "name": "Счет 407028106363234426",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 358374.00",
+    "unique_identifier": "25",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "26",
+    "name": "Счет 407028103903701771",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 61465.00",
+    "unique_identifier": "26",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "27",
+    "name": "Счет 407028103604553848",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 328992.00",
+    "unique_identifier": "27",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "28",
+    "name": "Счет 407028109661196685",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 227280.00",
+    "unique_identifier": "28",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "29",
+    "name": "Счет 407028104693345060",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 254053.00",
+    "unique_identifier": "29",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "3",
+    "name": "Счет 407028107918422024",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 479971.00",
+    "unique_identifier": "3",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "30",
+    "name": "Счет 407028109226276657",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 163079.00",
+    "unique_identifier": "30",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "4",
+    "name": "Счет 407028103969243069",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 386471.00",
+    "unique_identifier": "4",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "5",
+    "name": "Счет 407028102224080390",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 80241.00",
+    "unique_identifier": "5",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "6",
+    "name": "Счет 407028105128789751",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 393796.00",
+    "unique_identifier": "6",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "7",
+    "name": "Счет 407028109414213802",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 489451.00",
+    "unique_identifier": "7",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "8",
+    "name": "Счет 407028106654233752",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 342164.00",
+    "unique_identifier": "8",
+    "sort_order": 8
+  },
+  {
+    "source_table": "accounts",
+    "id": "9",
+    "name": "Счет 407028101961360631",
+    "details": "Расчетный",
+    "additional_info": "Баланс: 488093.00",
+    "unique_identifier": "9",
+    "sort_order": 8
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "1",
+    "name": "Договор ДОГ-2024-0001",
+    "details": "Сумма: 258800.00",
+    "additional_info": "Ставка: 9.81%, срок: 14 мес.",
+    "unique_identifier": "2025-11-17",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "10",
+    "name": "Договор ДОГ-2024-0010",
+    "details": "Сумма: 285457.00",
+    "additional_info": "Ставка: 15.17%, срок: 28 мес.",
+    "unique_identifier": "2025-06-21",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "11",
+    "name": "Договор ДОГ-2024-0011",
+    "details": "Сумма: 69087.00",
+    "additional_info": "Ставка: 9.11%, срок: 29 мес.",
+    "unique_identifier": "2025-06-10",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "12",
+    "name": "Договор ДОГ-2024-0012",
+    "details": "Сумма: 33271.00",
+    "additional_info": "Ставка: 11.34%, срок: 16 мес.",
+    "unique_identifier": "2025-09-08",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "13",
+    "name": "Договор ДОГ-2024-0015",
+    "details": "Сумма: 145779.00",
+    "additional_info": "Ставка: 10.05%, срок: 32 мес.",
+    "unique_identifier": "2025-08-18",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "2",
+    "name": "Договор ДОГ-2024-0002",
+    "details": "Сумма: 111917.00",
+    "additional_info": "Ставка: 9.45%, срок: 19 мес.",
+    "unique_identifier": "2025-06-21",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "3",
+    "name": "Договор ДОГ-2024-0003",
+    "details": "Сумма: 209489.00",
+    "additional_info": "Ставка: 12.04%, срок: 33 мес.",
+    "unique_identifier": "2025-10-31",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "4",
+    "name": "Договор ДОГ-2024-0004",
+    "details": "Сумма: 44050.00",
+    "additional_info": "Ставка: 8.13%, срок: 24 мес.",
+    "unique_identifier": "2025-08-26",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "5",
+    "name": "Договор ДОГ-2024-0005",
+    "details": "Сумма: 107698.00",
+    "additional_info": "Ставка: 19.34%, срок: 30 мес.",
+    "unique_identifier": "2025-06-11",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "6",
+    "name": "Договор ДОГ-2024-0006",
+    "details": "Сумма: 94378.00",
+    "additional_info": "Ставка: 9.50%, срок: 34 мес.",
+    "unique_identifier": "2025-08-10",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "7",
+    "name": "Договор ДОГ-2024-0007",
+    "details": "Сумма: 177395.00",
+    "additional_info": "Ставка: 11.08%, срок: 30 мес.",
+    "unique_identifier": "2025-06-13",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "8",
+    "name": "Договор ДОГ-2024-0008",
+    "details": "Сумма: 137514.00",
+    "additional_info": "Ставка: 14.33%, срок: 15 мес.",
+    "unique_identifier": "2025-08-05",
+    "sort_order": 9
+  },
+  {
+    "source_table": "credit_contracts",
+    "id": "9",
+    "name": "Договор ДОГ-2024-0009",
+    "details": "Сумма: 81614.00",
+    "additional_info": "Ставка: 12.71%, срок: 34 мес.",
+    "unique_identifier": "2025-10-25",
+    "sort_order": 9
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "1",
+    "name": "Платеж от 2025-12-17",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "10",
+    "name": "Платеж от 2026-09-13",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "11",
+    "name": "Платеж от 2026-10-13",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "12",
+    "name": "Платеж от 2026-11-12",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "13",
+    "name": "Платеж от 2026-12-12",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "14",
+    "name": "Платеж от 2027-01-11",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "15",
+    "name": "Платеж от 2025-07-21",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Просрочен",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "16",
+    "name": "Платеж от 2025-08-20",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Просрочен",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "17",
+    "name": "Платеж от 2025-09-19",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Просрочен",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "18",
+    "name": "Платеж от 2025-10-19",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Оплачен",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "19",
+    "name": "Платеж от 2025-11-18",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Просрочен",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "2",
+    "name": "Платеж от 2026-01-16",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "20",
+    "name": "Платеж от 2025-12-18",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "21",
+    "name": "Платеж от 2026-01-17",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "22",
+    "name": "Платеж от 2026-02-16",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "23",
+    "name": "Платеж от 2026-03-18",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "24",
+    "name": "Платеж от 2026-04-17",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "25",
+    "name": "Платеж от 2026-05-17",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "26",
+    "name": "Платеж от 2026-06-16",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "27",
+    "name": "Платеж от 2026-07-16",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "28",
+    "name": "Платеж от 2026-08-15",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "29",
+    "name": "Платеж от 2026-09-14",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "3",
+    "name": "Платеж от 2026-02-15",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "30",
+    "name": "Платеж от 2026-10-14",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "31",
+    "name": "Платеж от 2026-11-13",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "32",
+    "name": "Платеж от 2026-12-13",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "33",
+    "name": "Платеж от 2027-01-12",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "2",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "34",
+    "name": "Платеж от 2025-11-30",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "35",
+    "name": "Платеж от 2025-12-30",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "36",
+    "name": "Платеж от 2026-01-29",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "37",
+    "name": "Платеж от 2026-02-28",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "38",
+    "name": "Платеж от 2026-03-30",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "39",
+    "name": "Платеж от 2026-04-29",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "4",
+    "name": "Платеж от 2026-03-17",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "40",
+    "name": "Платеж от 2026-05-29",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "41",
+    "name": "Платеж от 2026-06-28",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "42",
+    "name": "Платеж от 2026-07-28",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "43",
+    "name": "Платеж от 2026-08-27",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "44",
+    "name": "Платеж от 2026-09-26",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "45",
+    "name": "Платеж от 2026-10-26",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "46",
+    "name": "Платеж от 2026-11-25",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "47",
+    "name": "Платеж от 2026-12-25",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "48",
+    "name": "Платеж от 2027-01-24",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "49",
+    "name": "Платеж от 2027-02-23",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "5",
+    "name": "Платеж от 2026-04-16",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "50",
+    "name": "Платеж от 2027-03-25",
+    "details": "Сумма: 7488.48",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "3",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "6",
+    "name": "Платеж от 2026-05-16",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "7",
+    "name": "Платеж от 2026-06-15",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "8",
+    "name": "Платеж от 2026-07-15",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payment_schedule",
+    "id": "9",
+    "name": "Платеж от 2026-08-14",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Статус: Ожидает оплаты",
+    "unique_identifier": "1",
+    "sort_order": 10
+  },
+  {
+    "source_table": "payments",
+    "id": "1",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-11-07 14:26:46",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "10",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-09-15 03:14:41",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "11",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-11-19 21:00:51",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "12",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Счет: 12",
+    "unique_identifier": "2025-10-17 16:12:10",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "13",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Счет: 12",
+    "unique_identifier": "2025-08-30 07:17:28",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "14",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 6365.15",
+    "additional_info": "Счет: 12",
+    "unique_identifier": "2025-11-14 12:30:18",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "2",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-10-16 02:11:33",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "3",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-09-27 07:26:55",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "4",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-09-21 22:44:11",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "5",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-09-06 10:27:24",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "6",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-09-24 22:04:22",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "7",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-09-03 19:47:35",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "8",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-09-29 20:19:26",
+    "sort_order": 11
+  },
+  {
+    "source_table": "payments",
+    "id": "9",
+    "name": "Платеж Погашение кредита",
+    "details": "Сумма: 19639.11",
+    "additional_info": "Счет: 20",
+    "unique_identifier": "2025-10-19 09:53:50",
+    "sort_order": 11
+  }
+]

@@ -1,2 +1,0 @@
-data1series1:125.50
-data2series1:50.00

@@ -9,6 +9,26 @@
             "name": "loan_system_database",
             "database": "loan_system",
             "username": "postgres"
+        },
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "CockroachDB",
+            "name": "practicum",
+            "database": "pktest",
+            "username": "postgres"
+        },
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "lb3",
+            "database": "student_labs",
+            "username": "postgres"
         }
     ]
 }

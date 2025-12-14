@@ -17,15 +17,8 @@
     <div class="container">
         <h1>Лабораторная работа: Базы данных и SQL (PostgreSQL)</h1>
         
-        <div class="section">
-            <h2>Создание таблиц</h2>
-            <button onclick="runSQL('create')">Создать таблицы</button>
-        </div>
-        
-        <div class="section">
-            <h2>Вставка данных</h2>
-            <button onclick="runSQL('insert')">Вставить данные</button>
-        </div>
+
+    
         
         <div class="section">
             <h2>Выполнение запросов</h2>

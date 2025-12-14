@@ -1,0 +1,111 @@
+{
+  "name": "loan-system",
+  "version": "1.0.0",
+  "description": "Система управления кредитованием - полный жизненный цикл кредитного продукта",
+  "type": "web-application",
+  "technology_stack": {
+    "backend": "PHP 7.4+",
+    "frontend": "HTML5, CSS3, Vanilla JavaScript",
+    "database": "PostgreSQL 12+",
+    "server": "Apache/Nginx"
+  },
+  "features": {
+    "core": [
+      "Управление клиентской базой",
+      "Обработка кредитных заявок",
+      "Система управления блокировками",
+      "Создание кредитных договоров",
+      "Управление платежами",
+      "Ведение счетов"
+    ],
+    "lock_management": {
+      "timeout_minutes": 30,
+      "auto_release": true,
+      "concurrent_access_prevention": true
+    }
+  },
+  "installation": {
+    "step1": "Создать БД: CREATE DATABASE loan_system;",
+    "step2": "Инициализировать: php setup_db.php",
+    "step3": "Создать демо-данные: php create_demo_data.php",
+    "step4": "Запустить: php -S localhost:8000 router.php -t . (из корня проекта — так `/api` маршрутизируется к /api/index.php)"
+  },
+  "demo_credentials": {
+    "usernames": ["user_1", "user_2", "user_3", "user_4", "user_5", "user_6", "user_7", "user_8", "user_9", "user_10"],
+    "password": "username (same as login, e.g. user_1)"
+  },
+  "api_endpoints": {
+    "applications": {
+      "GET": "/api/applications",
+      "GET_BY_ID": "/api/applications/{id}",
+      "PUT": "/api/applications/{id}",
+      "LOCK": "POST /api/applications/{id}/lock",
+      "UNLOCK": "DELETE /api/applications/{id}/lock",
+      "APPROVE": "POST /api/applications/{id}/approve",
+      "REJECT": "POST /api/applications/{id}/reject"
+    },
+    "clients": {
+      "GET": "/api/clients",
+      "GET_BY_ID": "/api/clients/{id}",
+      "PUT": "/api/clients/{id}",
+      "DOCUMENTS": "/api/clients/{id}/documents",
+      "HISTORY": "/api/clients/{id}/history"
+    },
+    "reference": {
+      "EMPLOYEES": "/api/employees",
+      "PRODUCTS": "/api/products",
+      "AUTH": "POST /api/auth"
+    }
+  },
+  "database_tables": {
+    "employees": "Сотрудники банка",
+    "clients": "Клиенты",
+    "loan_products": "Кредитные продукты",
+    "documents": "Документы клиентов",
+    "credit_history": "История кредитов",
+    "credit_applications": "Кредитные заявки",
+    "application_documents": "Документы к заявкам",
+    "accounts": "Счета клиентов",
+    "credit_contracts": "Кредитные договоры",
+    "payment_schedule": "График платежей",
+    "payments": "История платежей",
+    "application_locks": "Блокировки заявок"
+  },
+  "file_structure": {
+    "api/": {
+      "config/": "Конфигурация и константы",
+      "models/": "Модели данных",
+      "index.php": "API обработчик"
+    },
+    "frontend/": {
+      "assets/": {
+        "css/": "Стили приложения",
+        "js/": "JavaScript логика"
+      },
+      "index.html": "Главная страница"
+    }
+  },
+  "algorithm_42": {
+    "name": "ОБРАБОТАТЬ ЗАЯВКУ",
+    "steps": [
+      "Перейти на вкладку 'Обработать заявки'",
+      "Выбрать заявку из списка",
+      "Проверить блокировку",
+      "Если занято: получить ошибку",
+      "Если свободно: установить блокировку (30 минут)",
+      "Редактировать заявку",
+      "Выбрать: Одобрить или Отклонить",
+      "Система автоматически снимает блокировку",
+      "Обновить список заявок"
+    ]
+  },
+  "security_notes": {
+    "demo": "Пароли хешируются в демо-скриптах; пароль по умолчанию = логин (например, user_1)",
+    "production": "Add password hashing, HTTPS, CSRF protection, audit logging"
+  },
+  "authors": [
+    "AI Assistant - System Design & Implementation"
+  ],
+  "license": "Internal Use",
+  "last_updated": "2024-12-14"
+}

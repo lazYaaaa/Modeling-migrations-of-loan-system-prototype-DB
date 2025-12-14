@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система управления кредитованием</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="login-page" class="login-container" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div style="background: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); width: 100%; max-width: 400px;">
+            <h1 style="text-align: center; color: #333; margin-bottom: 30px;">Система управления кредитованием</h1>
+            
+            <div class="form-group">
+                <label for="login-input">Логин</label>
+                <input type="text" id="login-input" placeholder="Введите ваш логин">
+            </div>
+            
+            <div class="form-group">
+                <label for="password-input">Пароль</label>
+                <input type="password" id="password-input" placeholder="Введите пароль">
+            </div>
+            
+            <button class="btn btn-primary" style="width: 100%; padding: 12px;" onclick="login()">Войти</button>
+            
+            <p style="text-align: center; margin-top: 20px; color: #999; font-size: 14px;">
+                Используйте данные из таблицы employees для входа<br>
+                Примеры: user_1, user_2, user_3
+            </p>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app-container" style="display: none; min-height: 100vh; flex-direction: column;">
+        <div class="container">
+            <!-- Header -->
+            <header>
+                <div>
+                    <h1>💳 Система управления кредитованием</h1>
+                </div>
+                <div class="user-info">
+                    <p>Добро пожаловать, <strong id="user-name">...</strong></p>
+                    <p style="font-size: 14px; color: #ddd;" id="user-position">...</p>
+                    <button class="logout-btn" onclick="logout()">Выход</button>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <!-- Navigation -->
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active" onclick="showPage('applications'); return false;">📋 Заявки</a></li>
+                        <li><a href="#" onclick="showPage('clients'); return false;">👥 Клиенты</a></li>
+                        <li><a href="#" onclick="showPage('products'); return false;">💰 Продукты</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Content -->
+                <div class="content">
+                    <!-- Applications Page -->
+                    <div id="applications" class="page active">
+                        <h2>📋 Управление кредитными заявками</h2>
+                        
+                        <div class="alert alert-info" style="display: block;">
+                            <strong>Инструкция:</strong> На этой странице вы можете просматривать все кредитные заявки, 
+                            обрабатывать их (одобрять или отклонять), а также управлять блокировками заявок для 
+                            эксклюзивного доступа при обработке.
+                        </div>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Клиент</th>
+                                    <th>Продукт</th>
+                                    <th>Сумма</th>
+                                    <th>Статус</th>
+                                    <th>Блокировка</th>
+                                    <th>Заблокирована</th>
+                                    <th>Ответственный</th>
+                                    <th>Действие</th>
+                                </tr>
+                            </thead>
+                            <tbody id="applications-tbody">
+                                <tr><td colspan="9" style="text-align: center; padding: 20px;">Загрузка...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Clients Page -->
+                    <div id="clients" class="page">
+                        <h2>👥 Управление клиентами</h2>
+                        
+                        <div class="alert alert-info" style="display: block;">
+                            <strong>Инструкция:</strong> На этой странице вы можете просматривать информацию о всех клиентах банка, 
+                            включая их персональные данные и контактную информацию.
+                        </div>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>ФИО</th>
+                                    <th>Паспорт</th>
+                                    <th>Телефон</th>
+                                    <th>Адрес</th>
+                                    <th>Действие</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clients-tbody">
+                                <tr><td colspan="6" style="text-align: center; padding: 20px;">Загрузка...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Products Page -->
+                    <div id="products" class="page">
+                        <h2>💰 Кредитные продукты</h2>
+                        
+                        <div class="alert alert-info" style="display: block;">
+                            <strong>Инструкция:</strong> На этой странице отображаются все доступные кредитные продукты с их 
+                            параметрами (минимальная/максимальная сумма, срок, процентная ставка).
+                        </div>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Название</th>
+                                    <th>Min сумма</th>
+                                    <th>Max сумма</th>
+                                    <th>Срок (месяцы)</th>
+                                    <th>Ставка (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-tbody">
+                                <tr><td colspan="6" style="text-align: center; padding: 20px;">Загрузка...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="app-modal" class="modal"></div>
+    <div id="client-modal" class="modal"></div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
