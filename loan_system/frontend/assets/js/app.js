@@ -475,7 +475,17 @@ function enableApplicationEdit(appId, status, lockedById) {
             startLockTimer(appId);
             showAlert('Заявка заблокирована для вас на 10 минут', 'success');
         } else {
-            showAlert(`Заявка уже обрабатывается: ${data.locked_by}`, 'error');
+            // Check if current user is the one who locked it
+            if (parseInt(data.locked_by) === currentUser.id) {
+                // User already has the lock, allow editing
+                document.getElementById('app-edit-controls').style.display = 'block';
+                document.getElementById('edit-btn').style.display = 'none';
+                document.getElementById('lock-status-text').textContent = '✓ Вы уже имеете доступ к этой заявке';
+                document.getElementById('lock-status-text').style.color = '#2b8a3e';
+                startLockTimer(appId);
+            } else {
+                showAlert(`Заявка уже обрабатывается другим сотрудником`, 'error');
+            }
         }
     })
     .catch(err => {
@@ -853,11 +863,12 @@ let availableProducts = [];
 function submitCreateApplication() {
     const clientId = document.getElementById('create-client').value;
     const productId = parseInt(document.getElementById('create-product').value);
-    const amount = document.getElementById('create-amount').value;
+    const amountInput = document.getElementById('create-amount').value;
+    const amount = parseFloat(amountInput);
     
     // Validate
-    if (!clientId || !productId || !amount) {
-        showAlert('Заполните все поля', 'error');
+    if (!clientId || !productId || !amountInput || isNaN(amount)) {
+        showAlert('Заполните все поля корректно', 'error');
         return;
     }
     
@@ -869,8 +880,12 @@ function submitCreateApplication() {
         return;
     }
     
-    if (amount < product.min_amount || amount > product.max_amount) {
-        showAlert(`Сумма должна быть между ${formatNumber(product.min_amount)} и ${formatNumber(product.max_amount)} ₽`, 'error');
+    // Ensure min_amount and max_amount are numbers for comparison
+    const minAmount = parseFloat(product.min_amount);
+    const maxAmount = parseFloat(product.max_amount);
+    
+    if (amount < minAmount || amount > maxAmount) {
+        showAlert(`Сумма должна быть между ${formatNumber(minAmount)} и ${formatNumber(maxAmount)} ₽`, 'error');
         return;
     }
     

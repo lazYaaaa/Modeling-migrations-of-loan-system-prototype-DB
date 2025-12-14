@@ -49,11 +49,14 @@ class Application {
                 lp.max_amount,
                 lp.min_term,
                 lp.max_term,
-                lp.base_interest_rate
+                lp.base_interest_rate,
+                al.timeout_at,
+                al.locked_by
             FROM credit_applications ca
             JOIN clients cl ON ca.client_id = cl.client_id
             JOIN employees e ON ca.employee_id = e.employee_id
             JOIN loan_products lp ON ca.product_id = lp.product_id
+            LEFT JOIN application_locks al ON ca.application_id = al.application_id
             WHERE ca.application_id = ?
         ";
         
