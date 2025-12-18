@@ -93,7 +93,7 @@ try {
     
 } catch (Exception $e) {
     $pdo->rollBack();
-    echo "✗ Ошибка: " . $e->getMessage() . "\n";
+    echo "Ошибка: " . $e->getMessage() . "\n";
     exit(1);
 }
 ?>

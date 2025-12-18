@@ -2,42 +2,35 @@
 session_start();
 header('Content-Type: application/json');
 
-// Load configuration (files are inside api/config)
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/config/constants.php';
 
-// Load models (inside api/models)
 require_once __DIR__ . '/models/Lock.php';
 require_once __DIR__ . '/models/Application.php';
 require_once __DIR__ . '/models/Client.php';
 require_once __DIR__ . '/models/Employee.php';
 require_once __DIR__ . '/models/LoanProduct.php';
 
-// Initialize models
 $lock = new Lock($pdo);
 $application = new Application($pdo);
 $client = new Client($pdo);
 $employee = new Employee($pdo);
 $product = new LoanProduct($pdo);
 
-// Simple authentication - in production use proper sessions
 $_SESSION['employee_id'] = $_SESSION['employee_id'] ?? 1;
 
 $method = $_SERVER['REQUEST_METHOD'];
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-// Normalize path: remove leading /api or /api/ so routing works under router.php
 $path = preg_replace('#^/api/?#', '', $path);
 
 $response = ['success' => false, 'data' => null, 'error' => null];
 
 try {
-    // Routes
     if ($path === 'applications') {
         if ($method === 'GET') {
             $response['data'] = $application->getAllApplications();
             $response['success'] = true;
         } elseif ($method === 'POST') {
-            // Create new application
             try {
                 $input = file_get_contents('php://input');
                 $data = json_decode($input, true);
@@ -56,7 +49,6 @@ try {
                     http_response_code(401);
                     $response['error'] = 'Not authenticated. Employee ID not set in session.';
                 } else {
-                    // Validate that client and product exist
                     $client_check = $pdo->prepare("SELECT client_id FROM clients WHERE client_id = ?");
                     $client_check->execute([$data['client_id']]);
                     if (!$client_check->fetch()) {
@@ -110,17 +102,29 @@ try {
         
         elseif ($method === 'PUT') {
             $data = json_decode(file_get_contents('php://input'), true);
+            $employee_id = $_SESSION['employee_id'] ?? null;
             
-            if (isset($data['amount'])) {
-                $application->updateApplicationAmount($app_id, $data['amount']);
+            if (!$employee_id) {
+                http_response_code(401);
+                $response['error'] = 'Not authenticated';
+            } else {
+                $lock_check = $lock->isLocked($app_id);
+                if ($lock_check && (int)$lock_check['locked_by'] !== (int)$employee_id) {
+                    http_response_code(403);
+                    $response['error'] = 'This application is locked by another employee';
+                } else {
+                    if (isset($data['amount'])) {
+                        $application->updateApplicationAmount($app_id, $data['amount']);
+                    }
+                    
+                    if (isset($data['status'])) {
+                        $application->updateApplicationStatus($app_id, $data['status']);
+                    }
+                    
+                    $response['data'] = $application->getApplicationById($app_id);
+                    $response['success'] = true;
+                }
             }
-            
-            if (isset($data['status'])) {
-                $application->updateApplicationStatus($app_id, $data['status']);
-            }
-            
-            $response['data'] = $application->getApplicationById($app_id);
-            $response['success'] = true;
         }
     }
     
@@ -131,7 +135,6 @@ try {
         if ($method === 'POST') {
             $result = $lock->acquireLock($app_id, $employee_id, LOCK_TIMEOUT);
             if ($result['success']) {
-                // Fetch the actual lock data to get timeout_at
                 $lockData = $lock->isLocked($app_id);
                 $response['success'] = true;
                 $response['data'] = [
@@ -276,7 +279,6 @@ try {
     }
     
     elseif ($path === 'state/locks-enabled') {
-        // Get/Set global locks enabled state (stored in database, not session)
         if ($method === 'GET') {
             try {
                 $sql = "SELECT value FROM app_settings WHERE key = 'locks_enabled' LIMIT 1";
@@ -284,7 +286,7 @@ try {
                 $stmt->execute();
                 $result = $stmt->fetch();
                 
-                $enabled = true; // Default to true
+                $enabled = true;
                 if ($result) {
                     $enabled = $result['value'] === 'true' || $result['value'] === '1';
                 }
@@ -292,7 +294,6 @@ try {
                 $response['success'] = true;
                 $response['data'] = ['enabled' => $enabled];
             } catch (Exception $e) {
-                // Table might not exist yet, return default
                 $response['success'] = true;
                 $response['data'] = ['enabled' => true];
             }
@@ -309,7 +310,6 @@ try {
                 )";
                 $pdo->exec($sql);
                 
-                // Upsert the setting
                 $sql = "INSERT INTO app_settings (key, value, updated_at) 
                        VALUES ('locks_enabled', ?, CURRENT_TIMESTAMP)
                        ON CONFLICT (key) DO UPDATE SET value = ?, updated_at = CURRENT_TIMESTAMP";

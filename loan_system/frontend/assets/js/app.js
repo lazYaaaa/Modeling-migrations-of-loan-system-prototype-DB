@@ -18,7 +18,6 @@ class StateManager {
                 this.locksEnabled = data.data.enabled;
             }
         } catch (e) {
-            console.log('StateManager init: using default locks enabled = true');
         }
         
 
@@ -55,7 +54,7 @@ class StateManager {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ enabled })
-        }).catch(e => console.error('Failed to persist locks state:', e));
+        }).catch(e => {});
     }
     
     setApplicationLock(appId, timeout_at, locked_by) {
@@ -130,8 +129,6 @@ function login() {
                 showAlert((data && data.error) || 'Ошибка входа', 'error');
             }
         } catch (e) {
-            console.error('Login error: could not parse response', text);
-
             if (text && text.trim().startsWith('<!DOCTYPE')) {
                 showAlert('Сервер вернул HTML вместо JSON. Запустите PHP-сервер из корня проекта, например:\nphp -S localhost:8000 -t .\nи откройте http://localhost:8000/frontend', 'error');
             } else {
@@ -140,7 +137,6 @@ function login() {
         }
     })
     .catch(err => {
-        console.error('Login error:', err);
         showAlert('Ошибка подключения к серверу', 'error');
     });
 }
@@ -232,7 +228,7 @@ function loadApplications() {
                 renderApplicationsTable(data.data);
             }
         })
-        .catch(err => console.error('Load applications error:', err));
+        .catch(err => {});
 }
 
 // Toggle locks globally
@@ -285,11 +281,13 @@ function renderApplicationsTable(applications) {
         let lockBadge = '';
         let timerText = '';
         
-        if (app.lock_id) {
+        const isLocked = app.timeout_at && new Date(app.timeout_at).getTime() > new Date().getTime();
+        
+        if (isLocked) {
             const remaining = stateManager.getTimeRemaining(app.application_id);
             if (remaining > 0) {
                 timerText = `⏱️ ${remaining}м`;
-                lockBadge = `<span class="lock-indicator locked" data-app-lock-timer="${app.application_id}" style="cursor: pointer; color: #fff; background: #ff6b6b;" title="Обновляется каждые 10 секунд">${timerText}</span>`;
+                lockBadge = `<span class="lock-indicator locked" data-app-lock-timer="${app.application_id}" style="cursor: pointer; color: #fff; background: #ff6b6b;" title="Блокировка еще активна">${timerText}</span>`;
             } else {
                 timerText = '🔓 Свободна';
                 lockBadge = `<span class="lock-indicator unlocked" data-app-lock-timer="${app.application_id}">${timerText}</span>`;
@@ -327,7 +325,7 @@ function openApplicationDetail(appId) {
                 showApplicationModal(data.data);
             }
         })
-        .catch(err => console.error('Load detail error:', err));
+        .catch(err => {});
 }
 
 
@@ -481,10 +479,7 @@ function enableApplicationEdit(appId, status, lockedById) {
             }
         }
     })
-    .catch(err => {
-        console.error('Lock error:', err);
-        showAlert('Ошибка при попытке блокировки заявки', 'error');
-    });
+    .catch(err => {});
 }
 
 
@@ -502,7 +497,7 @@ function releaseLock(appId) {
             showAlert('Блокировка заявки снята', 'info');
         }
     })
-    .catch(err => console.error('Unlock error:', err));
+    .catch(err => {});
 }
 
 
@@ -563,7 +558,7 @@ function approveApplication(appId) {
             body: JSON.stringify({ amount: parseFloat(amount) })
         })
         .then(res => res.json())
-        .catch(err => console.error('Update error:', err));
+        .catch(err => {});
     }
     
     // Then approve and create contract
@@ -582,10 +577,7 @@ function approveApplication(appId) {
             showAlert(data.error || 'Ошибка при одобрении заявки', 'error');
         }
     })
-    .catch(err => {
-        console.error('Approve error:', err);
-        showAlert('Ошибка при обработке заявки', 'error');
-    });
+    .catch(err => {});
 }
 
 // Reject application
@@ -605,10 +597,7 @@ function rejectApplication(appId) {
             showAlert(data.error || 'Ошибка при отклонении заявки', 'error');
         }
     })
-    .catch(err => {
-        console.error('Reject error:', err);
-        showAlert('Ошибка при обработке заявки', 'error');
-    });
+    .catch(err => {});
 }
 
 // Load clients
@@ -620,7 +609,7 @@ function loadClients() {
                 renderClientsTable(data.data);
             }
         })
-        .catch(err => console.error('Load clients error:', err));
+        .catch(err => {});
 }
 
 // Render clients table
@@ -654,7 +643,7 @@ function openClientDetail(clientId) {
                 showClientModal(data.data);
             }
         })
-        .catch(err => console.error('Load client error:', err));
+        .catch(err => {});
 }
 
 function showClientModal(client) {
@@ -700,7 +689,7 @@ function loadProducts() {
                 renderProductsTable(data.data);
             }
         })
-        .catch(err => console.error('Load products error:', err));
+        .catch(err => {});
 }
 
 // Render products table
@@ -837,10 +826,7 @@ function showCreateApplicationModal() {
         modal.innerHTML = content;
         modal.classList.add('active');
     })
-    .catch(err => {
-        console.error('Error loading data:', err);
-        showAlert('Ошибка загрузки данных', 'error');
-    });
+    .catch(err => {});
 }
 
 function updateProductInfo() {
@@ -865,8 +851,6 @@ function submitCreateApplication() {
     
     const product = availableProducts.find(p => parseInt(p.product_id) === productId);
     if (!product) {
-        console.error('Available products:', availableProducts);
-        console.error('Looking for productId:', productId);
         showAlert('Продукт не найден', 'error');
         return;
     }
@@ -897,12 +881,10 @@ function submitCreateApplication() {
             closeModal('app-modal');
             loadApplications();
         } else {
-            console.error('API Error:', data);
             showAlert(data.error || 'Ошибка при создании заявки', 'error');
         }
     })
     .catch(err => {
-        console.error('Create error:', err);
         showAlert('Ошибка при создании заявки', 'error');
     });
 }

@@ -81,10 +81,8 @@ class Application {
         try {
             $this->pdo->beginTransaction();
             
-            // Get application data
             $app = $this->getApplicationById($application_id);
             
-            // Create account
             $account_sql = "INSERT INTO accounts (client_id, account_number, account_type, current_balance) 
                            VALUES (?, ?, ?, ?)";
             $stmt = $this->pdo->prepare($account_sql);
@@ -92,7 +90,6 @@ class Application {
             $stmt->execute([$app['client_id'], $account_number, 'Кредитный счет', 0]);
             $account_id = $this->pdo->lastInsertId();
             
-            // Create contract
             $contract_sql = "INSERT INTO credit_contracts 
                            (application_id, product_id, account_id, contract_number, signing_date, 
                             loan_amount, interest_rate, loan_term) 
@@ -107,15 +104,13 @@ class Application {
                 date('Y-m-d'),
                 $app['requested_amount'],
                 $app['base_interest_rate'],
-                12 // Default term 12 months
+                12
             ]);
             $contract_id = $this->pdo->lastInsertId();
             
-            // Generate payment schedule (annuity)
             $this->generatePaymentSchedule($contract_id, $app['requested_amount'], 
                                          $app['base_interest_rate'], 12);
             
-            // Update account balance
             $update_balance = "UPDATE accounts SET current_balance = ? WHERE account_id = ?";
             $stmt = $this->pdo->prepare($update_balance);
             $stmt->execute([$app['requested_amount'], $account_id]);
@@ -134,7 +129,6 @@ class Application {
     }
     
     private function generatePaymentSchedule($contract_id, $amount, $rate, $months) {
-        // Calculate annuity payment
         $monthly_rate = $rate / 100 / 12;
         $payment = $amount * ($monthly_rate * pow(1 + $monthly_rate, $months)) / 
                    (pow(1 + $monthly_rate, $months) - 1);
