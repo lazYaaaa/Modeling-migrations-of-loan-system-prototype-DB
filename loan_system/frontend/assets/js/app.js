@@ -272,6 +272,14 @@ function renderApplicationsTable(applications) {
         });
     }
     
+    applications.forEach(app => {
+        if (app.timeout_at && new Date(app.timeout_at).getTime() > new Date().getTime()) {
+            stateManager.setApplicationLock(app.application_id, app.timeout_at, app.locked_by);
+        } else {
+            stateManager.clearApplicationLock(app.application_id);
+        }
+    });
+    
     const tbody = document.getElementById('applications-tbody');
     tbody.innerHTML = '';
     
