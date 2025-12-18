@@ -81,5 +81,20 @@ class Lock {
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$application_id]);
     }
+    
+    /**
+     * Проверяет, что заявка заблокирована именно этим сотрудником
+     * и блокировка ещё активна
+     * Физическая защита от изменения чужой заявки
+     */
+    public function verifyLockOwnership($application_id, $employee_id) {
+        $sql = "SELECT * FROM $this->locks_table 
+                WHERE application_id = ? 
+                AND locked_by = ? 
+                AND timeout_at > NOW()";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$application_id, $employee_id]);
+        return $stmt->fetch() ? true : false;
+    }
 }
 ?>

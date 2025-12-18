@@ -108,11 +108,21 @@ try {
                 http_response_code(401);
                 $response['error'] = 'Not authenticated';
             } else {
-                $lock_check = $lock->isLocked($app_id);
-                if ($lock_check && (int)$lock_check['locked_by'] !== (int)$employee_id) {
-                    http_response_code(403);
-                    $response['error'] = 'This application is locked by another employee';
+                // ФИЗИЧЕСКАЯ БЛОКИРОВКА: проверяем, что блокировка есть и принадлежит этому сотруднику
+                $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
+                
+                if (!$has_lock) {
+                    // Проверяем, может быть заблокирована кем-то другим
+                    $lock_check = $lock->isLocked($app_id);
+                    if ($lock_check) {
+                        http_response_code(403);
+                        $response['error'] = 'This application is locked by another employee';
+                    } else {
+                        http_response_code(403);
+                        $response['error'] = 'This application is not locked or lock has expired. You must acquire a lock before editing.';
+                    }
                 } else {
+                    // Блокировка валидна — можем редактировать
                     if (isset($data['amount'])) {
                         $application->updateApplicationAmount($app_id, $data['amount']);
                     }
@@ -166,27 +176,45 @@ try {
     
     elseif (preg_match('/^applications\/(\d+)\/approve$/', $path, $matches)) {
         $app_id = $matches[1];
+        $employee_id = $_SESSION['employee_id'];
         
         if ($method === 'POST') {
-            $result = $application->createContract($app_id, $_SESSION['employee_id']);
-            if ($result['success']) {
-                $application->updateApplicationStatus($app_id, STATUS_APPROVED);
-                $lock->releaseLock($app_id);
-                $response['success'] = true;
-                $response['data'] = $result;
+            // ФИЗИЧЕСКАЯ БЛОКИРОВКА: проверяем, что заявка заблокирована этим сотрудником
+            $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
+            
+            if (!$has_lock) {
+                http_response_code(403);
+                $response['error'] = 'Cannot approve: application is not locked by you or lock has expired';
             } else {
-                $response['error'] = $result['error'];
+                $result = $application->createContract($app_id, $employee_id);
+                if ($result['success']) {
+                    $application->updateApplicationStatus($app_id, STATUS_APPROVED);
+                    $lock->releaseLock($app_id);
+                    $response['success'] = true;
+                    $response['data'] = $result;
+                } else {
+                    $response['error'] = $result['error'];
+                }
             }
         }
     }
     
     elseif (preg_match('/^applications\/(\d+)\/reject$/', $path, $matches)) {
         $app_id = $matches[1];
+        $employee_id = $_SESSION['employee_id'];
         
         if ($method === 'POST') {
-            $application->updateApplicationStatus($app_id, STATUS_ARCHIVED);
-            $lock->releaseLock($app_id);
-            $response['success'] = true;
+            // ФИЗИЧЕСКАЯ БЛОКИРОВКА: проверяем, что заявка заблокирована этим сотрудником
+            $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
+            
+            if (!$has_lock) {
+                http_response_code(403);
+                $response['error'] = 'Cannot reject: application is not locked by you or lock has expired';
+            } else {
+                $application->updateApplicationStatus($app_id, STATUS_ARCHIVED);
+                $lock->releaseLock($app_id);
+                $response['success'] = true;
+            }
         }
     }
     
