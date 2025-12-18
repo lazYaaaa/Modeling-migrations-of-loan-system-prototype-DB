@@ -413,7 +413,7 @@
 ### JavaScript (Fetch API)
 
 ```javascript
-// Вход
+
 fetch('http://localhost:8000/api/auth', {
   method: 'POST',
   headers: {

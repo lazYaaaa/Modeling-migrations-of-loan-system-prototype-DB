@@ -23,12 +23,11 @@ class Lock {
         try {
             $this->pdo->exec($sql);
         } catch (Exception $e) {
-            // Table might already exist
+
         }
     }
     
     public function isLocked($application_id) {
-        // Check if locked and not expired
         $sql = "SELECT * FROM $this->locks_table 
                 WHERE application_id = ? AND timeout_at > NOW()";
         $stmt = $this->pdo->prepare($sql);
@@ -37,7 +36,7 @@ class Lock {
     }
     
     public function acquireLock($application_id, $employee_id, $timeout_minutes = 30) {
-        // Remove expired locks first
+
         $this->removeExpiredLocks();
         
         // Check if already locked

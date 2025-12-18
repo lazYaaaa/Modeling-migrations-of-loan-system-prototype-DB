@@ -1,17 +1,16 @@
-// API Base URL - expects server root to be project root so API is available at /api
+
 const API_URL = '/api';
 
-// ============= Global State Manager =============
 class StateManager {
     constructor() {
         this.locksEnabled = true;
-        this.applicationLocks = {}; // { appId: { timeout_at, locked_by } }
+        this.applicationLocks = {}; 
         this.lockUpdateTimer = null;
         this.init();
     }
     
-    async init() {
-        // Load locks enabled state from server
+    async init() {P
+
         try {
             const res = await fetch(`${API_URL}/state/locks-enabled`);
             const data = await res.json();
@@ -22,24 +21,23 @@ class StateManager {
             console.log('StateManager init: using default locks enabled = true');
         }
         
-        // Start global timer to refresh lock statuses
+
         this.startLockStatusTimer();
     }
     
     startLockStatusTimer() {
-        // Update lock display every 10 seconds
         this.lockUpdateTimer = setInterval(() => {
             this.updateLockDisplay();
         }, 10000);
     }
     
     updateLockDisplay() {
-        // Update all lock indicators in the table
+
         document.querySelectorAll('[data-app-lock-timer]').forEach(el => {
             const appId = el.dataset.appLockTimer;
             const remaining = this.getTimeRemaining(appId);
             if (remaining > 0) {
-                // Show remaining minutes
+
                 el.textContent = `⏱️ ${remaining}м`;
                 el.style.color = remaining <= 2 ? '#fff' : '#fff';
                 el.style.background = remaining <= 2 ? '#c92a2a' : '#ff6b6b';
@@ -53,7 +51,6 @@ class StateManager {
     
     setLocksEnabled(enabled) {
         this.locksEnabled = enabled;
-        // Persist to server
         fetch(`${API_URL}/state/locks-enabled`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -85,14 +82,14 @@ class StateManager {
 
 const stateManager = new StateManager();
 
-// Global state
+
 let currentUser = null;
 let lockTimers = {};
 let statusFilter = 'all';
 
-// Initialize app
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if user is logged in
+
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
         currentUser = JSON.parse(savedUser);
@@ -102,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Login function
+
 function login() {
     const login = document.getElementById('login-input').value;
     const password = document.getElementById('password-input').value;
@@ -134,7 +131,7 @@ function login() {
             }
         } catch (e) {
             console.error('Login error: could not parse response', text);
-            // If server returned HTML (index.html), it's likely the built-in PHP server was started in the frontend folder.
+
             if (text && text.trim().startsWith('<!DOCTYPE')) {
                 showAlert('Сервер вернул HTML вместо JSON. Запустите PHP-сервер из корня проекта, например:\nphp -S localhost:8000 -t .\nи откройте http://localhost:8000/frontend', 'error');
             } else {
@@ -148,14 +145,14 @@ function login() {
     });
 }
 
-// Logout function
+
 function logout() {
     localStorage.removeItem('user');
     currentUser = null;
     location.reload();
 }
 
-// Initialize app
+
 function initializeApp() {
     // Wait for StateManager to initialize
     const checkStateManager = setInterval(() => {
@@ -166,7 +163,7 @@ function initializeApp() {
             document.getElementById('app-container').style.display = 'flex';
             updateUserInfo();
             
-            // Update UI to reflect current lock state (wait for it to be loaded)
+
             setTimeout(() => {
                 const btn = document.getElementById('toggle-locks-btn');
                 if (btn) {
@@ -190,7 +187,7 @@ function showLoginPage() {
     document.getElementById('login-page').style.display = 'flex';
 }
 
-// Update user info in header
+
 function updateUserInfo() {
     if (currentUser) {
         document.getElementById('user-name').textContent = currentUser.name;
@@ -198,22 +195,22 @@ function updateUserInfo() {
     }
 }
 
-// Navigation
+
 function showPage(pageId) {
-    // Hide all pages
+
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
     });
     
-    // Remove active from nav
+
     document.querySelectorAll('nav a').forEach(link => {
         link.classList.remove('active');
     });
     
-    // Show selected page
+
     document.getElementById(pageId).classList.add('active');
     
-    // Mark nav as active
+
     event.target.classList.add('active');
     
     // Load data based on page
@@ -256,7 +253,7 @@ function toggleLocksGlobally() {
 // Filter applications by status
 function filterApplicationsByStatus(status) {
     statusFilter = status;
-    // Update active filter button
+
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.status === status) {
@@ -266,9 +263,9 @@ function filterApplicationsByStatus(status) {
     loadApplications();
 }
 
-// Render applications table
+
 function renderApplicationsTable(applications) {
-    // Filter by status if selected
+
     let filtered = applications;
     if (statusFilter !== 'all') {
         filtered = applications.filter(app => {
@@ -321,7 +318,7 @@ function renderApplicationsTable(applications) {
     });
 }
 
-// Open application detail
+
 function openApplicationDetail(appId) {
     fetch(`${API_URL}/applications/${appId}`)
         .then(res => res.json())
@@ -333,11 +330,10 @@ function openApplicationDetail(appId) {
         .catch(err => console.error('Load detail error:', err));
 }
 
-// Show application modal
+
 function showApplicationModal(app) {
     const modal = document.getElementById('app-modal');
     
-    // Fill in the modal content
     const content = `
         <div class="modal-content">
             <div class="modal-header">
@@ -425,22 +421,21 @@ function showApplicationModal(app) {
     modal.innerHTML = content;
     modal.classList.add('active');
     
-    // Check if application is already locked
+
     if (app.status !== 'Новая' && app.status !== 'На рассмотрении') {
         document.getElementById('edit-btn').disabled = true;
         document.getElementById('edit-btn').textContent = 'Заявка уже обработана';
     }
 }
 
-// Enable application edit and acquire lock
+
 function enableApplicationEdit(appId, status, lockedById) {
-    // Check if already processed
     if (status !== 'Новая' && status !== 'На рассмотрении') {
         showAlert('Эта заявка уже обработана', 'warning');
         return;
     }
     
-    // Check if user is trying to lock own application
+
     if (lockedById && parseInt(lockedById) === currentUser.id) {
         showAlert('Эту заявку уже обрабатываете вы. Нажмите кнопку редактирования', 'warning');
         document.getElementById('app-edit-controls').style.display = 'block';
@@ -450,7 +445,6 @@ function enableApplicationEdit(appId, status, lockedById) {
         return;
     }
     
-    // If locks are disabled, allow direct edit
     if (!stateManager.locksEnabled) {
         document.getElementById('app-edit-controls').style.display = 'block';
         document.getElementById('edit-btn').style.display = 'none';
@@ -460,7 +454,7 @@ function enableApplicationEdit(appId, status, lockedById) {
         return;
     }
     
-    // Try to acquire lock
+
     fetch(`${API_URL}/applications/${appId}/lock`, {
         method: 'POST'
     })
@@ -475,9 +469,8 @@ function enableApplicationEdit(appId, status, lockedById) {
             startLockTimer(appId);
             showAlert('Заявка заблокирована для вас на 10 минут', 'success');
         } else {
-            // Check if current user is the one who locked it
+
             if (parseInt(data.locked_by) === currentUser.id) {
-                // User already has the lock, allow editing
                 document.getElementById('app-edit-controls').style.display = 'block';
                 document.getElementById('edit-btn').style.display = 'none';
                 document.getElementById('lock-status-text').textContent = '✓ Вы уже имеете доступ к этой заявке';
@@ -494,7 +487,7 @@ function enableApplicationEdit(appId, status, lockedById) {
     });
 }
 
-// Release lock
+
 function releaseLock(appId) {
     fetch(`${API_URL}/applications/${appId}/lock`, {
         method: 'DELETE'
@@ -512,7 +505,7 @@ function releaseLock(appId) {
     .catch(err => console.error('Unlock error:', err));
 }
 
-// Start lock timer
+
 function startLockTimer(appId) {
     const timerInterval = setInterval(() => {
         fetch(`${API_URL}/applications/${appId}`)
@@ -653,7 +646,6 @@ function renderClientsTable(clients) {
     });
 }
 
-// Open client detail
 function openClientDetail(clientId) {
     fetch(`${API_URL}/clients/${clientId}`)
         .then(res => res.json())
@@ -665,7 +657,6 @@ function openClientDetail(clientId) {
         .catch(err => console.error('Load client error:', err));
 }
 
-// Show client modal
 function showClientModal(client) {
     const modal = document.getElementById('client-modal');
     

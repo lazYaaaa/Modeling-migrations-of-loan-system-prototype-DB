@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/api/config/database.php';
 
-echo "=== Fixing empty employee password_hash fields ===\n\n";
 
 $stmt = $pdo->query("SELECT employee_id, login, full_name, password_hash FROM employees");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -6,7 +6,6 @@
 
 require_once __DIR__ . '/api/config/database.php';
 
-echo "=== Инициализация базы данных ===\n\n";
 
 try {
     // Check if tables exist

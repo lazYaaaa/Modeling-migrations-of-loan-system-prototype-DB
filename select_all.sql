@@ -130,3 +130,5 @@ SELECT * FROM (
     FROM payments
 ) AS all_data
 ORDER BY sort_order, id;
+
+select * from employees;
