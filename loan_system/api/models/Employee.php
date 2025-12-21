@@ -21,7 +21,6 @@ class Employee {
     }
     
     public function authenticate($login, $password = null) {
-        // Authenticate using stored password hash
         $sql = "SELECT * FROM employees WHERE login = ? AND status = 'Активен'";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$login]);

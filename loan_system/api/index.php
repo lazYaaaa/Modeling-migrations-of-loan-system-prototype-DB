@@ -5,6 +5,17 @@ header('Content-Type: application/json; charset=utf-8');
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/config/constants.php';
 
+if (isset($_SESSION['last_activity'])) {
+    $inactive = time() - $_SESSION['last_activity'];
+    if ($inactive > SESSION_TIMEOUT * 60) {
+        session_destroy();
+        http_response_code(401);
+        echo json_encode(['success' => false, 'error' => 'Session expired']);
+        exit;
+    }
+}
+$_SESSION['last_activity'] = time();
+
 require_once __DIR__ . '/models/Lock.php';
 require_once __DIR__ . '/models/Application.php';
 require_once __DIR__ . '/models/Client.php';
@@ -26,7 +37,15 @@ $path = preg_replace('#^/api/?#', '', $path);
 $response = ['success' => false, 'data' => null, 'error' => null];
 
 try {
-    if ($path === 'applications') {
+    if ($path === 'session/refresh') {
+        if ($method === 'POST') {
+            $_SESSION['last_activity'] = time();
+            $response['success'] = true;
+            $response['data'] = ['message' => 'Session refreshed'];
+        }
+    }
+    
+    elseif ($path === 'applications') {
         if ($method === 'GET') {
             $response['data'] = $application->getAllApplications();
             $response['success'] = true;
@@ -63,7 +82,7 @@ try {
                     
                     $sql = "INSERT INTO credit_applications 
                            (client_id, employee_id, product_id, requested_amount, status)
-                           VALUES (?, ?, ?, ?, 'Новая')
+                           VALUES (?, ?, ?, ?, 'На рассмотрении')
                            RETURNING application_id";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute([
@@ -108,11 +127,9 @@ try {
                 http_response_code(401);
                 $response['error'] = 'Not authenticated';
             } else {
-                // ФИЗИЧЕСКАЯ БЛОКИРОВКА: проверяем, что блокировка есть и принадлежит этому сотруднику
                 $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
                 
                 if (!$has_lock) {
-                    // Проверяем, может быть заблокирована кем-то другим
                     $lock_check = $lock->isLocked($app_id);
                     if ($lock_check) {
                         http_response_code(403);
@@ -122,7 +139,6 @@ try {
                         $response['error'] = 'This application is not locked or lock has expired. You must acquire a lock before editing.';
                     }
                 } else {
-                    // Блокировка валидна — можем редактировать
                     if (isset($data['amount'])) {
                         $application->updateApplicationAmount($app_id, $data['amount']);
                     }
@@ -141,20 +157,26 @@ try {
     elseif (preg_match('/^applications\/(\d+)\/lock$/', $path, $matches)) {
         $app_id = $matches[1];
         $employee_id = $_SESSION['employee_id'];
+        $employee_role = $_SESSION['employee_role'] ?? null;
         
         if ($method === 'POST') {
-            $result = $lock->acquireLock($app_id, $employee_id, LOCK_TIMEOUT);
-            if ($result['success']) {
-                $lockData = $lock->isLocked($app_id);
-                $response['success'] = true;
-                $response['data'] = [
-                    'locked' => true,
-                    'timeout_at' => $lockData['timeout_at']
-                ];
+            if (!in_array($employee_role, ['manager', 'admin'])) {
+                http_response_code(403);
+                $response['error'] = 'Access denied: only manager or admin can lock applications';
             } else {
-                $response['error'] = 'Заявка уже обрабатывается другим сотрудником';
-                $response['locked_by'] = $result['locked_by'];
-                $response['timeout_at'] = $result['timeout_at'];
+                $result = $lock->acquireLock($app_id, $employee_id, LOCK_TIMEOUT);
+                if ($result['success']) {
+                    $lockData = $lock->isLocked($app_id);
+                    $response['success'] = true;
+                    $response['data'] = [
+                        'locked' => true,
+                        'timeout_at' => $lockData['timeout_at']
+                    ];
+                } else {
+                    $response['error'] = 'Заявка уже обрабатывается другим сотрудником';
+                    $response['locked_by'] = $result['locked_by'];
+                    $response['timeout_at'] = $result['timeout_at'];
+                }
             }
         }
         
@@ -214,7 +236,6 @@ try {
                 http_response_code(403);
                 $response['error'] = 'Access denied: only manager or admin can reject applications';
             } else {
-                // ФИЗИЧЕСКАЯ БЛОКИРОВКА: проверяем, что заявка заблокирована этим сотрудником
                 $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
                 
                 if (!$has_lock) {
@@ -355,7 +376,6 @@ try {
                 $data = json_decode(file_get_contents('php://input'), true);
                 $enabled = $data['enabled'] ? 'true' : 'false';
                 
-                // Create settings table if it doesn't exist
                 $sql = "CREATE TABLE IF NOT EXISTS app_settings (
                     key VARCHAR(100) PRIMARY KEY,
                     value TEXT,

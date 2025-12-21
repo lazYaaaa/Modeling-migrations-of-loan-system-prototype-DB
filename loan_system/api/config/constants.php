@@ -1,12 +1,11 @@
 <?php
-// Constants
 define('APP_NAME', 'Система управления кредитованием');
 define('APP_VERSION', '1.0.0');
 
+define('SESSION_TIMEOUT', 2);
+
 // Lock timeout in minutes
 define('LOCK_TIMEOUT', 10);
-
-// Application statuses
 define('STATUS_NEW', 'Новая');
 define('STATUS_PROCESSING', 'В работе');
 define('STATUS_APPROVED', 'Одобрена');

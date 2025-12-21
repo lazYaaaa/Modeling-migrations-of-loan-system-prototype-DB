@@ -39,7 +39,6 @@ class Lock {
 
         $this->removeExpiredLocks();
         
-        // Check if already locked
         $lock = $this->isLocked($application_id);
         if ($lock) {
             return [
@@ -50,7 +49,6 @@ class Lock {
             ];
         }
         
-        // Try to acquire lock
         try {
             $sql = "INSERT INTO $this->locks_table (application_id, locked_by, timeout_at) 
                     VALUES (?, ?, NOW() + INTERVAL '{$timeout_minutes} minutes')";
@@ -82,11 +80,6 @@ class Lock {
         return $stmt->execute([$application_id]);
     }
     
-    /**
-     * Проверяет, что заявка заблокирована именно этим сотрудником
-     * и блокировка ещё активна
-     * Физическая защита от изменения чужой заявки
-     */
     public function verifyLockOwnership($application_id, $employee_id) {
         $sql = "SELECT * FROM $this->locks_table 
                 WHERE application_id = ? 

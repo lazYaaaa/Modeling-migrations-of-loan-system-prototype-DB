@@ -100,6 +100,9 @@ const stateManager = new StateManager();
 let currentUser = null;
 let lockTimers = {};
 let statusFilter = 'all';
+let sessionRefreshTimer = null;
+const SESSION_TIMEOUT = 2 * 60 * 1000; // 2 minutes
+const SESSION_CHECK_INTERVAL = 30 * 1000; // Check every 30 seconds
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -165,13 +168,11 @@ function logout() {
 
 
 function initializeApp() {
-    // Загрузить актуальное состояние блокировок с сервера
     stateManager.getLocksEnabledFromServer().then(() => {
         document.getElementById('login-page').style.display = 'none';
         document.getElementById('app-container').style.display = 'flex';
         updateUserInfo();
         
-        // Обновить кнопку переключения блокировок
         const btn = document.getElementById('toggle-locks-btn');
         if (btn) {
             if (!stateManager.locksEnabled) {
@@ -182,6 +183,8 @@ function initializeApp() {
                 btn.textContent = '🔓 Блокировки включены';
             }
         }
+        
+        startSessionRefreshTimer();
         
         loadApplications();
     });
@@ -198,6 +201,33 @@ function updateUserInfo() {
         document.getElementById('user-name').textContent = currentUser.name;
         document.getElementById('user-position').textContent = currentUser.position;
     }
+}
+
+function startSessionRefreshTimer() {
+    if (sessionRefreshTimer) {
+        clearInterval(sessionRefreshTimer);
+    }
+    
+    sessionRefreshTimer = setInterval(() => {
+        if (currentUser) {
+            fetch(`${API_URL}/session/refresh`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.success) {
+                    console.warn('Сессия истекла, необходимо переавторизоваться');
+                    logout();
+                }
+            })
+            .catch(err => {
+                console.error('Ошибка обновления сессии:', err);
+            });
+        }
+    }, SESSION_CHECK_INTERVAL);
 }
 
 
