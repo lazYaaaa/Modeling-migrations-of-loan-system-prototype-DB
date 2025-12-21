@@ -1,6 +1,6 @@
 <?php
 session_start();
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/config/constants.php';
@@ -177,23 +177,28 @@ try {
     elseif (preg_match('/^applications\/(\d+)\/approve$/', $path, $matches)) {
         $app_id = $matches[1];
         $employee_id = $_SESSION['employee_id'];
+        $employee_role = $_SESSION['employee_role'] ?? null;
         
         if ($method === 'POST') {
-            // ФИЗИЧЕСКАЯ БЛОКИРОВКА: проверяем, что заявка заблокирована этим сотрудником
-            $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
-            
-            if (!$has_lock) {
+            if (!in_array($employee_role, ['manager', 'admin'])) {
                 http_response_code(403);
-                $response['error'] = 'Cannot approve: application is not locked by you or lock has expired';
+                $response['error'] = 'Access denied: only manager or admin can approve applications';
             } else {
-                $result = $application->createContract($app_id, $employee_id);
-                if ($result['success']) {
-                    $application->updateApplicationStatus($app_id, STATUS_APPROVED);
-                    $lock->releaseLock($app_id);
-                    $response['success'] = true;
-                    $response['data'] = $result;
+                $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
+                
+                if (!$has_lock) {
+                    http_response_code(403);
+                    $response['error'] = 'Cannot approve: application is not locked by you or lock has expired';
                 } else {
-                    $response['error'] = $result['error'];
+                    $result = $application->createContract($app_id, $employee_id);
+                    if ($result['success']) {
+                        $application->updateApplicationStatus($app_id, STATUS_APPROVED);
+                        $lock->releaseLock($app_id);
+                        $response['success'] = true;
+                        $response['data'] = $result;
+                    } else {
+                        $response['error'] = $result['error'];
+                    }
                 }
             }
         }
@@ -202,18 +207,24 @@ try {
     elseif (preg_match('/^applications\/(\d+)\/reject$/', $path, $matches)) {
         $app_id = $matches[1];
         $employee_id = $_SESSION['employee_id'];
+        $employee_role = $_SESSION['employee_role'] ?? null;
         
         if ($method === 'POST') {
-            // ФИЗИЧЕСКАЯ БЛОКИРОВКА: проверяем, что заявка заблокирована этим сотрудником
-            $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
-            
-            if (!$has_lock) {
+            if (!in_array($employee_role, ['manager', 'admin'])) {
                 http_response_code(403);
-                $response['error'] = 'Cannot reject: application is not locked by you or lock has expired';
+                $response['error'] = 'Access denied: only manager or admin can reject applications';
             } else {
-                $application->updateApplicationStatus($app_id, STATUS_ARCHIVED);
-                $lock->releaseLock($app_id);
-                $response['success'] = true;
+                // ФИЗИЧЕСКАЯ БЛОКИРОВКА: проверяем, что заявка заблокирована этим сотрудником
+                $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
+                
+                if (!$has_lock) {
+                    http_response_code(403);
+                    $response['error'] = 'Cannot reject: application is not locked by you or lock has expired';
+                } else {
+                    $application->updateApplicationStatus($app_id, STATUS_ARCHIVED);
+                    $lock->releaseLock($app_id);
+                    $response['success'] = true;
+                }
             }
         }
     }
@@ -288,19 +299,33 @@ try {
             if (!$login || !$password) {
                 $response['error'] = 'Missing login or password';
             } else {
-                $emp = $employee->authenticate($login, $password);
+
+                $sql = "SELECT * FROM employees WHERE login = ? AND status = 'Активен'";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([$login]);
+                $emp = $stmt->fetch();
+                
                 if ($emp) {
                     $_SESSION['employee_id'] = $emp['employee_id'];
                     $_SESSION['employee_name'] = $emp['full_name'];
+                    $_SESSION['employee_role'] = $emp['role'] ?? 'manager';
+                    $_SESSION['employee_position'] = $emp['position'];
+                    
+                    setcookie('last_login_user', $login, time() + 600, '/', '', false, true);
+                    setcookie('last_login_time', date('Y-m-d H:i:s'), time() + 600, '/', '', false, true);
+                    setcookie('employee_id', $emp['employee_id'], time() + 600, '/', '', false, true);
+                    setcookie('employee_role', $emp['role'] ?? 'manager', time() + 600, '/', '', false, true);
+                    
                     $response['success'] = true;
                     $response['data'] = [
                         'id' => $emp['employee_id'],
                         'name' => $emp['full_name'],
-                        'position' => $emp['position']
+                        'position' => $emp['position'],
+                        'role' => $emp['role'] ?? 'manager'
                     ];
                 } else {
                     http_response_code(401);
-                    $response['error'] = 'Invalid credentials';
+                    $response['error'] = 'Invalid login';
                 }
             }
         }

@@ -27,6 +27,7 @@ class StateManager {
     startLockStatusTimer() {
         this.lockUpdateTimer = setInterval(() => {
             this.updateLockDisplay();
+            this.getLocksEnabledFromServer().catch(e => {});
         }, 10000);
     }
     
@@ -55,6 +56,20 @@ class StateManager {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ enabled })
         }).catch(e => {});
+    }
+    
+    async getLocksEnabledFromServer() {
+        try {
+            const res = await fetch(`${API_URL}/state/locks-enabled`);
+            const data = await res.json();
+            if (data.success) {
+                this.locksEnabled = data.data.enabled;
+                return data.data.enabled;
+            }
+        } catch (e) {
+            console.error('Failed to fetch locks-enabled state:', e);
+        }
+        return this.locksEnabled;
     }
     
     setApplicationLock(appId, timeout_at, locked_by) {
@@ -150,32 +165,26 @@ function logout() {
 
 
 function initializeApp() {
-    // Wait for StateManager to initialize
-    const checkStateManager = setInterval(() => {
-        if (stateManager && stateManager.locksEnabled !== undefined) {
-            clearInterval(checkStateManager);
-            
-            document.getElementById('login-page').style.display = 'none';
-            document.getElementById('app-container').style.display = 'flex';
-            updateUserInfo();
-            
-
-            setTimeout(() => {
-                const btn = document.getElementById('toggle-locks-btn');
-                if (btn) {
-                    if (!stateManager.locksEnabled) {
-                        btn.classList.add('disabled');
-                        btn.textContent = '🔒 Блокировки отключены';
-                    } else {
-                        btn.classList.remove('disabled');
-                        btn.textContent = '🔓 Блокировки включены';
-                    }
-                }
-            }, 100)
-            
-            loadApplications();
+    // Загрузить актуальное состояние блокировок с сервера
+    stateManager.getLocksEnabledFromServer().then(() => {
+        document.getElementById('login-page').style.display = 'none';
+        document.getElementById('app-container').style.display = 'flex';
+        updateUserInfo();
+        
+        // Обновить кнопку переключения блокировок
+        const btn = document.getElementById('toggle-locks-btn');
+        if (btn) {
+            if (!stateManager.locksEnabled) {
+                btn.classList.add('disabled');
+                btn.textContent = '🔒 Блокировки отключены';
+            } else {
+                btn.classList.remove('disabled');
+                btn.textContent = '🔓 Блокировки включены';
+            }
         }
-    }, 50);
+        
+        loadApplications();
+    });
 }
 
 function showLoginPage() {
@@ -231,19 +240,26 @@ function loadApplications() {
         .catch(err => {});
 }
 
-// Toggle locks globally
-function toggleLocksGlobally() {
-    stateManager.setLocksEnabled(!stateManager.locksEnabled);
-    const btn = document.getElementById('toggle-locks-btn');
-    if (!stateManager.locksEnabled) {
-        btn.classList.add('disabled');
-        btn.textContent = '🔒 Блокировки отключены';
-        showAlert('Блокировки отключены для всего приложения', 'warning');
-    } else {
-        btn.classList.remove('disabled');
-        btn.textContent = '🔓 Блокировки включены';
-        showAlert('Блокировки включены', 'success');
-    }
+
+async function toggleLocksGlobally() {
+    const currentState = await stateManager.getLocksEnabledFromServer();
+    const newState = !currentState;
+    
+    stateManager.setLocksEnabled(newState);
+    
+    setTimeout(async () => {
+        await stateManager.getLocksEnabledFromServer();
+        const btn = document.getElementById('toggle-locks-btn');
+        if (!stateManager.locksEnabled) {
+            btn.classList.add('disabled');
+            btn.textContent = '🔒 Блокировки отключены';
+            showAlert('Блокировки отключены для всего приложения', 'warning');
+        } else {
+            btn.classList.remove('disabled');
+            btn.textContent = '🔓 Блокировки включены';
+            showAlert('Блокировки включены', 'success');
+        }
+    }, 200);
 }
 
 // Filter applications by status
@@ -451,43 +467,44 @@ function enableApplicationEdit(appId, status, lockedById) {
         return;
     }
     
-    if (!stateManager.locksEnabled) {
-        document.getElementById('app-edit-controls').style.display = 'block';
-        document.getElementById('edit-btn').style.display = 'none';
-        document.getElementById('lock-status-text').textContent = '⚠️ Блокировки отключены';
-        document.getElementById('lock-status-text').style.color = '#ff922b';
-        showAlert('Блокировки отключены, вы можете редактировать', 'warning');
-        return;
-    }
-    
-
-    fetch(`${API_URL}/applications/${appId}/lock`, {
-        method: 'POST'
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            stateManager.setApplicationLock(appId, data.data.timeout_at, currentUser.id);
+    stateManager.getLocksEnabledFromServer().then(locksEnabled => {
+        if (!locksEnabled) {
             document.getElementById('app-edit-controls').style.display = 'block';
             document.getElementById('edit-btn').style.display = 'none';
-            document.getElementById('lock-status-text').textContent = '✓ Вы получили эксклюзивный доступ';
-            document.getElementById('lock-status-text').style.color = '#2b8a3e';
-            startLockTimer(appId);
-            showAlert('Заявка заблокирована для вас на 10 минут', 'success');
-        } else {
-
-            if (parseInt(data.locked_by) === currentUser.id) {
+            document.getElementById('lock-status-text').textContent = '⚠️ Блокировки отключены';
+            document.getElementById('lock-status-text').style.color = '#ff922b';
+            showAlert('Блокировки отключены, вы можете редактировать', 'warning');
+            return;
+        }
+        
+        fetch(`${API_URL}/applications/${appId}/lock`, {
+            method: 'POST'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                stateManager.setApplicationLock(appId, data.data.timeout_at, currentUser.id);
                 document.getElementById('app-edit-controls').style.display = 'block';
                 document.getElementById('edit-btn').style.display = 'none';
-                document.getElementById('lock-status-text').textContent = '✓ Вы уже имеете доступ к этой заявке';
+                document.getElementById('lock-status-text').textContent = '✓ Вы получили эксклюзивный доступ';
                 document.getElementById('lock-status-text').style.color = '#2b8a3e';
                 startLockTimer(appId);
+                showAlert('Заявка заблокирована для вас на 10 минут', 'success');
             } else {
-                showAlert(`Заявка уже обрабатывается другим сотрудником`, 'error');
+
+                if (parseInt(data.locked_by) === currentUser.id) {
+                    document.getElementById('app-edit-controls').style.display = 'block';
+                    document.getElementById('edit-btn').style.display = 'none';
+                    document.getElementById('lock-status-text').textContent = '✓ Вы уже имеете доступ к этой заявке';
+                    document.getElementById('lock-status-text').style.color = '#2b8a3e';
+                    startLockTimer(appId);
+                } else {
+                    showAlert(`Заявка уже обрабатывается другим сотрудником`, 'error');
+                }
             }
-        }
-    })
-    .catch(err => {});
+        })
+        .catch(err => {});
+    });
 }
 
 
