@@ -48,8 +48,30 @@ try {
     $pdo->exec($create_locks);
     echo "✓ Таблица application_locks готова\n\n";
     
+    // Create app_settings table
+    echo "3. Создание таблицы параметров приложения...\n";
+    
+    $create_settings = "
+        CREATE TABLE IF NOT EXISTS app_settings (
+            key VARCHAR(100) PRIMARY KEY,
+            value TEXT,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ";
+    
+    $pdo->exec($create_settings);
+    
+    // Initialize locks_enabled setting if not exists
+    $check_locks = $pdo->prepare("SELECT value FROM app_settings WHERE key = 'locks_enabled'");
+    $check_locks->execute();
+    if (!$check_locks->fetch()) {
+        $init_locks = $pdo->prepare("INSERT INTO app_settings (key, value) VALUES (?, ?)");
+        $init_locks->execute(['locks_enabled', 'true']);
+    }
+    echo "✓ Таблица app_settings готова\n\n";
+    
     // Load sample data from all_data.json if tables are empty
-    echo "3. Проверка исходных данных...\n";
+    echo "4. Проверка исходных данных...\n";
     
     $check_employees = $pdo->query("SELECT COUNT(*) as count FROM employees")->fetch();
     $check_clients = $pdo->query("SELECT COUNT(*) as count FROM clients")->fetch();
@@ -64,7 +86,7 @@ try {
     }
     
     // Verify products
-    echo "4. Проверка кредитных продуктов...\n";
+    echo "5. Проверка кредитных продуктов...\n";
     
     $check_products = $pdo->query("SELECT COUNT(*) as count FROM loan_products")->fetch();
     

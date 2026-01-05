@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/var/www  # Монтируем текущую папку в контейнер (hot-reload)
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_NAME: loan_system
+      DB_USER: postgres
+      DB_PASSWORD: example
+      DB_PORT: 5432
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: loan_system
+      POSTGRES_USER: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./01-init-schema.sql:/docker-entrypoint-initdb.d/01-init-schema.sql  # Автоматически создаст таблицы
+    networks:
+      - app-network
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
+    driver: bridge

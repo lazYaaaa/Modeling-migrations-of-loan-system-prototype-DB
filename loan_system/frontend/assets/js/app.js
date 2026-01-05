@@ -9,8 +9,7 @@ class StateManager {
         this.init();
     }
     
-    async init() {P
-
+    async init() {
         try {
             const res = await fetch(`${API_URL}/state/locks-enabled`);
             const data = await res.json();
@@ -136,6 +135,8 @@ function login() {
     .then(async res => {
         const ct = res.headers.get('Content-Type') || '';
         const text = await res.text();
+        console.log('Auth response status:', res.status);
+        console.log('Auth response text:', text);
         try {
             const data = ct.includes('application/json') ? JSON.parse(text) : JSON.parse(text);
             if (data && data.success) {
@@ -147,6 +148,7 @@ function login() {
                 showAlert((data && data.error) || 'Ошибка входа', 'error');
             }
         } catch (e) {
+            console.error('Parse error:', e);
             if (text && text.trim().startsWith('<!DOCTYPE')) {
                 showAlert('Сервер вернул HTML вместо JSON. Запустите PHP-сервер из корня проекта, например:\nphp -S localhost:8000 -t .\nи откройте http://localhost:8000/frontend', 'error');
             } else {
@@ -155,6 +157,7 @@ function login() {
         }
     })
     .catch(err => {
+        console.error('Fetch error:', err);
         showAlert('Ошибка подключения к серверу', 'error');
     });
 }
@@ -335,13 +338,16 @@ function renderApplicationsTable(applications) {
         let lockBadge = '';
         let timerText = '';
         
-        const isLocked = app.timeout_at && new Date(app.timeout_at).getTime() > new Date().getTime();
+        // Check if application is locked: either timeout_at is in future OR locked_by exists
+        const isLocked = (app.timeout_at && new Date(app.timeout_at).getTime() > new Date().getTime()) || (app.locked_by && app.locked_by > 0);
         
         if (isLocked) {
             const remaining = stateManager.getTimeRemaining(app.application_id);
             if (remaining > 0) {
                 timerText = `⏱️ ${remaining}м`;
                 lockBadge = `<span class="lock-indicator locked" data-app-lock-timer="${app.application_id}" style="cursor: pointer; color: #fff; background: #ff6b6b;" title="Блокировка еще активна">${timerText}</span>`;
+            } else if (app.locked_by && app.locked_by > 0) {
+                lockBadge = `<span class="lock-indicator locked" data-app-lock-timer="${app.application_id}" style="cursor: pointer; color: #fff; background: #ff6b6b;" title="Заблокирована">🔒 Блокирована</span>`;
             } else {
                 timerText = '🔓 Свободна';
                 lockBadge = `<span class="lock-indicator unlocked" data-app-lock-timer="${app.application_id}">${timerText}</span>`;
@@ -428,6 +434,7 @@ function showApplicationModal(app) {
                 <span class="badge badge-${app.status.toLowerCase().replace(' ', '-')}">${app.status}</span>
                 <br><br>
                 <strong>Ответственный сотрудник:</strong> <span style="color: #222;">${app.employee_name}</span>
+                ${app.locked_by && app.locked_by > 0 ? `<br><strong style="color: #ff6b6b;">🔒 Заявка заблокирована</strong><br><span id="lock-status-text" style="color: #ff6b6b; font-weight: 500;"></span>` : ''}
             </div>
             
             <div id="app-edit-controls" style="display: none;">
@@ -463,8 +470,8 @@ function showApplicationModal(app) {
             
             <div class="modal-footer">
                 <button class="btn btn-secondary" onclick="closeModal('app-modal')">Закрыть</button>
-                    <button class="btn btn-primary" id="edit-btn" onclick="enableApplicationEdit(${app.application_id}, '${app.status}', ${app.locked_by || 'null'})">
-                    Обработать заявку
+                    <button class="btn btn-primary" id="edit-btn" onclick="enableApplicationEdit(${app.application_id}, '${app.status}', ${app.locked_by || 'null'})" ${(app.locked_by && app.locked_by > 0 && parseInt(app.locked_by) !== currentUser.id) ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''}>
+                    ${(app.locked_by && app.locked_by > 0 && parseInt(app.locked_by) !== currentUser.id) ? '🔒 Заблокирована' : 'Обработать заявку'}
                 </button>
             </div>
         </div>
@@ -477,6 +484,33 @@ function showApplicationModal(app) {
     if (app.status !== 'Новая' && app.status !== 'На рассмотрении') {
         document.getElementById('edit-btn').disabled = true;
         document.getElementById('edit-btn').textContent = 'Заявка уже обработана';
+    }
+    
+    // Show lock status if application is locked
+    if (app.locked_by && app.locked_by > 0) {
+        const lockStatusText = document.getElementById('lock-status-text');
+        if (lockStatusText) {
+            if (parseInt(app.locked_by) === currentUser.id) {
+                lockStatusText.textContent = '✓ Вы держите эксклюзивный доступ';
+                lockStatusText.style.color = '#2b8a3e';
+            } else {
+                // Try to get employee name - fetch from API or show ID
+                fetch(`${API_URL}/employees/${app.locked_by}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success && data.data) {
+                            lockStatusText.textContent = `⚠️ Обрабатывается сотрудником: ${data.data.full_name}`;
+                        } else {
+                            lockStatusText.textContent = `⚠️ Обрабатывается другим сотрудником (ID: ${app.locked_by})`;
+                        }
+                        lockStatusText.style.color = '#ff6b6b';
+                    })
+                    .catch(() => {
+                        lockStatusText.textContent = `⚠️ Обрабатывается другим сотрудником`;
+                        lockStatusText.style.color = '#ff6b6b';
+                    });
+            }
+        }
     }
 }
 

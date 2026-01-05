@@ -304,6 +304,14 @@ try {
         }
     }
     
+    elseif (preg_match('/^employees\/(\d+)$/', $path, $matches)) {
+        $employee_id = $matches[1];
+        if ($method === 'GET') {
+            $response['data'] = $employee->getEmployeeById($employee_id);
+            $response['success'] = true;
+        }
+    }
+    
     elseif ($path === 'products') {
         if ($method === 'GET') {
             $response['data'] = $product->getAllProducts();
@@ -321,10 +329,7 @@ try {
                 $response['error'] = 'Missing login or password';
             } else {
 
-                $sql = "SELECT * FROM employees WHERE login = ? AND status = 'Активен'";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute([$login]);
-                $emp = $stmt->fetch();
+                $emp = $employee->authenticate($login, $password);
                 
                 if ($emp) {
                     $_SESSION['employee_id'] = $emp['employee_id'];
@@ -346,7 +351,7 @@ try {
                     ];
                 } else {
                     http_response_code(401);
-                    $response['error'] = 'Invalid login';
+                    $response['error'] = 'Invalid login or password';
                 }
             }
         }
