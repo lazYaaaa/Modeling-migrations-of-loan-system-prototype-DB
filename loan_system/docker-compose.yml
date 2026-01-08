@@ -4,18 +4,28 @@ services:
   app:
     build: .
     volumes:
-      - .:/var/www  # Монтируем текущую папку в контейнер (hot-reload)
-    ports:
-      - "8000:8000"
-    restart: unless-stopped
+      - .:/var/www
     environment:
       DB_HOST: db
       DB_NAME: loan_system
       DB_USER: postgres
       DB_PASSWORD: example
       DB_PORT: 5432
+      DEMO_NO_LOCKS_DELAY: 5
     depends_on:
       - db
+    networks:
+      - app-network
+
+  web:
+    image: nginx:1.25
+    volumes:
+      - .:/var/www
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "8000:8000"
+    depends_on:
+      - app
     networks:
       - app-network
 
@@ -29,7 +39,7 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./01-init-schema.sql:/docker-entrypoint-initdb.d/01-init-schema.sql  # Автоматически создаст таблицы
+      - ./01-init-schema.sql:/docker-entrypoint-initdb.d/01-init-schema.sql
     networks:
       - app-network
 

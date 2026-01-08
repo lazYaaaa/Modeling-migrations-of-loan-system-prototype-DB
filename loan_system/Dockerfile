@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM php:8.2-fpm
 
 WORKDIR /var/www
 
@@ -10,7 +10,6 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-EXPOSE 8000
+EXPOSE 9000
 
-# Запуск встроенного PHP-сервера с явным указанием документ рута
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "/var/www", "router.php"]
+CMD ["php-fpm", "-F"]

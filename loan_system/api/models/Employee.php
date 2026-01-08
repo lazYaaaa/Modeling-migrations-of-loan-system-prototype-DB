@@ -28,6 +28,11 @@ class Employee {
 
         if (!$emp) return false;
 
+        // Normalize role default
+        if (!isset($emp['role']) || !in_array($emp['role'], ['admin', 'manager', 'viewer'])) {
+            $emp['role'] = 'manager';
+        }
+
         // Fallback for demo data without hashes: accept password == login when hash is empty
         if (empty($emp['password_hash'])) {
             if ($password === $emp['login']) {

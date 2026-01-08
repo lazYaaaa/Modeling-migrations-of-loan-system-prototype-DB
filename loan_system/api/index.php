@@ -40,6 +40,14 @@ try {
     // Table may not exist yet; keep default true
 }
 
+// Normalize role in session (viewer->viewer, otherwise default to manager if missing)
+if (!isset($_SESSION['employee_role']) || !in_array($_SESSION['employee_role'], ['admin', 'manager', 'viewer'])) {
+    $_SESSION['employee_role'] = 'manager';
+}
+
+// Optional demo delay (seconds) to simulate race when locks are disabled
+$DEMO_NO_LOCKS_DELAY = (int)(getenv('DEMO_NO_LOCKS_DELAY') ?: 0);
+
 $_SESSION['employee_id'] = $_SESSION['employee_id'] ?? 1;
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -226,6 +234,10 @@ try {
                 $has_lock = $LOCKS_ENABLED ? $lock->verifyLockOwnership($app_id, $employee_id) : true;
 
                 if ($has_lock) {
+                    // Simulate race condition when locks are disabled
+                    if (!$LOCKS_ENABLED && $DEMO_NO_LOCKS_DELAY > 0) {
+                        sleep($DEMO_NO_LOCKS_DELAY);
+                    }
                     $result = $application->createContract($app_id, $employee_id);
                     if ($result['success']) {
                         $application->updateApplicationStatus($app_id, STATUS_APPROVED);
@@ -350,22 +362,26 @@ try {
                 $emp = $employee->authenticate($login, $password);
                 
                 if ($emp) {
+                    $role = $emp['role'] ?? 'manager';
+                    if (!in_array($role, ['admin', 'manager', 'viewer'])) {
+                        $role = 'manager';
+                    }
                     $_SESSION['employee_id'] = $emp['employee_id'];
                     $_SESSION['employee_name'] = $emp['full_name'];
-                    $_SESSION['employee_role'] = $emp['role'] ?? 'manager';
+                    $_SESSION['employee_role'] = $role;
                     $_SESSION['employee_position'] = $emp['position'];
                     
                     setcookie('last_login_user', $login, time() + 600, '/', '', false, true);
                     setcookie('last_login_time', date('Y-m-d H:i:s'), time() + 600, '/', '', false, true);
                     setcookie('employee_id', $emp['employee_id'], time() + 600, '/', '', false, true);
-                    setcookie('employee_role', $emp['role'] ?? 'manager', time() + 600, '/', '', false, true);
+                    setcookie('employee_role', $role, time() + 600, '/', '', false, true);
                     
                     $response['success'] = true;
                     $response['data'] = [
                         'id' => $emp['employee_id'],
                         'name' => $emp['full_name'],
                         'position' => $emp['position'],
-                        'role' => $emp['role'] ?? 'manager'
+                        'role' => $role
                     ];
                 } else {
                     http_response_code(401);
