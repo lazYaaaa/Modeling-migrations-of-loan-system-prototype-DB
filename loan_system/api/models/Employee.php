@@ -28,13 +28,19 @@ class Employee {
 
         if (!$emp) return false;
 
-        if (!isset($emp['password_hash']) || !$password) return false;
-
-        if (password_verify($password, $emp['password_hash'])) {
-            return $emp;
+        // Fallback for demo data without hashes: accept password == login when hash is empty
+        if (empty($emp['password_hash'])) {
+            if ($password === $emp['login']) {
+                return $emp;
+            }
+            return false;
         }
 
-        return false;
+        if (!password_verify($password, $emp['password_hash'])) {
+            return false;
+        }
+
+        return $emp;
     }
     
     public function getEmployeeApplications($employee_id) {

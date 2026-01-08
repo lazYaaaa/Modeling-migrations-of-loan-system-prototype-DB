@@ -28,6 +28,18 @@ $client = new Client($pdo);
 $employee = new Employee($pdo);
 $product = new LoanProduct($pdo);
 
+// Global locks-enabled flag (default true). Read from app_settings if present.
+$LOCKS_ENABLED = true;
+try {
+    $stmt = $pdo->query("SELECT value FROM app_settings WHERE key = 'locks_enabled' LIMIT 1");
+    $row = $stmt->fetch();
+    if ($row) {
+        $LOCKS_ENABLED = ($row['value'] === 'true' || $row['value'] === '1');
+    }
+} catch (Exception $e) {
+    // Table may not exist yet; keep default true
+}
+
 $_SESSION['employee_id'] = $_SESSION['employee_id'] ?? 1;
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -127,18 +139,10 @@ try {
                 http_response_code(401);
                 $response['error'] = 'Not authenticated';
             } else {
-                $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
+                // If locks are disabled globally, bypass lock checks
+                $has_lock = $LOCKS_ENABLED ? $lock->verifyLockOwnership($app_id, $employee_id) : true;
                 
-                if (!$has_lock) {
-                    $lock_check = $lock->isLocked($app_id);
-                    if ($lock_check) {
-                        http_response_code(403);
-                        $response['error'] = 'This application is locked by another employee';
-                    } else {
-                        http_response_code(403);
-                        $response['error'] = 'This application is not locked or lock has expired. You must acquire a lock before editing.';
-                    }
-                } else {
+                if ($has_lock) {
                     if (isset($data['amount'])) {
                         $application->updateApplicationAmount($app_id, $data['amount']);
                     }
@@ -149,6 +153,15 @@ try {
                     
                     $response['data'] = $application->getApplicationById($app_id);
                     $response['success'] = true;
+                } else {
+                    $lock_check = $lock->isLocked($app_id);
+                    if ($lock_check) {
+                        http_response_code(403);
+                        $response['error'] = 'This application is locked by another employee';
+                    } else {
+                        http_response_code(403);
+                        $response['error'] = 'This application is not locked or lock has expired. You must acquire a lock before editing.';
+                    }
                 }
             }
         }
@@ -206,21 +219,23 @@ try {
                 http_response_code(403);
                 $response['error'] = 'Access denied: only manager or admin can approve applications';
             } else {
-                $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
-                
-                if (!$has_lock) {
-                    http_response_code(403);
-                    $response['error'] = 'Cannot approve: application is not locked by you or lock has expired';
-                } else {
+                // Bypass lock requirement if globally disabled
+                $has_lock = $LOCKS_ENABLED ? $lock->verifyLockOwnership($app_id, $employee_id) : true;
+
+                if ($has_lock) {
                     $result = $application->createContract($app_id, $employee_id);
                     if ($result['success']) {
                         $application->updateApplicationStatus($app_id, STATUS_APPROVED);
-                        $lock->releaseLock($app_id);
+                        // Release lock only if locks are enabled
+                        if ($LOCKS_ENABLED) { $lock->releaseLock($app_id); }
                         $response['success'] = true;
                         $response['data'] = $result;
                     } else {
                         $response['error'] = $result['error'];
                     }
+                } else {
+                    http_response_code(403);
+                    $response['error'] = 'Cannot approve: application is not locked by you or lock has expired';
                 }
             }
         }
@@ -236,15 +251,15 @@ try {
                 http_response_code(403);
                 $response['error'] = 'Access denied: only manager or admin can reject applications';
             } else {
-                $has_lock = $lock->verifyLockOwnership($app_id, $employee_id);
-                
-                if (!$has_lock) {
+                $has_lock = $LOCKS_ENABLED ? $lock->verifyLockOwnership($app_id, $employee_id) : true;
+
+                if ($has_lock) {
+                    $application->updateApplicationStatus($app_id, STATUS_ARCHIVED);
+                    if ($LOCKS_ENABLED) { $lock->releaseLock($app_id); }
+                    $response['success'] = true;
+                } else {
                     http_response_code(403);
                     $response['error'] = 'Cannot reject: application is not locked by you or lock has expired';
-                } else {
-                    $application->updateApplicationStatus($app_id, STATUS_ARCHIVED);
-                    $lock->releaseLock($app_id);
-                    $response['success'] = true;
                 }
             }
         }

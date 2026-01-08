@@ -1,7 +1,7 @@
 <?php
 // Database Configuration
-// Use 'db' as host in Docker, 'localhost' for local development
-$db_host = getenv('DB_HOST') ?: 'db';
+// Use 'db' as host in Docker (via env), default to localhost for local dev/server
+$db_host = getenv('DB_HOST') ?: 'localhost';
 $db_port = getenv('DB_PORT') ?: 5432;
 $db_name = getenv('DB_NAME') ?: 'loan_system';
 $db_user = getenv('DB_USER') ?: 'postgres';

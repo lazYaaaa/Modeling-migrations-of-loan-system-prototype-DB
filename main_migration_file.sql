@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS employees (
     full_name VARCHAR(255) NOT NULL,
     position VARCHAR(100) NOT NULL,
     login VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255),
     status VARCHAR(20) DEFAULT 'Активен'
 );
 
@@ -94,5 +95,13 @@ CREATE TABLE IF NOT EXISTS payments (
     paid_amount NUMERIC(15, 2) NOT NULL CHECK (paid_amount > 0),
     operation_type VARCHAR(50) NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS app_settings (
+    key VARCHAR(100) PRIMARY KEY,
+    value TEXT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO app_settings (key, value) VALUES ('locks_enabled', 'true') ON CONFLICT (key) DO NOTHING;
 
 

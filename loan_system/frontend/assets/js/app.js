@@ -470,8 +470,8 @@ function showApplicationModal(app) {
             
             <div class="modal-footer">
                 <button class="btn btn-secondary" onclick="closeModal('app-modal')">Закрыть</button>
-                    <button class="btn btn-primary" id="edit-btn" onclick="enableApplicationEdit(${app.application_id}, '${app.status}', ${app.locked_by || 'null'})" ${(app.locked_by && app.locked_by > 0 && parseInt(app.locked_by) !== currentUser.id) ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''}>
-                    ${(app.locked_by && app.locked_by > 0 && parseInt(app.locked_by) !== currentUser.id) ? '🔒 Заблокирована' : 'Обработать заявку'}
+                    <button class="btn btn-primary" id="edit-btn" onclick="enableApplicationEdit(${app.application_id}, '${app.status}', ${app.locked_by || 'null'})" ${((stateManager.locksEnabled) && (app.locked_by && app.locked_by > 0 && parseInt(app.locked_by) !== currentUser.id)) ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''}>
+                    ${((stateManager.locksEnabled) && (app.locked_by && app.locked_by > 0 && parseInt(app.locked_by) !== currentUser.id)) ? '🔒 Заблокирована' : 'Обработать заявку'}
                 </button>
             </div>
         </div>
