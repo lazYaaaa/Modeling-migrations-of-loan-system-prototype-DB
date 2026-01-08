@@ -25,7 +25,9 @@ class Application {
             JOIN clients cl ON ca.client_id = cl.client_id
             JOIN employees e ON ca.employee_id = e.employee_id
             JOIN loan_products lp ON ca.product_id = lp.product_id
-            LEFT JOIN application_locks al ON ca.application_id = al.application_id
+            LEFT JOIN application_locks al 
+                ON ca.application_id = al.application_id
+               AND al.timeout_at > NOW()
             LEFT JOIN employees e_lock ON al.locked_by = e_lock.employee_id
             ORDER BY ca.application_date DESC
         ";
@@ -56,7 +58,9 @@ class Application {
             JOIN clients cl ON ca.client_id = cl.client_id
             JOIN employees e ON ca.employee_id = e.employee_id
             JOIN loan_products lp ON ca.product_id = lp.product_id
-            LEFT JOIN application_locks al ON ca.application_id = al.application_id
+            LEFT JOIN application_locks al 
+                ON ca.application_id = al.application_id
+               AND al.timeout_at > NOW()
             WHERE ca.application_id = ?
         ";
         

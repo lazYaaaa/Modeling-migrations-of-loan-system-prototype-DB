@@ -59,6 +59,8 @@ try {
     
     elseif ($path === 'applications') {
         if ($method === 'GET') {
+            // Cleanup expired locks before listing
+            $lock->removeExpiredLocks();
             $response['data'] = $application->getAllApplications();
             $response['success'] = true;
         } elseif ($method === 'POST') {
@@ -127,6 +129,7 @@ try {
         $app_id = $matches[1];
         
         if ($method === 'GET') {
+            $lock->removeExpiredLocks();
             $response['data'] = $application->getApplicationById($app_id);
             $response['success'] = true;
         }
